@@ -1,0 +1,782 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+export type DocumentRegisterEntryModel = runtime.Types.Result.DefaultSelection<Prisma.$DocumentRegisterEntryPayload>;
+export type AggregateDocumentRegisterEntry = {
+    _count: DocumentRegisterEntryCountAggregateOutputType | null;
+    _min: DocumentRegisterEntryMinAggregateOutputType | null;
+    _max: DocumentRegisterEntryMaxAggregateOutputType | null;
+};
+export type DocumentRegisterEntryMinAggregateOutputType = {
+    id: string | null;
+    entityType: string | null;
+    entityId: string | null;
+    documentType: string | null;
+    fileReference: string | null;
+    uploadedByUserId: string | null;
+    uploadedByCounterpartyId: string | null;
+    uploadedAt: Date | null;
+};
+export type DocumentRegisterEntryMaxAggregateOutputType = {
+    id: string | null;
+    entityType: string | null;
+    entityId: string | null;
+    documentType: string | null;
+    fileReference: string | null;
+    uploadedByUserId: string | null;
+    uploadedByCounterpartyId: string | null;
+    uploadedAt: Date | null;
+};
+export type DocumentRegisterEntryCountAggregateOutputType = {
+    id: number;
+    entityType: number;
+    entityId: number;
+    documentType: number;
+    fileReference: number;
+    uploadedByUserId: number;
+    uploadedByCounterpartyId: number;
+    uploadedAt: number;
+    _all: number;
+};
+export type DocumentRegisterEntryMinAggregateInputType = {
+    id?: true;
+    entityType?: true;
+    entityId?: true;
+    documentType?: true;
+    fileReference?: true;
+    uploadedByUserId?: true;
+    uploadedByCounterpartyId?: true;
+    uploadedAt?: true;
+};
+export type DocumentRegisterEntryMaxAggregateInputType = {
+    id?: true;
+    entityType?: true;
+    entityId?: true;
+    documentType?: true;
+    fileReference?: true;
+    uploadedByUserId?: true;
+    uploadedByCounterpartyId?: true;
+    uploadedAt?: true;
+};
+export type DocumentRegisterEntryCountAggregateInputType = {
+    id?: true;
+    entityType?: true;
+    entityId?: true;
+    documentType?: true;
+    fileReference?: true;
+    uploadedByUserId?: true;
+    uploadedByCounterpartyId?: true;
+    uploadedAt?: true;
+    _all?: true;
+};
+export type DocumentRegisterEntryAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    orderBy?: Prisma.DocumentRegisterEntryOrderByWithRelationInput | Prisma.DocumentRegisterEntryOrderByWithRelationInput[];
+    cursor?: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    _count?: true | DocumentRegisterEntryCountAggregateInputType;
+    _min?: DocumentRegisterEntryMinAggregateInputType;
+    _max?: DocumentRegisterEntryMaxAggregateInputType;
+};
+export type GetDocumentRegisterEntryAggregateType<T extends DocumentRegisterEntryAggregateArgs> = {
+    [P in keyof T & keyof AggregateDocumentRegisterEntry]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateDocumentRegisterEntry[P]> : Prisma.GetScalarType<T[P], AggregateDocumentRegisterEntry[P]>;
+};
+export type DocumentRegisterEntryGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    orderBy?: Prisma.DocumentRegisterEntryOrderByWithAggregationInput | Prisma.DocumentRegisterEntryOrderByWithAggregationInput[];
+    by: Prisma.DocumentRegisterEntryScalarFieldEnum[] | Prisma.DocumentRegisterEntryScalarFieldEnum;
+    having?: Prisma.DocumentRegisterEntryScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: DocumentRegisterEntryCountAggregateInputType | true;
+    _min?: DocumentRegisterEntryMinAggregateInputType;
+    _max?: DocumentRegisterEntryMaxAggregateInputType;
+};
+export type DocumentRegisterEntryGroupByOutputType = {
+    id: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedByUserId: string | null;
+    uploadedByCounterpartyId: string | null;
+    uploadedAt: Date;
+    _count: DocumentRegisterEntryCountAggregateOutputType | null;
+    _min: DocumentRegisterEntryMinAggregateOutputType | null;
+    _max: DocumentRegisterEntryMaxAggregateOutputType | null;
+};
+export type GetDocumentRegisterEntryGroupByPayload<T extends DocumentRegisterEntryGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<DocumentRegisterEntryGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof DocumentRegisterEntryGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], DocumentRegisterEntryGroupByOutputType[P]> : Prisma.GetScalarType<T[P], DocumentRegisterEntryGroupByOutputType[P]>;
+}>>;
+export type DocumentRegisterEntryWhereInput = {
+    AND?: Prisma.DocumentRegisterEntryWhereInput | Prisma.DocumentRegisterEntryWhereInput[];
+    OR?: Prisma.DocumentRegisterEntryWhereInput[];
+    NOT?: Prisma.DocumentRegisterEntryWhereInput | Prisma.DocumentRegisterEntryWhereInput[];
+    id?: Prisma.UuidFilter<"DocumentRegisterEntry"> | string;
+    entityType?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    entityId?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    documentType?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    fileReference?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    uploadedByUserId?: Prisma.UuidNullableFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedByCounterpartyId?: Prisma.UuidNullableFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedAt?: Prisma.DateTimeFilter<"DocumentRegisterEntry"> | Date | string;
+    uploadedBy?: Prisma.XOR<Prisma.AppUserNullableScalarRelationFilter, Prisma.AppUserWhereInput> | null;
+    uploadedByCounterparty?: Prisma.XOR<Prisma.CounterpartyNullableScalarRelationFilter, Prisma.CounterpartyWhereInput> | null;
+};
+export type DocumentRegisterEntryOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    entityType?: Prisma.SortOrder;
+    entityId?: Prisma.SortOrder;
+    documentType?: Prisma.SortOrder;
+    fileReference?: Prisma.SortOrder;
+    uploadedByUserId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    uploadedByCounterpartyId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    uploadedAt?: Prisma.SortOrder;
+    uploadedBy?: Prisma.AppUserOrderByWithRelationInput;
+    uploadedByCounterparty?: Prisma.CounterpartyOrderByWithRelationInput;
+};
+export type DocumentRegisterEntryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.DocumentRegisterEntryWhereInput | Prisma.DocumentRegisterEntryWhereInput[];
+    OR?: Prisma.DocumentRegisterEntryWhereInput[];
+    NOT?: Prisma.DocumentRegisterEntryWhereInput | Prisma.DocumentRegisterEntryWhereInput[];
+    entityType?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    entityId?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    documentType?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    fileReference?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    uploadedByUserId?: Prisma.UuidNullableFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedByCounterpartyId?: Prisma.UuidNullableFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedAt?: Prisma.DateTimeFilter<"DocumentRegisterEntry"> | Date | string;
+    uploadedBy?: Prisma.XOR<Prisma.AppUserNullableScalarRelationFilter, Prisma.AppUserWhereInput> | null;
+    uploadedByCounterparty?: Prisma.XOR<Prisma.CounterpartyNullableScalarRelationFilter, Prisma.CounterpartyWhereInput> | null;
+}, "id">;
+export type DocumentRegisterEntryOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    entityType?: Prisma.SortOrder;
+    entityId?: Prisma.SortOrder;
+    documentType?: Prisma.SortOrder;
+    fileReference?: Prisma.SortOrder;
+    uploadedByUserId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    uploadedByCounterpartyId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    uploadedAt?: Prisma.SortOrder;
+    _count?: Prisma.DocumentRegisterEntryCountOrderByAggregateInput;
+    _max?: Prisma.DocumentRegisterEntryMaxOrderByAggregateInput;
+    _min?: Prisma.DocumentRegisterEntryMinOrderByAggregateInput;
+};
+export type DocumentRegisterEntryScalarWhereWithAggregatesInput = {
+    AND?: Prisma.DocumentRegisterEntryScalarWhereWithAggregatesInput | Prisma.DocumentRegisterEntryScalarWhereWithAggregatesInput[];
+    OR?: Prisma.DocumentRegisterEntryScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.DocumentRegisterEntryScalarWhereWithAggregatesInput | Prisma.DocumentRegisterEntryScalarWhereWithAggregatesInput[];
+    id?: Prisma.UuidWithAggregatesFilter<"DocumentRegisterEntry"> | string;
+    entityType?: Prisma.StringWithAggregatesFilter<"DocumentRegisterEntry"> | string;
+    entityId?: Prisma.StringWithAggregatesFilter<"DocumentRegisterEntry"> | string;
+    documentType?: Prisma.StringWithAggregatesFilter<"DocumentRegisterEntry"> | string;
+    fileReference?: Prisma.StringWithAggregatesFilter<"DocumentRegisterEntry"> | string;
+    uploadedByUserId?: Prisma.UuidNullableWithAggregatesFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedByCounterpartyId?: Prisma.UuidNullableWithAggregatesFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedAt?: Prisma.DateTimeWithAggregatesFilter<"DocumentRegisterEntry"> | Date | string;
+};
+export type DocumentRegisterEntryCreateInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedAt?: Date | string;
+    uploadedBy?: Prisma.AppUserCreateNestedOneWithoutDocumentsUploadedInput;
+    uploadedByCounterparty?: Prisma.CounterpartyCreateNestedOneWithoutDocumentUploadsInput;
+};
+export type DocumentRegisterEntryUncheckedCreateInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedByUserId?: string | null;
+    uploadedByCounterpartyId?: string | null;
+    uploadedAt?: Date | string;
+};
+export type DocumentRegisterEntryUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    uploadedBy?: Prisma.AppUserUpdateOneWithoutDocumentsUploadedNestedInput;
+    uploadedByCounterparty?: Prisma.CounterpartyUpdateOneWithoutDocumentUploadsNestedInput;
+};
+export type DocumentRegisterEntryUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedByCounterpartyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DocumentRegisterEntryCreateManyInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedByUserId?: string | null;
+    uploadedByCounterpartyId?: string | null;
+    uploadedAt?: Date | string;
+};
+export type DocumentRegisterEntryUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DocumentRegisterEntryUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedByCounterpartyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DocumentRegisterEntryListRelationFilter = {
+    every?: Prisma.DocumentRegisterEntryWhereInput;
+    some?: Prisma.DocumentRegisterEntryWhereInput;
+    none?: Prisma.DocumentRegisterEntryWhereInput;
+};
+export type DocumentRegisterEntryOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type DocumentRegisterEntryCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    entityType?: Prisma.SortOrder;
+    entityId?: Prisma.SortOrder;
+    documentType?: Prisma.SortOrder;
+    fileReference?: Prisma.SortOrder;
+    uploadedByUserId?: Prisma.SortOrder;
+    uploadedByCounterpartyId?: Prisma.SortOrder;
+    uploadedAt?: Prisma.SortOrder;
+};
+export type DocumentRegisterEntryMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    entityType?: Prisma.SortOrder;
+    entityId?: Prisma.SortOrder;
+    documentType?: Prisma.SortOrder;
+    fileReference?: Prisma.SortOrder;
+    uploadedByUserId?: Prisma.SortOrder;
+    uploadedByCounterpartyId?: Prisma.SortOrder;
+    uploadedAt?: Prisma.SortOrder;
+};
+export type DocumentRegisterEntryMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    entityType?: Prisma.SortOrder;
+    entityId?: Prisma.SortOrder;
+    documentType?: Prisma.SortOrder;
+    fileReference?: Prisma.SortOrder;
+    uploadedByUserId?: Prisma.SortOrder;
+    uploadedByCounterpartyId?: Prisma.SortOrder;
+    uploadedAt?: Prisma.SortOrder;
+};
+export type DocumentRegisterEntryCreateNestedManyWithoutUploadedByInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByInputEnvelope;
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+};
+export type DocumentRegisterEntryUncheckedCreateNestedManyWithoutUploadedByInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByInputEnvelope;
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+};
+export type DocumentRegisterEntryUpdateManyWithoutUploadedByNestedInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput[];
+    upsert?: Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByInput | Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByInputEnvelope;
+    set?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    disconnect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    delete?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    update?: Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByInput | Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByInput[];
+    updateMany?: Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByInput | Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByInput[];
+    deleteMany?: Prisma.DocumentRegisterEntryScalarWhereInput | Prisma.DocumentRegisterEntryScalarWhereInput[];
+};
+export type DocumentRegisterEntryUncheckedUpdateManyWithoutUploadedByNestedInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput[];
+    upsert?: Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByInput | Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByInputEnvelope;
+    set?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    disconnect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    delete?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    update?: Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByInput | Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByInput[];
+    updateMany?: Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByInput | Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByInput[];
+    deleteMany?: Prisma.DocumentRegisterEntryScalarWhereInput | Prisma.DocumentRegisterEntryScalarWhereInput[];
+};
+export type DocumentRegisterEntryCreateNestedManyWithoutUploadedByCounterpartyInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByCounterpartyInputEnvelope;
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+};
+export type DocumentRegisterEntryUncheckedCreateNestedManyWithoutUploadedByCounterpartyInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByCounterpartyInputEnvelope;
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+};
+export type DocumentRegisterEntryUpdateManyWithoutUploadedByCounterpartyNestedInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput[];
+    upsert?: Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByCounterpartyInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByCounterpartyInputEnvelope;
+    set?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    disconnect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    delete?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    update?: Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByCounterpartyInput[];
+    updateMany?: Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByCounterpartyInput[];
+    deleteMany?: Prisma.DocumentRegisterEntryScalarWhereInput | Prisma.DocumentRegisterEntryScalarWhereInput[];
+};
+export type DocumentRegisterEntryUncheckedUpdateManyWithoutUploadedByCounterpartyNestedInput = {
+    create?: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput> | Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput[] | Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput[];
+    connectOrCreate?: Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput[];
+    upsert?: Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByCounterpartyInput[];
+    createMany?: Prisma.DocumentRegisterEntryCreateManyUploadedByCounterpartyInputEnvelope;
+    set?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    disconnect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    delete?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    connect?: Prisma.DocumentRegisterEntryWhereUniqueInput | Prisma.DocumentRegisterEntryWhereUniqueInput[];
+    update?: Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByCounterpartyInput[];
+    updateMany?: Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByCounterpartyInput[];
+    deleteMany?: Prisma.DocumentRegisterEntryScalarWhereInput | Prisma.DocumentRegisterEntryScalarWhereInput[];
+};
+export type DocumentRegisterEntryCreateWithoutUploadedByInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedAt?: Date | string;
+    uploadedByCounterparty?: Prisma.CounterpartyCreateNestedOneWithoutDocumentUploadsInput;
+};
+export type DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedByCounterpartyId?: string | null;
+    uploadedAt?: Date | string;
+};
+export type DocumentRegisterEntryCreateOrConnectWithoutUploadedByInput = {
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput>;
+};
+export type DocumentRegisterEntryCreateManyUploadedByInputEnvelope = {
+    data: Prisma.DocumentRegisterEntryCreateManyUploadedByInput | Prisma.DocumentRegisterEntryCreateManyUploadedByInput[];
+    skipDuplicates?: boolean;
+};
+export type DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByInput = {
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    update: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedUpdateWithoutUploadedByInput>;
+    create: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByInput>;
+};
+export type DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByInput = {
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateWithoutUploadedByInput, Prisma.DocumentRegisterEntryUncheckedUpdateWithoutUploadedByInput>;
+};
+export type DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByInput = {
+    where: Prisma.DocumentRegisterEntryScalarWhereInput;
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateManyMutationInput, Prisma.DocumentRegisterEntryUncheckedUpdateManyWithoutUploadedByInput>;
+};
+export type DocumentRegisterEntryScalarWhereInput = {
+    AND?: Prisma.DocumentRegisterEntryScalarWhereInput | Prisma.DocumentRegisterEntryScalarWhereInput[];
+    OR?: Prisma.DocumentRegisterEntryScalarWhereInput[];
+    NOT?: Prisma.DocumentRegisterEntryScalarWhereInput | Prisma.DocumentRegisterEntryScalarWhereInput[];
+    id?: Prisma.UuidFilter<"DocumentRegisterEntry"> | string;
+    entityType?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    entityId?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    documentType?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    fileReference?: Prisma.StringFilter<"DocumentRegisterEntry"> | string;
+    uploadedByUserId?: Prisma.UuidNullableFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedByCounterpartyId?: Prisma.UuidNullableFilter<"DocumentRegisterEntry"> | string | null;
+    uploadedAt?: Prisma.DateTimeFilter<"DocumentRegisterEntry"> | Date | string;
+};
+export type DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedAt?: Date | string;
+    uploadedBy?: Prisma.AppUserCreateNestedOneWithoutDocumentsUploadedInput;
+};
+export type DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedByUserId?: string | null;
+    uploadedAt?: Date | string;
+};
+export type DocumentRegisterEntryCreateOrConnectWithoutUploadedByCounterpartyInput = {
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput>;
+};
+export type DocumentRegisterEntryCreateManyUploadedByCounterpartyInputEnvelope = {
+    data: Prisma.DocumentRegisterEntryCreateManyUploadedByCounterpartyInput | Prisma.DocumentRegisterEntryCreateManyUploadedByCounterpartyInput[];
+    skipDuplicates?: boolean;
+};
+export type DocumentRegisterEntryUpsertWithWhereUniqueWithoutUploadedByCounterpartyInput = {
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    update: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedUpdateWithoutUploadedByCounterpartyInput>;
+    create: Prisma.XOR<Prisma.DocumentRegisterEntryCreateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedCreateWithoutUploadedByCounterpartyInput>;
+};
+export type DocumentRegisterEntryUpdateWithWhereUniqueWithoutUploadedByCounterpartyInput = {
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateWithoutUploadedByCounterpartyInput, Prisma.DocumentRegisterEntryUncheckedUpdateWithoutUploadedByCounterpartyInput>;
+};
+export type DocumentRegisterEntryUpdateManyWithWhereWithoutUploadedByCounterpartyInput = {
+    where: Prisma.DocumentRegisterEntryScalarWhereInput;
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateManyMutationInput, Prisma.DocumentRegisterEntryUncheckedUpdateManyWithoutUploadedByCounterpartyInput>;
+};
+export type DocumentRegisterEntryCreateManyUploadedByInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedByCounterpartyId?: string | null;
+    uploadedAt?: Date | string;
+};
+export type DocumentRegisterEntryUpdateWithoutUploadedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    uploadedByCounterparty?: Prisma.CounterpartyUpdateOneWithoutDocumentUploadsNestedInput;
+};
+export type DocumentRegisterEntryUncheckedUpdateWithoutUploadedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedByCounterpartyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DocumentRegisterEntryUncheckedUpdateManyWithoutUploadedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedByCounterpartyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DocumentRegisterEntryCreateManyUploadedByCounterpartyInput = {
+    id?: string;
+    entityType: string;
+    entityId: string;
+    documentType: string;
+    fileReference: string;
+    uploadedByUserId?: string | null;
+    uploadedAt?: Date | string;
+};
+export type DocumentRegisterEntryUpdateWithoutUploadedByCounterpartyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    uploadedBy?: Prisma.AppUserUpdateOneWithoutDocumentsUploadedNestedInput;
+};
+export type DocumentRegisterEntryUncheckedUpdateWithoutUploadedByCounterpartyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DocumentRegisterEntryUncheckedUpdateManyWithoutUploadedByCounterpartyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityType?: Prisma.StringFieldUpdateOperationsInput | string;
+    entityId?: Prisma.StringFieldUpdateOperationsInput | string;
+    documentType?: Prisma.StringFieldUpdateOperationsInput | string;
+    fileReference?: Prisma.StringFieldUpdateOperationsInput | string;
+    uploadedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    uploadedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DocumentRegisterEntrySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    entityType?: boolean;
+    entityId?: boolean;
+    documentType?: boolean;
+    fileReference?: boolean;
+    uploadedByUserId?: boolean;
+    uploadedByCounterpartyId?: boolean;
+    uploadedAt?: boolean;
+    uploadedBy?: boolean | Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs>;
+    uploadedByCounterparty?: boolean | Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs>;
+}, ExtArgs["result"]["documentRegisterEntry"]>;
+export type DocumentRegisterEntrySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    entityType?: boolean;
+    entityId?: boolean;
+    documentType?: boolean;
+    fileReference?: boolean;
+    uploadedByUserId?: boolean;
+    uploadedByCounterpartyId?: boolean;
+    uploadedAt?: boolean;
+    uploadedBy?: boolean | Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs>;
+    uploadedByCounterparty?: boolean | Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs>;
+}, ExtArgs["result"]["documentRegisterEntry"]>;
+export type DocumentRegisterEntrySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    entityType?: boolean;
+    entityId?: boolean;
+    documentType?: boolean;
+    fileReference?: boolean;
+    uploadedByUserId?: boolean;
+    uploadedByCounterpartyId?: boolean;
+    uploadedAt?: boolean;
+    uploadedBy?: boolean | Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs>;
+    uploadedByCounterparty?: boolean | Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs>;
+}, ExtArgs["result"]["documentRegisterEntry"]>;
+export type DocumentRegisterEntrySelectScalar = {
+    id?: boolean;
+    entityType?: boolean;
+    entityId?: boolean;
+    documentType?: boolean;
+    fileReference?: boolean;
+    uploadedByUserId?: boolean;
+    uploadedByCounterpartyId?: boolean;
+    uploadedAt?: boolean;
+};
+export type DocumentRegisterEntryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "entityType" | "entityId" | "documentType" | "fileReference" | "uploadedByUserId" | "uploadedByCounterpartyId" | "uploadedAt", ExtArgs["result"]["documentRegisterEntry"]>;
+export type DocumentRegisterEntryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    uploadedBy?: boolean | Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs>;
+    uploadedByCounterparty?: boolean | Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs>;
+};
+export type DocumentRegisterEntryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    uploadedBy?: boolean | Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs>;
+    uploadedByCounterparty?: boolean | Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs>;
+};
+export type DocumentRegisterEntryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    uploadedBy?: boolean | Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs>;
+    uploadedByCounterparty?: boolean | Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs>;
+};
+export type $DocumentRegisterEntryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "DocumentRegisterEntry";
+    objects: {
+        uploadedBy: Prisma.$AppUserPayload<ExtArgs> | null;
+        uploadedByCounterparty: Prisma.$CounterpartyPayload<ExtArgs> | null;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        entityType: string;
+        entityId: string;
+        documentType: string;
+        fileReference: string;
+        uploadedByUserId: string | null;
+        uploadedByCounterpartyId: string | null;
+        uploadedAt: Date;
+    }, ExtArgs["result"]["documentRegisterEntry"]>;
+    composites: {};
+};
+export type DocumentRegisterEntryGetPayload<S extends boolean | null | undefined | DocumentRegisterEntryDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload, S>;
+export type DocumentRegisterEntryCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<DocumentRegisterEntryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: DocumentRegisterEntryCountAggregateInputType | true;
+};
+export interface DocumentRegisterEntryDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['DocumentRegisterEntry'];
+        meta: {
+            name: 'DocumentRegisterEntry';
+        };
+    };
+    findUnique<T extends DocumentRegisterEntryFindUniqueArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryFindUniqueArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findUniqueOrThrow<T extends DocumentRegisterEntryFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findFirst<T extends DocumentRegisterEntryFindFirstArgs>(args?: Prisma.SelectSubset<T, DocumentRegisterEntryFindFirstArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findFirstOrThrow<T extends DocumentRegisterEntryFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, DocumentRegisterEntryFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findMany<T extends DocumentRegisterEntryFindManyArgs>(args?: Prisma.SelectSubset<T, DocumentRegisterEntryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    create<T extends DocumentRegisterEntryCreateArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryCreateArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    createMany<T extends DocumentRegisterEntryCreateManyArgs>(args?: Prisma.SelectSubset<T, DocumentRegisterEntryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    createManyAndReturn<T extends DocumentRegisterEntryCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, DocumentRegisterEntryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    delete<T extends DocumentRegisterEntryDeleteArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryDeleteArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    update<T extends DocumentRegisterEntryUpdateArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryUpdateArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    deleteMany<T extends DocumentRegisterEntryDeleteManyArgs>(args?: Prisma.SelectSubset<T, DocumentRegisterEntryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateMany<T extends DocumentRegisterEntryUpdateManyArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateManyAndReturn<T extends DocumentRegisterEntryUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    upsert<T extends DocumentRegisterEntryUpsertArgs>(args: Prisma.SelectSubset<T, DocumentRegisterEntryUpsertArgs<ExtArgs>>): Prisma.Prisma__DocumentRegisterEntryClient<runtime.Types.Result.GetResult<Prisma.$DocumentRegisterEntryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    count<T extends DocumentRegisterEntryCountArgs>(args?: Prisma.Subset<T, DocumentRegisterEntryCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], DocumentRegisterEntryCountAggregateOutputType> : number>;
+    aggregate<T extends DocumentRegisterEntryAggregateArgs>(args: Prisma.Subset<T, DocumentRegisterEntryAggregateArgs>): Prisma.PrismaPromise<GetDocumentRegisterEntryAggregateType<T>>;
+    groupBy<T extends DocumentRegisterEntryGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: DocumentRegisterEntryGroupByArgs['orderBy'];
+    } : {
+        orderBy?: DocumentRegisterEntryGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, DocumentRegisterEntryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDocumentRegisterEntryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    readonly fields: DocumentRegisterEntryFieldRefs;
+}
+export interface Prisma__DocumentRegisterEntryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    uploadedBy<T extends Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DocumentRegisterEntry$uploadedByArgs<ExtArgs>>): Prisma.Prisma__AppUserClient<runtime.Types.Result.GetResult<Prisma.$AppUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    uploadedByCounterparty<T extends Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs>>): Prisma.Prisma__CounterpartyClient<runtime.Types.Result.GetResult<Prisma.$CounterpartyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+export interface DocumentRegisterEntryFieldRefs {
+    readonly id: Prisma.FieldRef<"DocumentRegisterEntry", 'String'>;
+    readonly entityType: Prisma.FieldRef<"DocumentRegisterEntry", 'String'>;
+    readonly entityId: Prisma.FieldRef<"DocumentRegisterEntry", 'String'>;
+    readonly documentType: Prisma.FieldRef<"DocumentRegisterEntry", 'String'>;
+    readonly fileReference: Prisma.FieldRef<"DocumentRegisterEntry", 'String'>;
+    readonly uploadedByUserId: Prisma.FieldRef<"DocumentRegisterEntry", 'String'>;
+    readonly uploadedByCounterpartyId: Prisma.FieldRef<"DocumentRegisterEntry", 'String'>;
+    readonly uploadedAt: Prisma.FieldRef<"DocumentRegisterEntry", 'DateTime'>;
+}
+export type DocumentRegisterEntryFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+};
+export type DocumentRegisterEntryFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+};
+export type DocumentRegisterEntryFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    orderBy?: Prisma.DocumentRegisterEntryOrderByWithRelationInput | Prisma.DocumentRegisterEntryOrderByWithRelationInput[];
+    cursor?: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.DocumentRegisterEntryScalarFieldEnum | Prisma.DocumentRegisterEntryScalarFieldEnum[];
+};
+export type DocumentRegisterEntryFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    orderBy?: Prisma.DocumentRegisterEntryOrderByWithRelationInput | Prisma.DocumentRegisterEntryOrderByWithRelationInput[];
+    cursor?: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.DocumentRegisterEntryScalarFieldEnum | Prisma.DocumentRegisterEntryScalarFieldEnum[];
+};
+export type DocumentRegisterEntryFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    orderBy?: Prisma.DocumentRegisterEntryOrderByWithRelationInput | Prisma.DocumentRegisterEntryOrderByWithRelationInput[];
+    cursor?: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.DocumentRegisterEntryScalarFieldEnum | Prisma.DocumentRegisterEntryScalarFieldEnum[];
+};
+export type DocumentRegisterEntryCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryCreateInput, Prisma.DocumentRegisterEntryUncheckedCreateInput>;
+};
+export type DocumentRegisterEntryCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.DocumentRegisterEntryCreateManyInput | Prisma.DocumentRegisterEntryCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type DocumentRegisterEntryCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelectCreateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    data: Prisma.DocumentRegisterEntryCreateManyInput | Prisma.DocumentRegisterEntryCreateManyInput[];
+    skipDuplicates?: boolean;
+    include?: Prisma.DocumentRegisterEntryIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+export type DocumentRegisterEntryUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateInput, Prisma.DocumentRegisterEntryUncheckedUpdateInput>;
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+};
+export type DocumentRegisterEntryUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateManyMutationInput, Prisma.DocumentRegisterEntryUncheckedUpdateManyInput>;
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    limit?: number;
+};
+export type DocumentRegisterEntryUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelectUpdateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateManyMutationInput, Prisma.DocumentRegisterEntryUncheckedUpdateManyInput>;
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    limit?: number;
+    include?: Prisma.DocumentRegisterEntryIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+export type DocumentRegisterEntryUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DocumentRegisterEntryCreateInput, Prisma.DocumentRegisterEntryUncheckedCreateInput>;
+    update: Prisma.XOR<Prisma.DocumentRegisterEntryUpdateInput, Prisma.DocumentRegisterEntryUncheckedUpdateInput>;
+};
+export type DocumentRegisterEntryDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+    where: Prisma.DocumentRegisterEntryWhereUniqueInput;
+};
+export type DocumentRegisterEntryDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DocumentRegisterEntryWhereInput;
+    limit?: number;
+};
+export type DocumentRegisterEntry$uploadedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AppUserSelect<ExtArgs> | null;
+    omit?: Prisma.AppUserOmit<ExtArgs> | null;
+    include?: Prisma.AppUserInclude<ExtArgs> | null;
+    where?: Prisma.AppUserWhereInput;
+};
+export type DocumentRegisterEntry$uploadedByCounterpartyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.CounterpartySelect<ExtArgs> | null;
+    omit?: Prisma.CounterpartyOmit<ExtArgs> | null;
+    include?: Prisma.CounterpartyInclude<ExtArgs> | null;
+    where?: Prisma.CounterpartyWhereInput;
+};
+export type DocumentRegisterEntryDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.DocumentRegisterEntrySelect<ExtArgs> | null;
+    omit?: Prisma.DocumentRegisterEntryOmit<ExtArgs> | null;
+    include?: Prisma.DocumentRegisterEntryInclude<ExtArgs> | null;
+};

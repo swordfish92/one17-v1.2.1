@@ -1,0 +1,122 @@
+# One17 Enterprise Platform — Caddy reverse proxy config.
+# register-caddy.ps1 substitutes __APP_DOMAIN__ / __PORTAL_DOMAIN__ /
+# __API_DOMAIN__ / __API_PORT__ / __INSTALL_ROOT__ and writes the result to
+# $InstallRoot\Caddyfile. Caddy provisions TLS automatically (Let's
+# Encrypt/ZeroSSL) for every domain listed below the first time it starts —
+# no manual certificate handling. Every plain-HTTP request Caddy receives
+# on a domain configured for automatic HTTPS is redirected to HTTPS by
+# default (built-in behavior, no separate redirect block needed) — that
+# redirect listener does not require port 80 to be reachable from the
+# internet for THIS deployment, since certificate issuance itself is
+# forced onto TLS-ALPN-01 below (443-only), not HTTP-01.
+#
+# DESIGN NOTE (read before changing the /api block): ops-ui and portal-ui
+# are both built with a RELATIVE api base path (`const BASE = '/api'` in
+# each app's src/lib/api.ts) — this mirrors exactly how each app's own
+# vite.config.ts dev-server proxy already works (`/api` -> strip prefix ->
+# forward to the Node API). Production therefore reverse-proxies /api/* on
+# EACH app's own domain back to the backend, the same shape as dev, rather
+# than having the SPA call __API_DOMAIN__ cross-origin. __API_DOMAIN__ is
+# still served below as a direct passthrough to the backend (Swagger docs
+# at /api-docs, and any future non-browser API consumer), CORS for it is
+# already handled by the backend's OPS_UI_ORIGIN/PORTAL_UI_ORIGIN allowlist
+# (src/main.ts) — __API_DOMAIN__ itself needs no CORS entry since nothing
+# calls it cross-origin from a browser today.
+#
+# CHALLENGE TYPE: register-caddy.ps1 opens ONLY port 443 at the Windows
+# Firewall (per the brief) — Let's Encrypt's default HTTP-01 challenge
+# needs port 80 reachable from the internet, which won't be true here, so
+# every site below forces the ACME issuer to TLS-ALPN-01 instead
+# (`disable_http_challenge`), which operates entirely over 443. Renewal
+# works the same way automatically — no manual certificate handling either
+# way.
+
+__APP_DOMAIN__ {
+	encode gzip
+
+	tls {
+		issuer acme {
+			disable_http_challenge
+		}
+	}
+
+	handle_path /api/* {
+		reverse_proxy localhost:__API_PORT__
+	}
+
+	handle {
+		root * "__INSTALL_ROOT__\ops-ui\dist"
+		try_files {path} /index.html
+		file_server
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+	}
+
+	log {
+		output file "__INSTALL_ROOT__\logs\caddy-app-access.log" {
+			roll_size 10MB
+			roll_keep 10
+		}
+	}
+}
+
+__PORTAL_DOMAIN__ {
+	encode gzip
+
+	tls {
+		issuer acme {
+			disable_http_challenge
+		}
+	}
+
+	handle_path /api/* {
+		reverse_proxy localhost:__API_PORT__
+	}
+
+	handle {
+		root * "__INSTALL_ROOT__\portal-ui\dist"
+		try_files {path} /index.html
+		file_server
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+	}
+
+	log {
+		output file "__INSTALL_ROOT__\logs\caddy-portal-access.log" {
+			roll_size 10MB
+			roll_keep 10
+		}
+	}
+}
+
+__API_DOMAIN__ {
+	encode gzip
+
+	tls {
+		issuer acme {
+			disable_http_challenge
+		}
+	}
+
+	reverse_proxy localhost:__API_PORT__
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+	}
+
+	log {
+		output file "__INSTALL_ROOT__\logs\caddy-api-access.log" {
+			roll_size 10MB
+			roll_keep 10
+		}
+	}
+}

@@ -1,0 +1,316 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { AuditService } from '../audit/audit.service';
+import { DelegationService } from '../delegation/delegation.service';
+import { WorkflowEngineService } from '../workflow/workflow.service';
+import { EventJournalService } from '../event-journal/event-journal.service';
+import { LedgerService } from '../ledger/ledger.service';
+import { CreatePurchaseOrderInput, CreateVendorInput, MatchInvoiceInput, DisposeAssetInput } from './procurement.types';
+export declare class ProcurementService {
+    private readonly prisma;
+    private readonly audit;
+    private readonly delegation;
+    private readonly workflow;
+    private readonly eventJournal;
+    private readonly ledger;
+    constructor(prisma: PrismaService, audit: AuditService, delegation: DelegationService, workflow: WorkflowEngineService, eventJournal: EventJournalService, ledger: LedgerService);
+    createVendor(input: CreateVendorInput): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").VendorStatus;
+        createdAt: Date;
+        createdByUserId: string;
+        rcNumber: string | null;
+        bankName: string | null;
+        legalName: string;
+        vendorCode: string;
+        tin: string | null;
+        bankAccountNumber: string | null;
+        bankAccountName: string | null;
+        performanceRating: import("@prisma/client-runtime-utils").Decimal | null;
+    }>;
+    createPurchaseOrder(input: CreatePurchaseOrderInput): Promise<{
+        lines: {
+            id: string;
+            description: string;
+            unitPriceKobo: bigint;
+            purchaseOrderId: string;
+            quantity: import("@prisma/client-runtime-utils").Decimal;
+            lineAmountKobo: bigint;
+        }[];
+    } & {
+        id: string;
+        status: import("../../generated/prisma/enums").PurchaseOrderStatus;
+        createdAt: Date;
+        description: string;
+        createdByUserId: string;
+        ledgerEntityCode: string;
+        issuedAt: Date | null;
+        poNumber: string;
+        vendorId: string;
+        encumbranceId: string;
+        totalAmountKobo: bigint;
+    }>;
+    issuePurchaseOrder(poId: string, actorUserId: string): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").PurchaseOrderStatus;
+        createdAt: Date;
+        description: string;
+        createdByUserId: string;
+        ledgerEntityCode: string;
+        issuedAt: Date | null;
+        poNumber: string;
+        vendorId: string;
+        encumbranceId: string;
+        totalAmountKobo: bigint;
+    }>;
+    recordGoodsReceipt(poId: string, receivedAmountKobo: bigint, notes: string | undefined, actorUserId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        notes: string | null;
+        receivedByUserId: string;
+        purchaseOrderId: string;
+        receivedAmountKobo: bigint;
+    }>;
+    recordVendorInvoice(poId: string, vendorId: string, invoiceNumber: string, invoiceAmountKobo: bigint, invoiceDate: Date, actorUserId: string): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").VendorInvoiceStatus;
+        createdAt: Date;
+        createdByUserId: string;
+        matchedAt: Date | null;
+        journalEntryId: string | null;
+        vendorId: string;
+        purchaseOrderId: string;
+        invoiceNumber: string;
+        invoiceAmountKobo: bigint;
+        invoiceDate: Date;
+        matchVarianceNote: string | null;
+        paidJournalEntryId: string | null;
+        vatKobo: bigint;
+        recognizedVatRateVersionId: string | null;
+    }>;
+    matchInvoice(input: MatchInvoiceInput): Promise<{
+        invoice: {
+            id: string;
+            status: import("../../generated/prisma/enums").VendorInvoiceStatus;
+            createdAt: Date;
+            createdByUserId: string;
+            matchedAt: Date | null;
+            journalEntryId: string | null;
+            vendorId: string;
+            purchaseOrderId: string;
+            invoiceNumber: string;
+            invoiceAmountKobo: bigint;
+            invoiceDate: Date;
+            matchVarianceNote: string | null;
+            paidJournalEntryId: string | null;
+            vatKobo: bigint;
+            recognizedVatRateVersionId: string | null;
+        };
+        matched: boolean;
+        note: string;
+        journalEntryId?: undefined;
+        assetRegisterEntry?: undefined;
+    } | {
+        invoice: {
+            id: string;
+            status: import("../../generated/prisma/enums").VendorInvoiceStatus;
+            createdAt: Date;
+            createdByUserId: string;
+            matchedAt: Date | null;
+            journalEntryId: string | null;
+            vendorId: string;
+            purchaseOrderId: string;
+            invoiceNumber: string;
+            invoiceAmountKobo: bigint;
+            invoiceDate: Date;
+            matchVarianceNote: string | null;
+            paidJournalEntryId: string | null;
+            vatKobo: bigint;
+            recognizedVatRateVersionId: string | null;
+        };
+        matched: boolean;
+        journalEntryId: string;
+        assetRegisterEntry: {
+            id: string;
+            status: import("../../generated/prisma/enums").AssetStatus;
+            createdAt: Date;
+            description: string;
+            createdByUserId: string;
+            ledgerEntityCode: string;
+            purchaseOrderId: string | null;
+            assetCode: string;
+            costKobo: bigint;
+            acquisitionDate: Date;
+            usefulLifeMonths: number;
+            accumulatedDepreciationKobo: bigint;
+            disposedAt: Date | null;
+        } | null;
+        note?: undefined;
+    }>;
+    createPaymentBatch(batchNumber: string, ledgerEntityCode: string, vendorInvoiceIds: string[], actorUserId: string): Promise<{
+        batch: {
+            id: string;
+            status: import("../../generated/prisma/enums").PaymentBatchStatus;
+            createdAt: Date;
+            workflowInstanceId: string | null;
+            createdByUserId: string;
+            ledgerEntityCode: string;
+            journalEntryId: string | null;
+            paidAt: Date | null;
+            totalAmountKobo: bigint;
+            batchNumber: string;
+        };
+        workflowInstance: {
+            id: string;
+            entityType: string;
+            entityId: string;
+            updatedAt: Date;
+            status: import("../../generated/prisma/enums").WorkflowStatus;
+            createdAt: Date;
+            workflowTypeCode: string;
+            scenario: string | null;
+            approvalRuleId: string;
+            amountKobo: bigint | null;
+            initiatedByUserId: string;
+        };
+    }>;
+    approvePaymentBatch(workflowInstanceId: string, approverUserId: string): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").PaymentBatchStatus;
+        createdAt: Date;
+        workflowInstanceId: string | null;
+        createdByUserId: string;
+        ledgerEntityCode: string;
+        journalEntryId: string | null;
+        paidAt: Date | null;
+        totalAmountKobo: bigint;
+        batchNumber: string;
+    } | null>;
+    listVendors(): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").VendorStatus;
+        createdAt: Date;
+        createdByUserId: string;
+        rcNumber: string | null;
+        bankName: string | null;
+        legalName: string;
+        vendorCode: string;
+        tin: string | null;
+        bankAccountNumber: string | null;
+        bankAccountName: string | null;
+        performanceRating: import("@prisma/client-runtime-utils").Decimal | null;
+    }[]>;
+    listPurchaseOrders(): Promise<({
+        vendor: {
+            id: string;
+            status: import("../../generated/prisma/enums").VendorStatus;
+            createdAt: Date;
+            createdByUserId: string;
+            rcNumber: string | null;
+            bankName: string | null;
+            legalName: string;
+            vendorCode: string;
+            tin: string | null;
+            bankAccountNumber: string | null;
+            bankAccountName: string | null;
+            performanceRating: import("@prisma/client-runtime-utils").Decimal | null;
+        };
+        lines: {
+            id: string;
+            description: string;
+            unitPriceKobo: bigint;
+            purchaseOrderId: string;
+            quantity: import("@prisma/client-runtime-utils").Decimal;
+            lineAmountKobo: bigint;
+        }[];
+        vendorInvoices: {
+            id: string;
+            status: import("../../generated/prisma/enums").VendorInvoiceStatus;
+            createdAt: Date;
+            createdByUserId: string;
+            matchedAt: Date | null;
+            journalEntryId: string | null;
+            vendorId: string;
+            purchaseOrderId: string;
+            invoiceNumber: string;
+            invoiceAmountKobo: bigint;
+            invoiceDate: Date;
+            matchVarianceNote: string | null;
+            paidJournalEntryId: string | null;
+            vatKobo: bigint;
+            recognizedVatRateVersionId: string | null;
+        }[];
+    } & {
+        id: string;
+        status: import("../../generated/prisma/enums").PurchaseOrderStatus;
+        createdAt: Date;
+        description: string;
+        createdByUserId: string;
+        ledgerEntityCode: string;
+        issuedAt: Date | null;
+        poNumber: string;
+        vendorId: string;
+        encumbranceId: string;
+        totalAmountKobo: bigint;
+    })[]>;
+    listAssetRegister(): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").AssetStatus;
+        createdAt: Date;
+        description: string;
+        createdByUserId: string;
+        ledgerEntityCode: string;
+        purchaseOrderId: string | null;
+        assetCode: string;
+        costKobo: bigint;
+        acquisitionDate: Date;
+        usefulLifeMonths: number;
+        accumulatedDepreciationKobo: bigint;
+        disposedAt: Date | null;
+    }[]>;
+    runMonthlyDepreciationSweep(scheduledFor: Date): Promise<Record<string, unknown>>;
+    disposeAsset(input: DisposeAssetInput): Promise<{
+        asset: {
+            id: string;
+            status: import("../../generated/prisma/enums").AssetStatus;
+            createdAt: Date;
+            description: string;
+            createdByUserId: string;
+            ledgerEntityCode: string;
+            purchaseOrderId: string | null;
+            assetCode: string;
+            costKobo: bigint;
+            acquisitionDate: Date;
+            usefulLifeMonths: number;
+            accumulatedDepreciationKobo: bigint;
+            disposedAt: Date | null;
+        };
+        journal: {
+            lines: {
+                id: string;
+                description: string | null;
+                journalEntryId: string;
+                accountId: string;
+                debitKobo: bigint;
+                creditKobo: bigint;
+            }[];
+        } & {
+            id: string;
+            status: import("../../generated/prisma/enums").JournalEntryStatus;
+            createdAt: Date;
+            description: string;
+            createdByUserId: string;
+            ledgerEntityCode: string;
+            journalReference: string;
+            entryDate: Date;
+            postedAt: Date | null;
+            journalClass: import("../../generated/prisma/enums").JournalClass;
+            divergenceType: string | null;
+            adjustmentForBasis: import("../../generated/prisma/enums").AccountingBasis | null;
+            interEntityRef: string | null;
+            postingWorkflowInstanceId: string | null;
+        };
+        gainLossKobo: bigint;
+    }>;
+    private systemSchedulerUserId;
+    private assertCapability;
+}

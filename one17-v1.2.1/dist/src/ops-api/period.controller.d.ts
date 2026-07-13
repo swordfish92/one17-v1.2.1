@@ -1,0 +1,113 @@
+import type { AuthenticatedUser } from '../auth/auth.types';
+import { PrismaService } from '../prisma/prisma.service';
+import { PeriodService } from '../period/period.service';
+import { BankReconciliationService } from '../period/bank-reconciliation.service';
+import { OpenPeriodDto, UploadBankStatementLinesDto, MatchBankStatementLineDto } from './ops-api.types';
+export declare class PeriodController {
+    private readonly prisma;
+    private readonly period;
+    private readonly bankReconciliation;
+    constructor(prisma: PrismaService, period: PeriodService, bankReconciliation: BankReconciliationService);
+    list(ledgerEntityCode?: string): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").AccountingPeriodStatus;
+        createdAt: Date;
+        ledgerEntityCode: string;
+        periodStart: Date;
+        periodEnd: Date;
+        openedByUserId: string;
+        closedByUserId: string | null;
+        closedAt: Date | null;
+        closeWorkflowInstanceId: string | null;
+    }[]>;
+    open(dto: OpenPeriodDto, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").AccountingPeriodStatus;
+        createdAt: Date;
+        ledgerEntityCode: string;
+        periodStart: Date;
+        periodEnd: Date;
+        openedByUserId: string;
+        closedByUserId: string | null;
+        closedAt: Date | null;
+        closeWorkflowInstanceId: string | null;
+    }>;
+    requestClose(id: string, user: AuthenticatedUser): Promise<{
+        id: string;
+        entityType: string;
+        entityId: string;
+        updatedAt: Date;
+        status: import("../../generated/prisma/enums").WorkflowStatus;
+        createdAt: Date;
+        workflowTypeCode: string;
+        scenario: string | null;
+        approvalRuleId: string;
+        amountKobo: bigint | null;
+        initiatedByUserId: string;
+    }>;
+    listBankStatementLines(ledgerEntityCode: string, status?: 'UNMATCHED' | 'MATCHED'): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").BankStatementLineStatus;
+        createdAt: Date;
+        description: string;
+        amountKobo: bigint;
+        uploadedByUserId: string;
+        ledgerEntityCode: string;
+        glAccountCode: string;
+        statementDate: Date;
+        externalRef: string | null;
+        matchedJournalEntryLineId: string | null;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+    }[]>;
+    bankReconciliationSummary(ledgerEntityCode: string, periodStart: string, periodEnd: string): Promise<{
+        matched: number;
+        unmatched: number;
+        canClose: boolean;
+    }>;
+    uploadBankStatementLines(dto: UploadBankStatementLinesDto, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").BankStatementLineStatus;
+        createdAt: Date;
+        description: string;
+        amountKobo: bigint;
+        uploadedByUserId: string;
+        ledgerEntityCode: string;
+        glAccountCode: string;
+        statementDate: Date;
+        externalRef: string | null;
+        matchedJournalEntryLineId: string | null;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+    }[]>;
+    matchBankStatementLine(lineId: string, dto: MatchBankStatementLineDto, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").BankStatementLineStatus;
+        createdAt: Date;
+        description: string;
+        amountKobo: bigint;
+        uploadedByUserId: string;
+        ledgerEntityCode: string;
+        glAccountCode: string;
+        statementDate: Date;
+        externalRef: string | null;
+        matchedJournalEntryLineId: string | null;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+    }>;
+    unmatchBankStatementLine(lineId: string, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").BankStatementLineStatus;
+        createdAt: Date;
+        description: string;
+        amountKobo: bigint;
+        uploadedByUserId: string;
+        ledgerEntityCode: string;
+        glAccountCode: string;
+        statementDate: Date;
+        externalRef: string | null;
+        matchedJournalEntryLineId: string | null;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+    }>;
+}

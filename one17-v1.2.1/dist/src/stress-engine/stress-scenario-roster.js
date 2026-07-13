@@ -1,0 +1,35 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.STRESS_SCENARIO_ROSTER = void 0;
+exports.STRESS_SCENARIO_ROSTER = [
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-01', scenarioLabel: 'Mild Redemption 20%', parameters: { redemptionPct: 0.20 } },
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-02', scenarioLabel: 'Moderate Redemption 30%', parameters: { redemptionPct: 0.30 } },
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-03', scenarioLabel: 'Severe Redemption 50%', parameters: { redemptionPct: 0.50 } },
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-04', scenarioLabel: 'Receivable Delay 30 days', parameters: { receivableDelayDays: 30 } },
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-05', scenarioLabel: 'Receivable Delay 60 days', parameters: { receivableDelayDays: 60 } },
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-06', scenarioLabel: 'Receivable Delay 90 days', parameters: { receivableDelayDays: 90 } },
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-07', scenarioLabel: 'Expense Surge', parameters: { expenseSurgeFactor: 1.2 } },
+    { modelType: 'LIQUIDITY', scenarioCode: 'LIQ-08', scenarioLabel: 'Combined Severe (redemption + delay + counterparty default + expense surge)', parameters: { redemptionPct: 0.50, receivableDelayDays: 90, expenseSurgeFactor: 1.2, combinedInflowFactor: 0.1, largestCounterpartyDefault: true } },
+    { modelType: 'CAPITAL_ADEQUACY', scenarioCode: 'CAP-01', scenarioLabel: 'Standard Capital Stress', parameters: { creditLossesKobo: 0, writeDownsKobo: 0, impairmentKobo: 0, portfolioLossKobo: 0, recapBufferFactor: 1.2 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-01', scenarioLabel: 'AUM Decline 10%', parameters: { aumDeclinePct: 0.10 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-02', scenarioLabel: 'AUM Decline 20%', parameters: { aumDeclinePct: 0.20 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-03', scenarioLabel: 'AUM Decline 30%', parameters: { aumDeclinePct: 0.30 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-04', scenarioLabel: 'Fee Compression Mild', parameters: { feeCompressionPct: 0.10 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-05', scenarioLabel: 'Fee Compression Severe', parameters: { feeCompressionPct: 0.25 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-06', scenarioLabel: 'Client Loss 30% (factor 0.7)', parameters: { clientLossFactor: 0.7 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-07', scenarioLabel: 'Client Loss 20% (factor 0.8)', parameters: { clientLossFactor: 0.8 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-08', scenarioLabel: 'Cost Surge', parameters: { opexSurgeFactor: 1.2 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-09', scenarioLabel: 'Combined AUM Decline + Fee Compression', parameters: { aumDeclinePct: 0.20, feeCompressionPct: 0.10 } },
+    { modelType: 'REVENUE_SENSITIVITY', scenarioCode: 'REV-10', scenarioLabel: 'Combined Severe (AUM decline + fee compression + cost surge)', parameters: { aumDeclinePct: 0.30, feeCompressionPct: 0.25, opexSurgeFactor: 1.2, clientLossFactor: 0.7 } },
+    { modelType: 'COUNTERPARTY_DEFAULT', scenarioCode: 'CPD-LADDER', scenarioLabel: 'Credit — DPD Escalation Ladder', parameters: { headOfRiskDays: 30, ceoBoardDays: 60, legalDays: 90 } },
+    { modelType: 'PORTFOLIO_SHOCK', scenarioCode: 'PS-SHOCKS', scenarioLabel: '4-Level Shock Matrix', parameters: { mildPct: 0.05, moderatePct: 0.15, severePct: 0.30, extremePct: 0.50 } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-01', scenarioLabel: 'Mass Redemption Run', parameters: { indicator: 'liquiditySurvivalDays', redemptionPct: 0.40 } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-02', scenarioLabel: 'Capital Adequacy Breach', parameters: { indicator: 'carSurplusMargin' } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-03', scenarioLabel: 'Major Counterparty Default', parameters: { indicator: 'largestEad' } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-04', scenarioLabel: 'Revenue Collapse', parameters: { indicator: 'revenuePctOfBase', thresholdPct: 0.40 } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-05', scenarioLabel: 'Reputational / Shariah Non-Compliance Event', parameters: { indicator: 'shariahRagPassthrough' } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-06', scenarioLabel: 'IT / Operational Outage', parameters: { indicator: 'itDowntimeHours' } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-07', scenarioLabel: 'Concentrated Portfolio Loss', parameters: { indicator: 'aumSharePct', thresholdPct: 0.30 } },
+    { modelType: 'REVERSE_STRESS', scenarioCode: 'RSE-08', scenarioLabel: 'Regulatory Sanction / Funding Freeze', parameters: { indicator: 'fundingDaysAt40PctRedemption' } },
+];
+//# sourceMappingURL=stress-scenario-roster.js.map

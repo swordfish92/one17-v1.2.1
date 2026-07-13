@@ -1,0 +1,124 @@
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { DelegationService } from '../delegation/delegation.service';
+
+// Invariant 39(e): the unified Settings area — a single consolidated,
+// capability-gated READ surface over every governed configuration table
+// scattered across the platform's own feature pages. This does NOT
+// replace any config's own editing screen (linked via screenPath below) —
+// editing stays exactly where it already is, gated by that config's own
+// capability, per invariant 38's "never duplicate a posting/write path."
+// This is discovery + audit only: "where do I find X" and "give me a
+// snapshot of everything for the auditor."
+interface RegistryEntry {
+  domain: string;
+  label: string;
+  // The capability that already governs this config on its home screen —
+  // reused here, not a new gate, so an entry is visible in the registry
+  // exactly when the corresponding home screen already would be.
+  capability: string;
+  screenPath: string;
+  table: string;
+}
+
+const REGISTRY: RegistryEntry[] = [
+  { domain: 'Onboarding', label: 'Investor Onboarding Config', capability: 'INVESTOR_ONBOARDING', screenPath: '/onboarding', table: 'investorOnboardingConfig' },
+  { domain: 'Risk & Compliance', label: 'Complaint SLA Config', capability: 'COMPLAINT_MANAGEMENT', screenPath: '/complaints', table: 'complaintSlaConfig' },
+  { domain: 'Wealth Management', label: 'WM Client Tier Bands (NWCS)', capability: 'WM_ADVISORY', screenPath: '/wm', table: 'wmClientTierConfig' },
+  { domain: 'Wealth Management', label: 'WM FX Config', capability: 'WM_ADVISORY', screenPath: '/wm', table: 'wmFxConfig' },
+  { domain: 'Wealth Management', label: 'WM Sandbox Stress Scenarios', capability: 'WM_ADVISORY', screenPath: '/wm', table: 'wmStressScenarioConfig' },
+  { domain: 'Zakat', label: 'Zakat Nisab Config', capability: 'ZAKAT_ADVISORY', screenPath: '/zakat', table: 'zakatNisabConfig' },
+  { domain: 'Products & Portfolio', label: 'Halal Fund Launch Config', capability: 'DISTRIBUTION_INITIATION', screenPath: '/distributions', table: 'halalFundLaunchConfig' },
+  { domain: 'Risk & Compliance', label: 'Risk Appetite Matrix Versions', capability: 'RISK_APPETITE_MATRIX', screenPath: '/erm', table: 'riskAppetiteMatrixVersion' },
+  { domain: 'Risk & Compliance', label: 'Enterprise Stress Scenario Config', capability: 'STRESS_TESTING', screenPath: '/erm', table: 'stressScenarioConfig' },
+  { domain: 'Risk & Compliance', label: 'KRI Engine Config', capability: 'RISK_REGISTER', screenPath: '/erm', table: 'kriEngineConfig' },
+  { domain: 'Finance & Accounting', label: 'Regulatory Capital Requirement', capability: 'FINANCIAL_STATEMENTS', screenPath: '/fund-accounting', table: 'regulatoryCapitalRequirement' },
+  { domain: 'Finance & Accounting', label: 'Budget Variance RAG Threshold', capability: 'FINANCIAL_STATEMENTS', screenPath: '/company-accounting', table: 'budgetVarianceRagThreshold' },
+  { domain: 'Finance & Accounting', label: 'Event -> Journal Auto-Posting Map', capability: 'JOURNAL_ENTRIES', screenPath: '/journal-entries', table: 'eventJournalConfig' },
+  { domain: 'Administration', label: 'Procurement 3-Way Match Tolerance', capability: 'PROCUREMENT_OPERATIONS', screenPath: '/procurement', table: 'procurementMatchToleranceConfig' },
+  { domain: 'HR & Payroll', label: 'Incentive Band Config', capability: 'PMS_PAYROLL', screenPath: '/payroll', table: 'incentiveBandConfig' },
+  { domain: 'HR & Payroll', label: 'Tax Rule Config', capability: 'PMS_PAYROLL', screenPath: '/payroll', table: 'taxRuleConfig' },
+  { domain: 'HR & Payroll', label: 'PMS Behavioural Gate Severity', capability: 'PMS_BEHAVIOURAL_GATE', screenPath: '/pms', table: 'pmsGateSeverityConfig' },
+  { domain: 'Risk & Compliance', label: 'Payment Reminder Ladder Config', capability: 'PAYMENT_REMINDER_LADDER_SETTINGS', screenPath: '/erm', table: 'paymentReminderLadderConfig' },
+  { domain: 'Risk & Compliance', label: 'Bureau Gateway Policy', capability: 'BUREAU_GATEWAY_POLICY', screenPath: '/erm', table: 'bureauPolicyConfig' },
+  { domain: 'Governance & Strategy', label: 'Board Calendar Reminder Config', capability: 'BOARD_CALENDAR_MANAGEMENT', screenPath: '/governance/board-calendar', table: 'boardCalendarReminderConfig' },
+  { domain: 'Governance & Strategy', label: 'Strategy Statement Type Config', capability: 'STRATEGY_LAYER', screenPath: '/strategy', table: 'strategyStatementTypeConfig' },
+  // Invariant 51(c2) (CHECK12): PMS strategy-spine -- was seed-only, no
+  // registry entry, no screen at all before this build.
+  { domain: 'Governance & Strategy', label: 'Strategic Pillars & Objectives', capability: 'STRATEGY_LAYER', screenPath: '/pms-strategy-spine', table: 'strategicPillar' },
+  { domain: 'HR & Payroll', label: 'KPI Definitions', capability: 'KPI_DEFINITION_MANAGEMENT', screenPath: '/pms-strategy-spine', table: 'kpiDefinition' },
+  { domain: 'HR & Payroll', label: 'KPI Class-Weighting Matrix', capability: 'KPI_WEIGHT_MATRIX', screenPath: '/pms-strategy-spine', table: 'kpiWeightMatrix' },
+  // Invariant 50(a) (CHECK12): petty cash imprest module -- was entirely unbuilt.
+  { domain: 'Administration', label: 'Petty Cash Floats', capability: 'PETTY_CASH_MANAGEMENT', screenPath: '/petty-cash', table: 'pettyCashFloat' },
+  // Invariant 52(a) (CHECK12): the single governed letterhead asset applied to every client-facing PDF.
+  { domain: 'Administration', label: 'Corporate Letterhead Template', capability: 'LETTERHEAD_TEMPLATE_MANAGEMENT', screenPath: '/letterhead', table: 'letterheadTemplate' },
+  // Invariant 52(b) (CHECK12): the governed certificate template registry.
+  { domain: 'Administration', label: 'Certificate Templates', capability: 'CERTIFICATE_TEMPLATE_MANAGEMENT', screenPath: '/certificate-templates', table: 'documentTemplate' },
+  // Invariant 52(c) (CHECK12): the governed letter template registry.
+  { domain: 'Administration', label: 'Letter Templates', capability: 'LETTER_TEMPLATE_MANAGEMENT', screenPath: '/letter-templates', table: 'documentTemplate' },
+  { domain: 'Administration', label: 'AI Capability Flags', capability: 'AI_CAPABILITY_FLAG_MANAGEMENT', screenPath: '/ai-console', table: 'aiCapabilityFlag' },
+  { domain: 'Administration', label: 'AI Kill Switch', capability: 'AI_CAPABILITY_FLAG_MANAGEMENT', screenPath: '/ai-console', table: 'aiKillSwitch' },
+  { domain: 'Administration', label: 'AI Tiered Model Policy', capability: 'AI_CAPABILITY_FLAG_MANAGEMENT', screenPath: '/ai-console', table: 'aiTieredModelPolicy' },
+  { domain: 'Administration', label: 'AI Token Budget', capability: 'AI_CAPABILITY_FLAG_MANAGEMENT', screenPath: '/ai-console', table: 'aiTokenBudget' },
+  { domain: 'Administration', label: 'Scheduled Job Catalog', capability: 'SCHEDULER_OPERATIONS', screenPath: '/scheduler', table: 'scheduledJobRegistration' },
+  // Invariant 65(c) (CHECK18, CEO ruling 9-Jul-2026): the unified Tax
+  // Configuration framework -- VAT, WHT, and Stamp Duty rate versions,
+  // joining the existing PAYE Tax Rule Config (above) as siblings in the
+  // "HR & Payroll"-adjacent governed-config surface.
+  { domain: 'Finance & Accounting', label: 'Tax Rate Versions (WHT/VAT/Stamp Duty)', capability: 'TAX_CONFIGURATION_MANAGEMENT', screenPath: '/tax-configuration', table: 'taxRateVersion' },
+  { domain: 'Finance & Accounting', label: 'Investor Tax Exemptions', capability: 'TAX_CONFIGURATION_MANAGEMENT', screenPath: '/tax-configuration', table: 'investorTaxExemption' },
+  { domain: 'Finance & Accounting', label: 'Tax GL Account Mapping', capability: 'TAX_CONFIGURATION_MANAGEMENT', screenPath: '/tax-configuration', table: 'taxGlMapping' },
+  { domain: 'Finance & Accounting', label: 'Tax Remittance Due-Date Config', capability: 'TAX_CONFIGURATION_MANAGEMENT', screenPath: '/tax-configuration', table: 'taxRemittanceDueDateConfig' },
+];
+
+@Injectable()
+export class SettingsRegistryService {
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly delegation: DelegationService,
+  ) {}
+
+  // Filters to entries the caller already has VIEW (or better) on, via
+  // their OWN capability — never a new blanket "settings" permission, per
+  // invariant 38's "no hardcoded role names, capability-based always."
+  private async visibleEntries(userId: string): Promise<RegistryEntry[]> {
+    const checks = await Promise.all(
+      REGISTRY.map(async (entry) => {
+        const [view, initiate, approve] = await Promise.all([
+          this.delegation.hasCapability(userId, entry.capability, 'VIEW'),
+          this.delegation.hasCapability(userId, entry.capability, 'INITIATE'),
+          this.delegation.hasCapability(userId, entry.capability, 'APPROVE'),
+        ]);
+        return view.eligible || initiate.eligible || approve.eligible;
+      }),
+    );
+    return REGISTRY.filter((_, i) => checks[i]);
+  }
+
+  async getRegistry(userId: string) {
+    const entries = await this.visibleEntries(userId);
+    const withCounts = await Promise.all(
+      entries.map(async (entry) => {
+        const count = await (this.prisma[entry.table as keyof PrismaService] as any).count();
+        return { ...entry, rowCount: count };
+      }),
+    );
+    return withCounts;
+  }
+
+  // Invariant 39(e): the auditor export — a full raw snapshot of every
+  // governed config table the caller can see, for external audit. Bounded
+  // per table (these are config tables, not transactional ones — a few
+  // hundred rows each at most) rather than paginated, since the whole
+  // point is a complete point-in-time snapshot.
+  async exportForAuditor(userId: string) {
+    const entries = await this.visibleEntries(userId);
+    const snapshot = await Promise.all(
+      entries.map(async (entry) => {
+        const rows = await (this.prisma[entry.table as keyof PrismaService] as any).findMany({ take: 500 });
+        return { domain: entry.domain, label: entry.label, table: entry.table, rows };
+      }),
+    );
+    return { exportedAt: new Date().toISOString(), exportedByUserId: userId, sections: snapshot };
+  }
+}

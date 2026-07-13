@@ -1,0 +1,296 @@
+import type { AuthenticatedUser } from '../auth/auth.types';
+import { PaymentGatewayService } from '../payment-gateway/payment-gateway.service';
+import { ConfigureGatewayProviderDto, ConfigureCustodianAccountDto, ManualMatchInflowDto, RejectInflowDto } from './ops-api.types';
+export declare class PaymentGatewayController {
+    private readonly gateway;
+    constructor(gateway: PaymentGatewayService);
+    listProviders(): Promise<(Omit<{
+        id: string;
+        updatedAt: Date;
+        name: string;
+        isActive: boolean;
+        providerSlot: number;
+        configuredByUserId: string;
+        pendingName: string | null;
+        pendingIsActive: boolean | null;
+        pendingProposedByUserId: string | null;
+        configWorkflowInstanceId: string | null;
+        apiConfig: import("@prisma/client/runtime/client").JsonValue | null;
+        webhookSecret: string;
+        pendingWebhookSecret: string | null;
+        pendingApiConfig: import("@prisma/client/runtime/client").JsonValue | null;
+    }, "apiConfig" | "webhookSecret" | "pendingWebhookSecret" | "pendingApiConfig"> & {
+        hasPendingSecretRotation: boolean;
+        apiConfigKeys: string[];
+        hasPendingApiConfigChange: boolean;
+        hasSecret: boolean;
+        secretPreview: string | null;
+    })[]>;
+    proposeProviderConfig(dto: ConfigureGatewayProviderDto, user: AuthenticatedUser): Promise<Omit<{
+        id: string;
+        updatedAt: Date;
+        name: string;
+        isActive: boolean;
+        providerSlot: number;
+        configuredByUserId: string;
+        pendingName: string | null;
+        pendingIsActive: boolean | null;
+        pendingProposedByUserId: string | null;
+        configWorkflowInstanceId: string | null;
+        apiConfig: import("@prisma/client/runtime/client").JsonValue | null;
+        webhookSecret: string;
+        pendingWebhookSecret: string | null;
+        pendingApiConfig: import("@prisma/client/runtime/client").JsonValue | null;
+    }, "apiConfig" | "webhookSecret" | "pendingWebhookSecret" | "pendingApiConfig"> & {
+        hasPendingSecretRotation: boolean;
+        apiConfigKeys: string[];
+        hasPendingApiConfigChange: boolean;
+        hasSecret: boolean;
+        secretPreview: string | null;
+    }>;
+    approveProviderConfig(workflowInstanceId: string, user: AuthenticatedUser): Promise<Omit<{
+        id: string;
+        updatedAt: Date;
+        name: string;
+        isActive: boolean;
+        providerSlot: number;
+        configuredByUserId: string;
+        pendingName: string | null;
+        pendingIsActive: boolean | null;
+        pendingProposedByUserId: string | null;
+        configWorkflowInstanceId: string | null;
+        apiConfig: import("@prisma/client/runtime/client").JsonValue | null;
+        webhookSecret: string;
+        pendingWebhookSecret: string | null;
+        pendingApiConfig: import("@prisma/client/runtime/client").JsonValue | null;
+    }, "apiConfig" | "webhookSecret" | "pendingWebhookSecret" | "pendingApiConfig"> & {
+        hasPendingSecretRotation: boolean;
+        apiConfigKeys: string[];
+        hasPendingApiConfigChange: boolean;
+        hasSecret: boolean;
+        secretPreview: string | null;
+    }>;
+    listCustodianAccounts(): Promise<({
+        provider: {
+            name: string;
+            providerSlot: number;
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        productCode: string;
+        createdByUserId: string;
+        isActive: boolean;
+        pendingIsActive: boolean | null;
+        pendingProposedByUserId: string | null;
+        configWorkflowInstanceId: string | null;
+        providerId: string;
+        custodianBankName: string;
+        custodianAccountNumber: string;
+        referenceCodePrefix: string;
+        pendingCustodianBankName: string | null;
+        pendingCustodianAccountNumber: string | null;
+        pendingReferenceCodePrefix: string | null;
+    })[]>;
+    proposeCustodianAccount(dto: ConfigureCustodianAccountDto, user: AuthenticatedUser): Promise<{
+        id: string;
+        createdAt: Date;
+        productCode: string;
+        createdByUserId: string;
+        isActive: boolean;
+        pendingIsActive: boolean | null;
+        pendingProposedByUserId: string | null;
+        configWorkflowInstanceId: string | null;
+        providerId: string;
+        custodianBankName: string;
+        custodianAccountNumber: string;
+        referenceCodePrefix: string;
+        pendingCustodianBankName: string | null;
+        pendingCustodianAccountNumber: string | null;
+        pendingReferenceCodePrefix: string | null;
+    }>;
+    approveCustodianAccount(workflowInstanceId: string, user: AuthenticatedUser): Promise<{
+        id: string;
+        createdAt: Date;
+        productCode: string;
+        createdByUserId: string;
+        isActive: boolean;
+        pendingIsActive: boolean | null;
+        pendingProposedByUserId: string | null;
+        configWorkflowInstanceId: string | null;
+        providerId: string;
+        custodianBankName: string;
+        custodianAccountNumber: string;
+        referenceCodePrefix: string;
+        pendingCustodianBankName: string | null;
+        pendingCustodianAccountNumber: string | null;
+        pendingReferenceCodePrefix: string | null;
+    }>;
+    listSuspenseQueue(user: AuthenticatedUser): Promise<({
+        provider: {
+            name: string;
+        };
+        custodianAccount: {
+            productCode: string;
+            custodianAccountNumber: string;
+        } | null;
+    } & {
+        id: string;
+        status: import("../../generated/prisma/enums").PaymentGatewayInflowStatus;
+        createdAt: Date;
+        amountKobo: bigint;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+        rejectionReason: string | null;
+        providerId: string;
+        custodianAccountId: string | null;
+        gatewayEventRef: string;
+        settledAt: Date;
+        narration: string | null;
+        rawPayload: import("@prisma/client/runtime/client").JsonValue;
+        matchedInvestorId: string | null;
+        subscriptionRequestId: string | null;
+        reversalRedemptionRequestId: string | null;
+        lastAttemptError: string | null;
+        pendingDecisionType: import("../../generated/prisma/enums").PaymentGatewayInflowDecisionType | null;
+        pendingRejectionReason: string | null;
+        decisionProposedByUserId: string | null;
+        decisionWorkflowInstanceId: string | null;
+    } & {
+        amountKobo: string;
+    })[]>;
+    listAllInflows(user: AuthenticatedUser): Promise<({
+        provider: {
+            name: string;
+        };
+        custodianAccount: {
+            productCode: string;
+            custodianAccountNumber: string;
+        } | null;
+    } & {
+        id: string;
+        status: import("../../generated/prisma/enums").PaymentGatewayInflowStatus;
+        createdAt: Date;
+        amountKobo: bigint;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+        rejectionReason: string | null;
+        providerId: string;
+        custodianAccountId: string | null;
+        gatewayEventRef: string;
+        settledAt: Date;
+        narration: string | null;
+        rawPayload: import("@prisma/client/runtime/client").JsonValue;
+        matchedInvestorId: string | null;
+        subscriptionRequestId: string | null;
+        reversalRedemptionRequestId: string | null;
+        lastAttemptError: string | null;
+        pendingDecisionType: import("../../generated/prisma/enums").PaymentGatewayInflowDecisionType | null;
+        pendingRejectionReason: string | null;
+        decisionProposedByUserId: string | null;
+        decisionWorkflowInstanceId: string | null;
+    } & {
+        amountKobo: string;
+    })[]>;
+    manualMatch(id: string, dto: ManualMatchInflowDto, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").PaymentGatewayInflowStatus;
+        createdAt: Date;
+        amountKobo: bigint;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+        rejectionReason: string | null;
+        providerId: string;
+        custodianAccountId: string | null;
+        gatewayEventRef: string;
+        settledAt: Date;
+        narration: string | null;
+        rawPayload: import("@prisma/client/runtime/client").JsonValue;
+        matchedInvestorId: string | null;
+        subscriptionRequestId: string | null;
+        reversalRedemptionRequestId: string | null;
+        lastAttemptError: string | null;
+        pendingDecisionType: import("../../generated/prisma/enums").PaymentGatewayInflowDecisionType | null;
+        pendingRejectionReason: string | null;
+        decisionProposedByUserId: string | null;
+        decisionWorkflowInstanceId: string | null;
+    } & {
+        amountKobo: string;
+    }>;
+    proposeRejectInflow(id: string, dto: RejectInflowDto, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").PaymentGatewayInflowStatus;
+        createdAt: Date;
+        amountKobo: bigint;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+        rejectionReason: string | null;
+        providerId: string;
+        custodianAccountId: string | null;
+        gatewayEventRef: string;
+        settledAt: Date;
+        narration: string | null;
+        rawPayload: import("@prisma/client/runtime/client").JsonValue;
+        matchedInvestorId: string | null;
+        subscriptionRequestId: string | null;
+        reversalRedemptionRequestId: string | null;
+        lastAttemptError: string | null;
+        pendingDecisionType: import("../../generated/prisma/enums").PaymentGatewayInflowDecisionType | null;
+        pendingRejectionReason: string | null;
+        decisionProposedByUserId: string | null;
+        decisionWorkflowInstanceId: string | null;
+    } & {
+        amountKobo: string;
+    }>;
+    proposeReverseInflow(id: string, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").PaymentGatewayInflowStatus;
+        createdAt: Date;
+        amountKobo: bigint;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+        rejectionReason: string | null;
+        providerId: string;
+        custodianAccountId: string | null;
+        gatewayEventRef: string;
+        settledAt: Date;
+        narration: string | null;
+        rawPayload: import("@prisma/client/runtime/client").JsonValue;
+        matchedInvestorId: string | null;
+        subscriptionRequestId: string | null;
+        reversalRedemptionRequestId: string | null;
+        lastAttemptError: string | null;
+        pendingDecisionType: import("../../generated/prisma/enums").PaymentGatewayInflowDecisionType | null;
+        pendingRejectionReason: string | null;
+        decisionProposedByUserId: string | null;
+        decisionWorkflowInstanceId: string | null;
+    } & {
+        amountKobo: string;
+    }>;
+    verifyInflowWithVendor(id: string, user: AuthenticatedUser): Promise<import("../payment-gateway/adapters/types").VendorTransactionVerification>;
+    approveInflowDecision(workflowInstanceId: string, user: AuthenticatedUser): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").PaymentGatewayInflowStatus;
+        createdAt: Date;
+        amountKobo: bigint;
+        matchedByUserId: string | null;
+        matchedAt: Date | null;
+        rejectionReason: string | null;
+        providerId: string;
+        custodianAccountId: string | null;
+        gatewayEventRef: string;
+        settledAt: Date;
+        narration: string | null;
+        rawPayload: import("@prisma/client/runtime/client").JsonValue;
+        matchedInvestorId: string | null;
+        subscriptionRequestId: string | null;
+        reversalRedemptionRequestId: string | null;
+        lastAttemptError: string | null;
+        pendingDecisionType: import("../../generated/prisma/enums").PaymentGatewayInflowDecisionType | null;
+        pendingRejectionReason: string | null;
+        decisionProposedByUserId: string | null;
+        decisionWorkflowInstanceId: string | null;
+    } & {
+        amountKobo: string;
+    }>;
+}

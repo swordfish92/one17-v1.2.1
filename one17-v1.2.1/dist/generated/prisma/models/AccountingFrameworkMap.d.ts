@@ -1,0 +1,1127 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
+import type * as Prisma from "../internal/prismaNamespace.js";
+export type AccountingFrameworkMapModel = runtime.Types.Result.DefaultSelection<Prisma.$AccountingFrameworkMapPayload>;
+export type AggregateAccountingFrameworkMap = {
+    _count: AccountingFrameworkMapCountAggregateOutputType | null;
+    _avg: AccountingFrameworkMapAvgAggregateOutputType | null;
+    _sum: AccountingFrameworkMapSumAggregateOutputType | null;
+    _min: AccountingFrameworkMapMinAggregateOutputType | null;
+    _max: AccountingFrameworkMapMaxAggregateOutputType | null;
+};
+export type AccountingFrameworkMapAvgAggregateOutputType = {
+    version: number | null;
+};
+export type AccountingFrameworkMapSumAggregateOutputType = {
+    version: number | null;
+};
+export type AccountingFrameworkMapMinAggregateOutputType = {
+    id: string | null;
+    version: number | null;
+    description: string | null;
+    status: $Enums.FrameworkMapStatus | null;
+    effectiveFrom: Date | null;
+    effectiveTo: Date | null;
+    createdByUserId: string | null;
+    approvedByUserId: string | null;
+    workflowInstanceId: string | null;
+    createdAt: Date | null;
+};
+export type AccountingFrameworkMapMaxAggregateOutputType = {
+    id: string | null;
+    version: number | null;
+    description: string | null;
+    status: $Enums.FrameworkMapStatus | null;
+    effectiveFrom: Date | null;
+    effectiveTo: Date | null;
+    createdByUserId: string | null;
+    approvedByUserId: string | null;
+    workflowInstanceId: string | null;
+    createdAt: Date | null;
+};
+export type AccountingFrameworkMapCountAggregateOutputType = {
+    id: number;
+    version: number;
+    description: number;
+    status: number;
+    effectiveFrom: number;
+    effectiveTo: number;
+    createdByUserId: number;
+    approvedByUserId: number;
+    workflowInstanceId: number;
+    createdAt: number;
+    _all: number;
+};
+export type AccountingFrameworkMapAvgAggregateInputType = {
+    version?: true;
+};
+export type AccountingFrameworkMapSumAggregateInputType = {
+    version?: true;
+};
+export type AccountingFrameworkMapMinAggregateInputType = {
+    id?: true;
+    version?: true;
+    description?: true;
+    status?: true;
+    effectiveFrom?: true;
+    effectiveTo?: true;
+    createdByUserId?: true;
+    approvedByUserId?: true;
+    workflowInstanceId?: true;
+    createdAt?: true;
+};
+export type AccountingFrameworkMapMaxAggregateInputType = {
+    id?: true;
+    version?: true;
+    description?: true;
+    status?: true;
+    effectiveFrom?: true;
+    effectiveTo?: true;
+    createdByUserId?: true;
+    approvedByUserId?: true;
+    workflowInstanceId?: true;
+    createdAt?: true;
+};
+export type AccountingFrameworkMapCountAggregateInputType = {
+    id?: true;
+    version?: true;
+    description?: true;
+    status?: true;
+    effectiveFrom?: true;
+    effectiveTo?: true;
+    createdByUserId?: true;
+    approvedByUserId?: true;
+    workflowInstanceId?: true;
+    createdAt?: true;
+    _all?: true;
+};
+export type AccountingFrameworkMapAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    orderBy?: Prisma.AccountingFrameworkMapOrderByWithRelationInput | Prisma.AccountingFrameworkMapOrderByWithRelationInput[];
+    cursor?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    _count?: true | AccountingFrameworkMapCountAggregateInputType;
+    _avg?: AccountingFrameworkMapAvgAggregateInputType;
+    _sum?: AccountingFrameworkMapSumAggregateInputType;
+    _min?: AccountingFrameworkMapMinAggregateInputType;
+    _max?: AccountingFrameworkMapMaxAggregateInputType;
+};
+export type GetAccountingFrameworkMapAggregateType<T extends AccountingFrameworkMapAggregateArgs> = {
+    [P in keyof T & keyof AggregateAccountingFrameworkMap]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateAccountingFrameworkMap[P]> : Prisma.GetScalarType<T[P], AggregateAccountingFrameworkMap[P]>;
+};
+export type AccountingFrameworkMapGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    orderBy?: Prisma.AccountingFrameworkMapOrderByWithAggregationInput | Prisma.AccountingFrameworkMapOrderByWithAggregationInput[];
+    by: Prisma.AccountingFrameworkMapScalarFieldEnum[] | Prisma.AccountingFrameworkMapScalarFieldEnum;
+    having?: Prisma.AccountingFrameworkMapScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: AccountingFrameworkMapCountAggregateInputType | true;
+    _avg?: AccountingFrameworkMapAvgAggregateInputType;
+    _sum?: AccountingFrameworkMapSumAggregateInputType;
+    _min?: AccountingFrameworkMapMinAggregateInputType;
+    _max?: AccountingFrameworkMapMaxAggregateInputType;
+};
+export type AccountingFrameworkMapGroupByOutputType = {
+    id: string;
+    version: number;
+    description: string;
+    status: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date;
+    effectiveTo: Date | null;
+    createdByUserId: string;
+    approvedByUserId: string | null;
+    workflowInstanceId: string | null;
+    createdAt: Date;
+    _count: AccountingFrameworkMapCountAggregateOutputType | null;
+    _avg: AccountingFrameworkMapAvgAggregateOutputType | null;
+    _sum: AccountingFrameworkMapSumAggregateOutputType | null;
+    _min: AccountingFrameworkMapMinAggregateOutputType | null;
+    _max: AccountingFrameworkMapMaxAggregateOutputType | null;
+};
+export type GetAccountingFrameworkMapGroupByPayload<T extends AccountingFrameworkMapGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<AccountingFrameworkMapGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof AccountingFrameworkMapGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], AccountingFrameworkMapGroupByOutputType[P]> : Prisma.GetScalarType<T[P], AccountingFrameworkMapGroupByOutputType[P]>;
+}>>;
+export type AccountingFrameworkMapWhereInput = {
+    AND?: Prisma.AccountingFrameworkMapWhereInput | Prisma.AccountingFrameworkMapWhereInput[];
+    OR?: Prisma.AccountingFrameworkMapWhereInput[];
+    NOT?: Prisma.AccountingFrameworkMapWhereInput | Prisma.AccountingFrameworkMapWhereInput[];
+    id?: Prisma.UuidFilter<"AccountingFrameworkMap"> | string;
+    version?: Prisma.IntFilter<"AccountingFrameworkMap"> | number;
+    description?: Prisma.StringFilter<"AccountingFrameworkMap"> | string;
+    status?: Prisma.EnumFrameworkMapStatusFilter<"AccountingFrameworkMap"> | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFilter<"AccountingFrameworkMap"> | Date | string;
+    effectiveTo?: Prisma.DateTimeNullableFilter<"AccountingFrameworkMap"> | Date | string | null;
+    createdByUserId?: Prisma.UuidFilter<"AccountingFrameworkMap"> | string;
+    approvedByUserId?: Prisma.UuidNullableFilter<"AccountingFrameworkMap"> | string | null;
+    workflowInstanceId?: Prisma.UuidNullableFilter<"AccountingFrameworkMap"> | string | null;
+    createdAt?: Prisma.DateTimeFilter<"AccountingFrameworkMap"> | Date | string;
+    createdBy?: Prisma.XOR<Prisma.AppUserScalarRelationFilter, Prisma.AppUserWhereInput>;
+    approvedBy?: Prisma.XOR<Prisma.AppUserNullableScalarRelationFilter, Prisma.AppUserWhereInput> | null;
+    lineMappings?: Prisma.StatementLineMappingListRelationFilter;
+    reportRuns?: Prisma.ReportRunListRelationFilter;
+};
+export type AccountingFrameworkMapOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    approvedByUserId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    workflowInstanceId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    createdBy?: Prisma.AppUserOrderByWithRelationInput;
+    approvedBy?: Prisma.AppUserOrderByWithRelationInput;
+    lineMappings?: Prisma.StatementLineMappingOrderByRelationAggregateInput;
+    reportRuns?: Prisma.ReportRunOrderByRelationAggregateInput;
+};
+export type AccountingFrameworkMapWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    version?: number;
+    workflowInstanceId?: string;
+    AND?: Prisma.AccountingFrameworkMapWhereInput | Prisma.AccountingFrameworkMapWhereInput[];
+    OR?: Prisma.AccountingFrameworkMapWhereInput[];
+    NOT?: Prisma.AccountingFrameworkMapWhereInput | Prisma.AccountingFrameworkMapWhereInput[];
+    description?: Prisma.StringFilter<"AccountingFrameworkMap"> | string;
+    status?: Prisma.EnumFrameworkMapStatusFilter<"AccountingFrameworkMap"> | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFilter<"AccountingFrameworkMap"> | Date | string;
+    effectiveTo?: Prisma.DateTimeNullableFilter<"AccountingFrameworkMap"> | Date | string | null;
+    createdByUserId?: Prisma.UuidFilter<"AccountingFrameworkMap"> | string;
+    approvedByUserId?: Prisma.UuidNullableFilter<"AccountingFrameworkMap"> | string | null;
+    createdAt?: Prisma.DateTimeFilter<"AccountingFrameworkMap"> | Date | string;
+    createdBy?: Prisma.XOR<Prisma.AppUserScalarRelationFilter, Prisma.AppUserWhereInput>;
+    approvedBy?: Prisma.XOR<Prisma.AppUserNullableScalarRelationFilter, Prisma.AppUserWhereInput> | null;
+    lineMappings?: Prisma.StatementLineMappingListRelationFilter;
+    reportRuns?: Prisma.ReportRunListRelationFilter;
+}, "id" | "version" | "workflowInstanceId">;
+export type AccountingFrameworkMapOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    approvedByUserId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    workflowInstanceId?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    _count?: Prisma.AccountingFrameworkMapCountOrderByAggregateInput;
+    _avg?: Prisma.AccountingFrameworkMapAvgOrderByAggregateInput;
+    _max?: Prisma.AccountingFrameworkMapMaxOrderByAggregateInput;
+    _min?: Prisma.AccountingFrameworkMapMinOrderByAggregateInput;
+    _sum?: Prisma.AccountingFrameworkMapSumOrderByAggregateInput;
+};
+export type AccountingFrameworkMapScalarWhereWithAggregatesInput = {
+    AND?: Prisma.AccountingFrameworkMapScalarWhereWithAggregatesInput | Prisma.AccountingFrameworkMapScalarWhereWithAggregatesInput[];
+    OR?: Prisma.AccountingFrameworkMapScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.AccountingFrameworkMapScalarWhereWithAggregatesInput | Prisma.AccountingFrameworkMapScalarWhereWithAggregatesInput[];
+    id?: Prisma.UuidWithAggregatesFilter<"AccountingFrameworkMap"> | string;
+    version?: Prisma.IntWithAggregatesFilter<"AccountingFrameworkMap"> | number;
+    description?: Prisma.StringWithAggregatesFilter<"AccountingFrameworkMap"> | string;
+    status?: Prisma.EnumFrameworkMapStatusWithAggregatesFilter<"AccountingFrameworkMap"> | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeWithAggregatesFilter<"AccountingFrameworkMap"> | Date | string;
+    effectiveTo?: Prisma.DateTimeNullableWithAggregatesFilter<"AccountingFrameworkMap"> | Date | string | null;
+    createdByUserId?: Prisma.UuidWithAggregatesFilter<"AccountingFrameworkMap"> | string;
+    approvedByUserId?: Prisma.UuidNullableWithAggregatesFilter<"AccountingFrameworkMap"> | string | null;
+    workflowInstanceId?: Prisma.UuidNullableWithAggregatesFilter<"AccountingFrameworkMap"> | string | null;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"AccountingFrameworkMap"> | Date | string;
+};
+export type AccountingFrameworkMapCreateInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsProposedInput;
+    approvedBy?: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsApprovedInput;
+    lineMappings?: Prisma.StatementLineMappingCreateNestedManyWithoutFrameworkMapInput;
+    reportRuns?: Prisma.ReportRunCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapUncheckedCreateInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    approvedByUserId?: string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedCreateNestedManyWithoutFrameworkMapInput;
+    reportRuns?: Prisma.ReportRunUncheckedCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutFrameworkMapsProposedNestedInput;
+    approvedBy?: Prisma.AppUserUpdateOneWithoutFrameworkMapsApprovedNestedInput;
+    lineMappings?: Prisma.StatementLineMappingUpdateManyWithoutFrameworkMapNestedInput;
+    reportRuns?: Prisma.ReportRunUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    approvedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+    reportRuns?: Prisma.ReportRunUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapCreateManyInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    approvedByUserId?: string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+};
+export type AccountingFrameworkMapUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AccountingFrameworkMapUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    approvedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AccountingFrameworkMapListRelationFilter = {
+    every?: Prisma.AccountingFrameworkMapWhereInput;
+    some?: Prisma.AccountingFrameworkMapWhereInput;
+    none?: Prisma.AccountingFrameworkMapWhereInput;
+};
+export type AccountingFrameworkMapOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type AccountingFrameworkMapCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    approvedByUserId?: Prisma.SortOrder;
+    workflowInstanceId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type AccountingFrameworkMapAvgOrderByAggregateInput = {
+    version?: Prisma.SortOrder;
+};
+export type AccountingFrameworkMapMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    approvedByUserId?: Prisma.SortOrder;
+    workflowInstanceId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type AccountingFrameworkMapMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    approvedByUserId?: Prisma.SortOrder;
+    workflowInstanceId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type AccountingFrameworkMapSumOrderByAggregateInput = {
+    version?: Prisma.SortOrder;
+};
+export type AccountingFrameworkMapScalarRelationFilter = {
+    is?: Prisma.AccountingFrameworkMapWhereInput;
+    isNot?: Prisma.AccountingFrameworkMapWhereInput;
+};
+export type AccountingFrameworkMapCreateNestedManyWithoutCreatedByInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput> | Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyCreatedByInputEnvelope;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+};
+export type AccountingFrameworkMapCreateNestedManyWithoutApprovedByInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput> | Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyApprovedByInputEnvelope;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+};
+export type AccountingFrameworkMapUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput> | Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyCreatedByInputEnvelope;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+};
+export type AccountingFrameworkMapUncheckedCreateNestedManyWithoutApprovedByInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput> | Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyApprovedByInputEnvelope;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+};
+export type AccountingFrameworkMapUpdateManyWithoutCreatedByNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput> | Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput[];
+    upsert?: Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutCreatedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyCreatedByInputEnvelope;
+    set?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    disconnect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    delete?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    update?: Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutCreatedByInput[];
+    updateMany?: Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutCreatedByInput | Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutCreatedByInput[];
+    deleteMany?: Prisma.AccountingFrameworkMapScalarWhereInput | Prisma.AccountingFrameworkMapScalarWhereInput[];
+};
+export type AccountingFrameworkMapUpdateManyWithoutApprovedByNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput> | Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput[];
+    upsert?: Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutApprovedByInput | Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutApprovedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyApprovedByInputEnvelope;
+    set?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    disconnect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    delete?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    update?: Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutApprovedByInput | Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutApprovedByInput[];
+    updateMany?: Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutApprovedByInput | Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutApprovedByInput[];
+    deleteMany?: Prisma.AccountingFrameworkMapScalarWhereInput | Prisma.AccountingFrameworkMapScalarWhereInput[];
+};
+export type AccountingFrameworkMapUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput> | Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput[];
+    upsert?: Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutCreatedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyCreatedByInputEnvelope;
+    set?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    disconnect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    delete?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    update?: Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutCreatedByInput[];
+    updateMany?: Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutCreatedByInput | Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutCreatedByInput[];
+    deleteMany?: Prisma.AccountingFrameworkMapScalarWhereInput | Prisma.AccountingFrameworkMapScalarWhereInput[];
+};
+export type AccountingFrameworkMapUncheckedUpdateManyWithoutApprovedByNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput> | Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput[] | Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput[];
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput | Prisma.AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput[];
+    upsert?: Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutApprovedByInput | Prisma.AccountingFrameworkMapUpsertWithWhereUniqueWithoutApprovedByInput[];
+    createMany?: Prisma.AccountingFrameworkMapCreateManyApprovedByInputEnvelope;
+    set?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    disconnect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    delete?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput | Prisma.AccountingFrameworkMapWhereUniqueInput[];
+    update?: Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutApprovedByInput | Prisma.AccountingFrameworkMapUpdateWithWhereUniqueWithoutApprovedByInput[];
+    updateMany?: Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutApprovedByInput | Prisma.AccountingFrameworkMapUpdateManyWithWhereWithoutApprovedByInput[];
+    deleteMany?: Prisma.AccountingFrameworkMapScalarWhereInput | Prisma.AccountingFrameworkMapScalarWhereInput[];
+};
+export type EnumFrameworkMapStatusFieldUpdateOperationsInput = {
+    set?: $Enums.FrameworkMapStatus;
+};
+export type AccountingFrameworkMapCreateNestedOneWithoutLineMappingsInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutLineMappingsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutLineMappingsInput>;
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutLineMappingsInput;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+};
+export type AccountingFrameworkMapUpdateOneRequiredWithoutLineMappingsNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutLineMappingsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutLineMappingsInput>;
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutLineMappingsInput;
+    upsert?: Prisma.AccountingFrameworkMapUpsertWithoutLineMappingsInput;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountingFrameworkMapUpdateToOneWithWhereWithoutLineMappingsInput, Prisma.AccountingFrameworkMapUpdateWithoutLineMappingsInput>, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutLineMappingsInput>;
+};
+export type AccountingFrameworkMapCreateNestedOneWithoutReportRunsInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutReportRunsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutReportRunsInput>;
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutReportRunsInput;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+};
+export type AccountingFrameworkMapUpdateOneRequiredWithoutReportRunsNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutReportRunsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutReportRunsInput>;
+    connectOrCreate?: Prisma.AccountingFrameworkMapCreateOrConnectWithoutReportRunsInput;
+    upsert?: Prisma.AccountingFrameworkMapUpsertWithoutReportRunsInput;
+    connect?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountingFrameworkMapUpdateToOneWithWhereWithoutReportRunsInput, Prisma.AccountingFrameworkMapUpdateWithoutReportRunsInput>, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutReportRunsInput>;
+};
+export type AccountingFrameworkMapCreateWithoutCreatedByInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    approvedBy?: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsApprovedInput;
+    lineMappings?: Prisma.StatementLineMappingCreateNestedManyWithoutFrameworkMapInput;
+    reportRuns?: Prisma.ReportRunCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    approvedByUserId?: string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedCreateNestedManyWithoutFrameworkMapInput;
+    reportRuns?: Prisma.ReportRunUncheckedCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapCreateOrConnectWithoutCreatedByInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput>;
+};
+export type AccountingFrameworkMapCreateManyCreatedByInputEnvelope = {
+    data: Prisma.AccountingFrameworkMapCreateManyCreatedByInput | Prisma.AccountingFrameworkMapCreateManyCreatedByInput[];
+    skipDuplicates?: boolean;
+};
+export type AccountingFrameworkMapCreateWithoutApprovedByInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsProposedInput;
+    lineMappings?: Prisma.StatementLineMappingCreateNestedManyWithoutFrameworkMapInput;
+    reportRuns?: Prisma.ReportRunCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedCreateNestedManyWithoutFrameworkMapInput;
+    reportRuns?: Prisma.ReportRunUncheckedCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapCreateOrConnectWithoutApprovedByInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput>;
+};
+export type AccountingFrameworkMapCreateManyApprovedByInputEnvelope = {
+    data: Prisma.AccountingFrameworkMapCreateManyApprovedByInput | Prisma.AccountingFrameworkMapCreateManyApprovedByInput[];
+    skipDuplicates?: boolean;
+};
+export type AccountingFrameworkMapUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    update: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutCreatedByInput>;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutCreatedByInput>;
+};
+export type AccountingFrameworkMapUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutCreatedByInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutCreatedByInput>;
+};
+export type AccountingFrameworkMapUpdateManyWithWhereWithoutCreatedByInput = {
+    where: Prisma.AccountingFrameworkMapScalarWhereInput;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateManyMutationInput, Prisma.AccountingFrameworkMapUncheckedUpdateManyWithoutCreatedByInput>;
+};
+export type AccountingFrameworkMapScalarWhereInput = {
+    AND?: Prisma.AccountingFrameworkMapScalarWhereInput | Prisma.AccountingFrameworkMapScalarWhereInput[];
+    OR?: Prisma.AccountingFrameworkMapScalarWhereInput[];
+    NOT?: Prisma.AccountingFrameworkMapScalarWhereInput | Prisma.AccountingFrameworkMapScalarWhereInput[];
+    id?: Prisma.UuidFilter<"AccountingFrameworkMap"> | string;
+    version?: Prisma.IntFilter<"AccountingFrameworkMap"> | number;
+    description?: Prisma.StringFilter<"AccountingFrameworkMap"> | string;
+    status?: Prisma.EnumFrameworkMapStatusFilter<"AccountingFrameworkMap"> | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFilter<"AccountingFrameworkMap"> | Date | string;
+    effectiveTo?: Prisma.DateTimeNullableFilter<"AccountingFrameworkMap"> | Date | string | null;
+    createdByUserId?: Prisma.UuidFilter<"AccountingFrameworkMap"> | string;
+    approvedByUserId?: Prisma.UuidNullableFilter<"AccountingFrameworkMap"> | string | null;
+    workflowInstanceId?: Prisma.UuidNullableFilter<"AccountingFrameworkMap"> | string | null;
+    createdAt?: Prisma.DateTimeFilter<"AccountingFrameworkMap"> | Date | string;
+};
+export type AccountingFrameworkMapUpsertWithWhereUniqueWithoutApprovedByInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    update: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutApprovedByInput>;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutApprovedByInput>;
+};
+export type AccountingFrameworkMapUpdateWithWhereUniqueWithoutApprovedByInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutApprovedByInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutApprovedByInput>;
+};
+export type AccountingFrameworkMapUpdateManyWithWhereWithoutApprovedByInput = {
+    where: Prisma.AccountingFrameworkMapScalarWhereInput;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateManyMutationInput, Prisma.AccountingFrameworkMapUncheckedUpdateManyWithoutApprovedByInput>;
+};
+export type AccountingFrameworkMapCreateWithoutLineMappingsInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsProposedInput;
+    approvedBy?: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsApprovedInput;
+    reportRuns?: Prisma.ReportRunCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapUncheckedCreateWithoutLineMappingsInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    approvedByUserId?: string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    reportRuns?: Prisma.ReportRunUncheckedCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapCreateOrConnectWithoutLineMappingsInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutLineMappingsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutLineMappingsInput>;
+};
+export type AccountingFrameworkMapUpsertWithoutLineMappingsInput = {
+    update: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutLineMappingsInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutLineMappingsInput>;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutLineMappingsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutLineMappingsInput>;
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+};
+export type AccountingFrameworkMapUpdateToOneWithWhereWithoutLineMappingsInput = {
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutLineMappingsInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutLineMappingsInput>;
+};
+export type AccountingFrameworkMapUpdateWithoutLineMappingsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutFrameworkMapsProposedNestedInput;
+    approvedBy?: Prisma.AppUserUpdateOneWithoutFrameworkMapsApprovedNestedInput;
+    reportRuns?: Prisma.ReportRunUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapUncheckedUpdateWithoutLineMappingsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    approvedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reportRuns?: Prisma.ReportRunUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapCreateWithoutReportRunsInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsProposedInput;
+    approvedBy?: Prisma.AppUserCreateNestedOneWithoutFrameworkMapsApprovedInput;
+    lineMappings?: Prisma.StatementLineMappingCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapUncheckedCreateWithoutReportRunsInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    approvedByUserId?: string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedCreateNestedManyWithoutFrameworkMapInput;
+};
+export type AccountingFrameworkMapCreateOrConnectWithoutReportRunsInput = {
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutReportRunsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutReportRunsInput>;
+};
+export type AccountingFrameworkMapUpsertWithoutReportRunsInput = {
+    update: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutReportRunsInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutReportRunsInput>;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateWithoutReportRunsInput, Prisma.AccountingFrameworkMapUncheckedCreateWithoutReportRunsInput>;
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+};
+export type AccountingFrameworkMapUpdateToOneWithWhereWithoutReportRunsInput = {
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateWithoutReportRunsInput, Prisma.AccountingFrameworkMapUncheckedUpdateWithoutReportRunsInput>;
+};
+export type AccountingFrameworkMapUpdateWithoutReportRunsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutFrameworkMapsProposedNestedInput;
+    approvedBy?: Prisma.AppUserUpdateOneWithoutFrameworkMapsApprovedNestedInput;
+    lineMappings?: Prisma.StatementLineMappingUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapUncheckedUpdateWithoutReportRunsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    approvedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapCreateManyCreatedByInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    approvedByUserId?: string | null;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+};
+export type AccountingFrameworkMapCreateManyApprovedByInput = {
+    id?: string;
+    version: number;
+    description: string;
+    status?: $Enums.FrameworkMapStatus;
+    effectiveFrom: Date | string;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    workflowInstanceId?: string | null;
+    createdAt?: Date | string;
+};
+export type AccountingFrameworkMapUpdateWithoutCreatedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    approvedBy?: Prisma.AppUserUpdateOneWithoutFrameworkMapsApprovedNestedInput;
+    lineMappings?: Prisma.StatementLineMappingUpdateManyWithoutFrameworkMapNestedInput;
+    reportRuns?: Prisma.ReportRunUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapUncheckedUpdateWithoutCreatedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    approvedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+    reportRuns?: Prisma.ReportRunUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    approvedByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AccountingFrameworkMapUpdateWithoutApprovedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutFrameworkMapsProposedNestedInput;
+    lineMappings?: Prisma.StatementLineMappingUpdateManyWithoutFrameworkMapNestedInput;
+    reportRuns?: Prisma.ReportRunUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapUncheckedUpdateWithoutApprovedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lineMappings?: Prisma.StatementLineMappingUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+    reportRuns?: Prisma.ReportRunUncheckedUpdateManyWithoutFrameworkMapNestedInput;
+};
+export type AccountingFrameworkMapUncheckedUpdateManyWithoutApprovedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    status?: Prisma.EnumFrameworkMapStatusFieldUpdateOperationsInput | $Enums.FrameworkMapStatus;
+    effectiveFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    workflowInstanceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AccountingFrameworkMapCountOutputType = {
+    lineMappings: number;
+    reportRuns: number;
+};
+export type AccountingFrameworkMapCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    lineMappings?: boolean | AccountingFrameworkMapCountOutputTypeCountLineMappingsArgs;
+    reportRuns?: boolean | AccountingFrameworkMapCountOutputTypeCountReportRunsArgs;
+};
+export type AccountingFrameworkMapCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapCountOutputTypeSelect<ExtArgs> | null;
+};
+export type AccountingFrameworkMapCountOutputTypeCountLineMappingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.StatementLineMappingWhereInput;
+};
+export type AccountingFrameworkMapCountOutputTypeCountReportRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ReportRunWhereInput;
+};
+export type AccountingFrameworkMapSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    version?: boolean;
+    description?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    approvedByUserId?: boolean;
+    workflowInstanceId?: boolean;
+    createdAt?: boolean;
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    approvedBy?: boolean | Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs>;
+    lineMappings?: boolean | Prisma.AccountingFrameworkMap$lineMappingsArgs<ExtArgs>;
+    reportRuns?: boolean | Prisma.AccountingFrameworkMap$reportRunsArgs<ExtArgs>;
+    _count?: boolean | Prisma.AccountingFrameworkMapCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["accountingFrameworkMap"]>;
+export type AccountingFrameworkMapSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    version?: boolean;
+    description?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    approvedByUserId?: boolean;
+    workflowInstanceId?: boolean;
+    createdAt?: boolean;
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    approvedBy?: boolean | Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs>;
+}, ExtArgs["result"]["accountingFrameworkMap"]>;
+export type AccountingFrameworkMapSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    version?: boolean;
+    description?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    approvedByUserId?: boolean;
+    workflowInstanceId?: boolean;
+    createdAt?: boolean;
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    approvedBy?: boolean | Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs>;
+}, ExtArgs["result"]["accountingFrameworkMap"]>;
+export type AccountingFrameworkMapSelectScalar = {
+    id?: boolean;
+    version?: boolean;
+    description?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    approvedByUserId?: boolean;
+    workflowInstanceId?: boolean;
+    createdAt?: boolean;
+};
+export type AccountingFrameworkMapOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "version" | "description" | "status" | "effectiveFrom" | "effectiveTo" | "createdByUserId" | "approvedByUserId" | "workflowInstanceId" | "createdAt", ExtArgs["result"]["accountingFrameworkMap"]>;
+export type AccountingFrameworkMapInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    approvedBy?: boolean | Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs>;
+    lineMappings?: boolean | Prisma.AccountingFrameworkMap$lineMappingsArgs<ExtArgs>;
+    reportRuns?: boolean | Prisma.AccountingFrameworkMap$reportRunsArgs<ExtArgs>;
+    _count?: boolean | Prisma.AccountingFrameworkMapCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type AccountingFrameworkMapIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    approvedBy?: boolean | Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs>;
+};
+export type AccountingFrameworkMapIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    approvedBy?: boolean | Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs>;
+};
+export type $AccountingFrameworkMapPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "AccountingFrameworkMap";
+    objects: {
+        createdBy: Prisma.$AppUserPayload<ExtArgs>;
+        approvedBy: Prisma.$AppUserPayload<ExtArgs> | null;
+        lineMappings: Prisma.$StatementLineMappingPayload<ExtArgs>[];
+        reportRuns: Prisma.$ReportRunPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        version: number;
+        description: string;
+        status: $Enums.FrameworkMapStatus;
+        effectiveFrom: Date;
+        effectiveTo: Date | null;
+        createdByUserId: string;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        createdAt: Date;
+    }, ExtArgs["result"]["accountingFrameworkMap"]>;
+    composites: {};
+};
+export type AccountingFrameworkMapGetPayload<S extends boolean | null | undefined | AccountingFrameworkMapDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload, S>;
+export type AccountingFrameworkMapCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<AccountingFrameworkMapFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: AccountingFrameworkMapCountAggregateInputType | true;
+};
+export interface AccountingFrameworkMapDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['AccountingFrameworkMap'];
+        meta: {
+            name: 'AccountingFrameworkMap';
+        };
+    };
+    findUnique<T extends AccountingFrameworkMapFindUniqueArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapFindUniqueArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findUniqueOrThrow<T extends AccountingFrameworkMapFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findFirst<T extends AccountingFrameworkMapFindFirstArgs>(args?: Prisma.SelectSubset<T, AccountingFrameworkMapFindFirstArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findFirstOrThrow<T extends AccountingFrameworkMapFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, AccountingFrameworkMapFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findMany<T extends AccountingFrameworkMapFindManyArgs>(args?: Prisma.SelectSubset<T, AccountingFrameworkMapFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    create<T extends AccountingFrameworkMapCreateArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapCreateArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    createMany<T extends AccountingFrameworkMapCreateManyArgs>(args?: Prisma.SelectSubset<T, AccountingFrameworkMapCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    createManyAndReturn<T extends AccountingFrameworkMapCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, AccountingFrameworkMapCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    delete<T extends AccountingFrameworkMapDeleteArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapDeleteArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    update<T extends AccountingFrameworkMapUpdateArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapUpdateArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    deleteMany<T extends AccountingFrameworkMapDeleteManyArgs>(args?: Prisma.SelectSubset<T, AccountingFrameworkMapDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateMany<T extends AccountingFrameworkMapUpdateManyArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateManyAndReturn<T extends AccountingFrameworkMapUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    upsert<T extends AccountingFrameworkMapUpsertArgs>(args: Prisma.SelectSubset<T, AccountingFrameworkMapUpsertArgs<ExtArgs>>): Prisma.Prisma__AccountingFrameworkMapClient<runtime.Types.Result.GetResult<Prisma.$AccountingFrameworkMapPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    count<T extends AccountingFrameworkMapCountArgs>(args?: Prisma.Subset<T, AccountingFrameworkMapCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], AccountingFrameworkMapCountAggregateOutputType> : number>;
+    aggregate<T extends AccountingFrameworkMapAggregateArgs>(args: Prisma.Subset<T, AccountingFrameworkMapAggregateArgs>): Prisma.PrismaPromise<GetAccountingFrameworkMapAggregateType<T>>;
+    groupBy<T extends AccountingFrameworkMapGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: AccountingFrameworkMapGroupByArgs['orderBy'];
+    } : {
+        orderBy?: AccountingFrameworkMapGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, AccountingFrameworkMapGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAccountingFrameworkMapGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    readonly fields: AccountingFrameworkMapFieldRefs;
+}
+export interface Prisma__AccountingFrameworkMapClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    createdBy<T extends Prisma.AppUserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AppUserDefaultArgs<ExtArgs>>): Prisma.Prisma__AppUserClient<runtime.Types.Result.GetResult<Prisma.$AppUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    approvedBy<T extends Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AccountingFrameworkMap$approvedByArgs<ExtArgs>>): Prisma.Prisma__AppUserClient<runtime.Types.Result.GetResult<Prisma.$AppUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    lineMappings<T extends Prisma.AccountingFrameworkMap$lineMappingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AccountingFrameworkMap$lineMappingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StatementLineMappingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    reportRuns<T extends Prisma.AccountingFrameworkMap$reportRunsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AccountingFrameworkMap$reportRunsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+export interface AccountingFrameworkMapFieldRefs {
+    readonly id: Prisma.FieldRef<"AccountingFrameworkMap", 'String'>;
+    readonly version: Prisma.FieldRef<"AccountingFrameworkMap", 'Int'>;
+    readonly description: Prisma.FieldRef<"AccountingFrameworkMap", 'String'>;
+    readonly status: Prisma.FieldRef<"AccountingFrameworkMap", 'FrameworkMapStatus'>;
+    readonly effectiveFrom: Prisma.FieldRef<"AccountingFrameworkMap", 'DateTime'>;
+    readonly effectiveTo: Prisma.FieldRef<"AccountingFrameworkMap", 'DateTime'>;
+    readonly createdByUserId: Prisma.FieldRef<"AccountingFrameworkMap", 'String'>;
+    readonly approvedByUserId: Prisma.FieldRef<"AccountingFrameworkMap", 'String'>;
+    readonly workflowInstanceId: Prisma.FieldRef<"AccountingFrameworkMap", 'String'>;
+    readonly createdAt: Prisma.FieldRef<"AccountingFrameworkMap", 'DateTime'>;
+}
+export type AccountingFrameworkMapFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+};
+export type AccountingFrameworkMapFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+};
+export type AccountingFrameworkMapFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    orderBy?: Prisma.AccountingFrameworkMapOrderByWithRelationInput | Prisma.AccountingFrameworkMapOrderByWithRelationInput[];
+    cursor?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.AccountingFrameworkMapScalarFieldEnum | Prisma.AccountingFrameworkMapScalarFieldEnum[];
+};
+export type AccountingFrameworkMapFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    orderBy?: Prisma.AccountingFrameworkMapOrderByWithRelationInput | Prisma.AccountingFrameworkMapOrderByWithRelationInput[];
+    cursor?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.AccountingFrameworkMapScalarFieldEnum | Prisma.AccountingFrameworkMapScalarFieldEnum[];
+};
+export type AccountingFrameworkMapFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    orderBy?: Prisma.AccountingFrameworkMapOrderByWithRelationInput | Prisma.AccountingFrameworkMapOrderByWithRelationInput[];
+    cursor?: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.AccountingFrameworkMapScalarFieldEnum | Prisma.AccountingFrameworkMapScalarFieldEnum[];
+};
+export type AccountingFrameworkMapCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapCreateInput, Prisma.AccountingFrameworkMapUncheckedCreateInput>;
+};
+export type AccountingFrameworkMapCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.AccountingFrameworkMapCreateManyInput | Prisma.AccountingFrameworkMapCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type AccountingFrameworkMapCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelectCreateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    data: Prisma.AccountingFrameworkMapCreateManyInput | Prisma.AccountingFrameworkMapCreateManyInput[];
+    skipDuplicates?: boolean;
+    include?: Prisma.AccountingFrameworkMapIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+export type AccountingFrameworkMapUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateInput, Prisma.AccountingFrameworkMapUncheckedUpdateInput>;
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+};
+export type AccountingFrameworkMapUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateManyMutationInput, Prisma.AccountingFrameworkMapUncheckedUpdateManyInput>;
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    limit?: number;
+};
+export type AccountingFrameworkMapUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelectUpdateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateManyMutationInput, Prisma.AccountingFrameworkMapUncheckedUpdateManyInput>;
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    limit?: number;
+    include?: Prisma.AccountingFrameworkMapIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+export type AccountingFrameworkMapUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountingFrameworkMapCreateInput, Prisma.AccountingFrameworkMapUncheckedCreateInput>;
+    update: Prisma.XOR<Prisma.AccountingFrameworkMapUpdateInput, Prisma.AccountingFrameworkMapUncheckedUpdateInput>;
+};
+export type AccountingFrameworkMapDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+    where: Prisma.AccountingFrameworkMapWhereUniqueInput;
+};
+export type AccountingFrameworkMapDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AccountingFrameworkMapWhereInput;
+    limit?: number;
+};
+export type AccountingFrameworkMap$approvedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AppUserSelect<ExtArgs> | null;
+    omit?: Prisma.AppUserOmit<ExtArgs> | null;
+    include?: Prisma.AppUserInclude<ExtArgs> | null;
+    where?: Prisma.AppUserWhereInput;
+};
+export type AccountingFrameworkMap$lineMappingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.StatementLineMappingSelect<ExtArgs> | null;
+    omit?: Prisma.StatementLineMappingOmit<ExtArgs> | null;
+    include?: Prisma.StatementLineMappingInclude<ExtArgs> | null;
+    where?: Prisma.StatementLineMappingWhereInput;
+    orderBy?: Prisma.StatementLineMappingOrderByWithRelationInput | Prisma.StatementLineMappingOrderByWithRelationInput[];
+    cursor?: Prisma.StatementLineMappingWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.StatementLineMappingScalarFieldEnum | Prisma.StatementLineMappingScalarFieldEnum[];
+};
+export type AccountingFrameworkMap$reportRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.ReportRunSelect<ExtArgs> | null;
+    omit?: Prisma.ReportRunOmit<ExtArgs> | null;
+    include?: Prisma.ReportRunInclude<ExtArgs> | null;
+    where?: Prisma.ReportRunWhereInput;
+    orderBy?: Prisma.ReportRunOrderByWithRelationInput | Prisma.ReportRunOrderByWithRelationInput[];
+    cursor?: Prisma.ReportRunWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ReportRunScalarFieldEnum | Prisma.ReportRunScalarFieldEnum[];
+};
+export type AccountingFrameworkMapDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AccountingFrameworkMapSelect<ExtArgs> | null;
+    omit?: Prisma.AccountingFrameworkMapOmit<ExtArgs> | null;
+    include?: Prisma.AccountingFrameworkMapInclude<ExtArgs> | null;
+};

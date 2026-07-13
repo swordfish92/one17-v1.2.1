@@ -1,0 +1,63 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { AuditService } from '../audit/audit.service';
+import { DelegationService } from '../delegation/delegation.service';
+import { SetHalalFundLaunchConfigInput } from './halal-fund-launch-config.types';
+export declare class HalalFundLaunchConfigService {
+    private readonly prisma;
+    private readonly audit;
+    private readonly delegation;
+    constructor(prisma: PrismaService, audit: AuditService, delegation: DelegationService);
+    setLaunchConfig(input: SetHalalFundLaunchConfigInput): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").GovernedItemStatus;
+        createdAt: Date;
+        version: number;
+        approvedByUserId: string | null;
+        boardResolutionRef: string | null;
+        ssbResolutionRef: string | null;
+        createdByUserId: string;
+        offerSpreadPct: import("@prisma/client-runtime-utils").Decimal;
+        bidSpreadPct: import("@prisma/client-runtime-utils").Decimal;
+        ledgerEntityCode: string;
+        launchDate: Date;
+        launchPrice: import("@prisma/client-runtime-utils").Decimal;
+        feeRates: import("@prisma/client/runtime/client").JsonValue;
+    }>;
+    getActiveConfig(ledgerEntityCode: string): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").GovernedItemStatus;
+        createdAt: Date;
+        version: number;
+        approvedByUserId: string | null;
+        boardResolutionRef: string | null;
+        ssbResolutionRef: string | null;
+        createdByUserId: string;
+        offerSpreadPct: import("@prisma/client-runtime-utils").Decimal;
+        bidSpreadPct: import("@prisma/client-runtime-utils").Decimal;
+        ledgerEntityCode: string;
+        launchDate: Date;
+        launchPrice: import("@prisma/client-runtime-utils").Decimal;
+        feeRates: import("@prisma/client/runtime/client").JsonValue;
+    } | null>;
+    listActiveConfigs(): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").GovernedItemStatus;
+        createdAt: Date;
+        version: number;
+        approvedByUserId: string | null;
+        boardResolutionRef: string | null;
+        ssbResolutionRef: string | null;
+        createdByUserId: string;
+        offerSpreadPct: import("@prisma/client-runtime-utils").Decimal;
+        bidSpreadPct: import("@prisma/client-runtime-utils").Decimal;
+        ledgerEntityCode: string;
+        launchDate: Date;
+        launchPrice: import("@prisma/client-runtime-utils").Decimal;
+        feeRates: import("@prisma/client/runtime/client").JsonValue;
+    }[]>;
+    private checkGovernanceGate;
+    private decimalChanged;
+    private validate;
+    private assertCapability;
+    private snapshot;
+}

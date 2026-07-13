@@ -1,0 +1,12 @@
+-- M1 condition: replace InvestorService.generateInvestorId()'s count-based
+-- logic (a genuine TOCTOU race under concurrent onboarding, documented and
+-- flagged since Build Plan step 6) with a real database sequence — atomic
+-- by construction, no row-count race possible.
+--
+-- Behavior change, flagged explicitly (not a silent guess): NNN no longer
+-- resets to 001 each calendar day — it is the global, monotonically
+-- increasing sequence value, formatted into the existing INV-YYYYMMDD-NNN
+-- shape (date reflects the day of creation; NNN never repeats, ever, which
+-- is a strictly stronger uniqueness guarantee than the day-scoped counter
+-- it replaces). See CHECK2_EVIDENCE.md's deviations register.
+CREATE SEQUENCE "investor_id_seq" START WITH 1 INCREMENT BY 1;

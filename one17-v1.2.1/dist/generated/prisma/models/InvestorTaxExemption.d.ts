@@ -1,0 +1,694 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
+import type * as Prisma from "../internal/prismaNamespace.js";
+export type InvestorTaxExemptionModel = runtime.Types.Result.DefaultSelection<Prisma.$InvestorTaxExemptionPayload>;
+export type AggregateInvestorTaxExemption = {
+    _count: InvestorTaxExemptionCountAggregateOutputType | null;
+    _min: InvestorTaxExemptionMinAggregateOutputType | null;
+    _max: InvestorTaxExemptionMaxAggregateOutputType | null;
+};
+export type InvestorTaxExemptionMinAggregateOutputType = {
+    id: string | null;
+    investorId: string | null;
+    taxType: $Enums.TaxType | null;
+    reason: string | null;
+    grantedByUserId: string | null;
+    createdAt: Date | null;
+};
+export type InvestorTaxExemptionMaxAggregateOutputType = {
+    id: string | null;
+    investorId: string | null;
+    taxType: $Enums.TaxType | null;
+    reason: string | null;
+    grantedByUserId: string | null;
+    createdAt: Date | null;
+};
+export type InvestorTaxExemptionCountAggregateOutputType = {
+    id: number;
+    investorId: number;
+    taxType: number;
+    reason: number;
+    grantedByUserId: number;
+    createdAt: number;
+    _all: number;
+};
+export type InvestorTaxExemptionMinAggregateInputType = {
+    id?: true;
+    investorId?: true;
+    taxType?: true;
+    reason?: true;
+    grantedByUserId?: true;
+    createdAt?: true;
+};
+export type InvestorTaxExemptionMaxAggregateInputType = {
+    id?: true;
+    investorId?: true;
+    taxType?: true;
+    reason?: true;
+    grantedByUserId?: true;
+    createdAt?: true;
+};
+export type InvestorTaxExemptionCountAggregateInputType = {
+    id?: true;
+    investorId?: true;
+    taxType?: true;
+    reason?: true;
+    grantedByUserId?: true;
+    createdAt?: true;
+    _all?: true;
+};
+export type InvestorTaxExemptionAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    orderBy?: Prisma.InvestorTaxExemptionOrderByWithRelationInput | Prisma.InvestorTaxExemptionOrderByWithRelationInput[];
+    cursor?: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    _count?: true | InvestorTaxExemptionCountAggregateInputType;
+    _min?: InvestorTaxExemptionMinAggregateInputType;
+    _max?: InvestorTaxExemptionMaxAggregateInputType;
+};
+export type GetInvestorTaxExemptionAggregateType<T extends InvestorTaxExemptionAggregateArgs> = {
+    [P in keyof T & keyof AggregateInvestorTaxExemption]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateInvestorTaxExemption[P]> : Prisma.GetScalarType<T[P], AggregateInvestorTaxExemption[P]>;
+};
+export type InvestorTaxExemptionGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    orderBy?: Prisma.InvestorTaxExemptionOrderByWithAggregationInput | Prisma.InvestorTaxExemptionOrderByWithAggregationInput[];
+    by: Prisma.InvestorTaxExemptionScalarFieldEnum[] | Prisma.InvestorTaxExemptionScalarFieldEnum;
+    having?: Prisma.InvestorTaxExemptionScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: InvestorTaxExemptionCountAggregateInputType | true;
+    _min?: InvestorTaxExemptionMinAggregateInputType;
+    _max?: InvestorTaxExemptionMaxAggregateInputType;
+};
+export type InvestorTaxExemptionGroupByOutputType = {
+    id: string;
+    investorId: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    grantedByUserId: string;
+    createdAt: Date;
+    _count: InvestorTaxExemptionCountAggregateOutputType | null;
+    _min: InvestorTaxExemptionMinAggregateOutputType | null;
+    _max: InvestorTaxExemptionMaxAggregateOutputType | null;
+};
+export type GetInvestorTaxExemptionGroupByPayload<T extends InvestorTaxExemptionGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<InvestorTaxExemptionGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof InvestorTaxExemptionGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], InvestorTaxExemptionGroupByOutputType[P]> : Prisma.GetScalarType<T[P], InvestorTaxExemptionGroupByOutputType[P]>;
+}>>;
+export type InvestorTaxExemptionWhereInput = {
+    AND?: Prisma.InvestorTaxExemptionWhereInput | Prisma.InvestorTaxExemptionWhereInput[];
+    OR?: Prisma.InvestorTaxExemptionWhereInput[];
+    NOT?: Prisma.InvestorTaxExemptionWhereInput | Prisma.InvestorTaxExemptionWhereInput[];
+    id?: Prisma.UuidFilter<"InvestorTaxExemption"> | string;
+    investorId?: Prisma.StringFilter<"InvestorTaxExemption"> | string;
+    taxType?: Prisma.EnumTaxTypeFilter<"InvestorTaxExemption"> | $Enums.TaxType;
+    reason?: Prisma.StringFilter<"InvestorTaxExemption"> | string;
+    grantedByUserId?: Prisma.UuidFilter<"InvestorTaxExemption"> | string;
+    createdAt?: Prisma.DateTimeFilter<"InvestorTaxExemption"> | Date | string;
+    investor?: Prisma.XOR<Prisma.InvestorScalarRelationFilter, Prisma.InvestorWhereInput>;
+    grantedBy?: Prisma.XOR<Prisma.AppUserScalarRelationFilter, Prisma.AppUserWhereInput>;
+};
+export type InvestorTaxExemptionOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    investorId?: Prisma.SortOrder;
+    taxType?: Prisma.SortOrder;
+    reason?: Prisma.SortOrder;
+    grantedByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    investor?: Prisma.InvestorOrderByWithRelationInput;
+    grantedBy?: Prisma.AppUserOrderByWithRelationInput;
+};
+export type InvestorTaxExemptionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    investorId_taxType?: Prisma.InvestorTaxExemptionInvestorIdTaxTypeCompoundUniqueInput;
+    AND?: Prisma.InvestorTaxExemptionWhereInput | Prisma.InvestorTaxExemptionWhereInput[];
+    OR?: Prisma.InvestorTaxExemptionWhereInput[];
+    NOT?: Prisma.InvestorTaxExemptionWhereInput | Prisma.InvestorTaxExemptionWhereInput[];
+    investorId?: Prisma.StringFilter<"InvestorTaxExemption"> | string;
+    taxType?: Prisma.EnumTaxTypeFilter<"InvestorTaxExemption"> | $Enums.TaxType;
+    reason?: Prisma.StringFilter<"InvestorTaxExemption"> | string;
+    grantedByUserId?: Prisma.UuidFilter<"InvestorTaxExemption"> | string;
+    createdAt?: Prisma.DateTimeFilter<"InvestorTaxExemption"> | Date | string;
+    investor?: Prisma.XOR<Prisma.InvestorScalarRelationFilter, Prisma.InvestorWhereInput>;
+    grantedBy?: Prisma.XOR<Prisma.AppUserScalarRelationFilter, Prisma.AppUserWhereInput>;
+}, "id" | "investorId_taxType">;
+export type InvestorTaxExemptionOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    investorId?: Prisma.SortOrder;
+    taxType?: Prisma.SortOrder;
+    reason?: Prisma.SortOrder;
+    grantedByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    _count?: Prisma.InvestorTaxExemptionCountOrderByAggregateInput;
+    _max?: Prisma.InvestorTaxExemptionMaxOrderByAggregateInput;
+    _min?: Prisma.InvestorTaxExemptionMinOrderByAggregateInput;
+};
+export type InvestorTaxExemptionScalarWhereWithAggregatesInput = {
+    AND?: Prisma.InvestorTaxExemptionScalarWhereWithAggregatesInput | Prisma.InvestorTaxExemptionScalarWhereWithAggregatesInput[];
+    OR?: Prisma.InvestorTaxExemptionScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.InvestorTaxExemptionScalarWhereWithAggregatesInput | Prisma.InvestorTaxExemptionScalarWhereWithAggregatesInput[];
+    id?: Prisma.UuidWithAggregatesFilter<"InvestorTaxExemption"> | string;
+    investorId?: Prisma.StringWithAggregatesFilter<"InvestorTaxExemption"> | string;
+    taxType?: Prisma.EnumTaxTypeWithAggregatesFilter<"InvestorTaxExemption"> | $Enums.TaxType;
+    reason?: Prisma.StringWithAggregatesFilter<"InvestorTaxExemption"> | string;
+    grantedByUserId?: Prisma.UuidWithAggregatesFilter<"InvestorTaxExemption"> | string;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"InvestorTaxExemption"> | Date | string;
+};
+export type InvestorTaxExemptionCreateInput = {
+    id?: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    createdAt?: Date | string;
+    investor: Prisma.InvestorCreateNestedOneWithoutTaxExemptionsInput;
+    grantedBy: Prisma.AppUserCreateNestedOneWithoutInvestorTaxExemptionsGrantedInput;
+};
+export type InvestorTaxExemptionUncheckedCreateInput = {
+    id?: string;
+    investorId: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    grantedByUserId: string;
+    createdAt?: Date | string;
+};
+export type InvestorTaxExemptionUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    investor?: Prisma.InvestorUpdateOneRequiredWithoutTaxExemptionsNestedInput;
+    grantedBy?: Prisma.AppUserUpdateOneRequiredWithoutInvestorTaxExemptionsGrantedNestedInput;
+};
+export type InvestorTaxExemptionUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    investorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    grantedByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type InvestorTaxExemptionCreateManyInput = {
+    id?: string;
+    investorId: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    grantedByUserId: string;
+    createdAt?: Date | string;
+};
+export type InvestorTaxExemptionUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type InvestorTaxExemptionUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    investorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    grantedByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type InvestorTaxExemptionListRelationFilter = {
+    every?: Prisma.InvestorTaxExemptionWhereInput;
+    some?: Prisma.InvestorTaxExemptionWhereInput;
+    none?: Prisma.InvestorTaxExemptionWhereInput;
+};
+export type InvestorTaxExemptionOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type InvestorTaxExemptionInvestorIdTaxTypeCompoundUniqueInput = {
+    investorId: string;
+    taxType: $Enums.TaxType;
+};
+export type InvestorTaxExemptionCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    investorId?: Prisma.SortOrder;
+    taxType?: Prisma.SortOrder;
+    reason?: Prisma.SortOrder;
+    grantedByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type InvestorTaxExemptionMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    investorId?: Prisma.SortOrder;
+    taxType?: Prisma.SortOrder;
+    reason?: Prisma.SortOrder;
+    grantedByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type InvestorTaxExemptionMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    investorId?: Prisma.SortOrder;
+    taxType?: Prisma.SortOrder;
+    reason?: Prisma.SortOrder;
+    grantedByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type InvestorTaxExemptionCreateNestedManyWithoutGrantedByInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput> | Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyGrantedByInputEnvelope;
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+};
+export type InvestorTaxExemptionUncheckedCreateNestedManyWithoutGrantedByInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput> | Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyGrantedByInputEnvelope;
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+};
+export type InvestorTaxExemptionUpdateManyWithoutGrantedByNestedInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput> | Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput[];
+    upsert?: Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutGrantedByInput | Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutGrantedByInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyGrantedByInputEnvelope;
+    set?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    disconnect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    delete?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    update?: Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutGrantedByInput | Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutGrantedByInput[];
+    updateMany?: Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutGrantedByInput | Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutGrantedByInput[];
+    deleteMany?: Prisma.InvestorTaxExemptionScalarWhereInput | Prisma.InvestorTaxExemptionScalarWhereInput[];
+};
+export type InvestorTaxExemptionUncheckedUpdateManyWithoutGrantedByNestedInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput> | Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput[];
+    upsert?: Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutGrantedByInput | Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutGrantedByInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyGrantedByInputEnvelope;
+    set?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    disconnect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    delete?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    update?: Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutGrantedByInput | Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutGrantedByInput[];
+    updateMany?: Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutGrantedByInput | Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutGrantedByInput[];
+    deleteMany?: Prisma.InvestorTaxExemptionScalarWhereInput | Prisma.InvestorTaxExemptionScalarWhereInput[];
+};
+export type InvestorTaxExemptionCreateNestedManyWithoutInvestorInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput> | Prisma.InvestorTaxExemptionCreateWithoutInvestorInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyInvestorInputEnvelope;
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+};
+export type InvestorTaxExemptionUncheckedCreateNestedManyWithoutInvestorInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput> | Prisma.InvestorTaxExemptionCreateWithoutInvestorInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyInvestorInputEnvelope;
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+};
+export type InvestorTaxExemptionUpdateManyWithoutInvestorNestedInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput> | Prisma.InvestorTaxExemptionCreateWithoutInvestorInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput[];
+    upsert?: Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutInvestorInput | Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutInvestorInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyInvestorInputEnvelope;
+    set?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    disconnect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    delete?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    update?: Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutInvestorInput | Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutInvestorInput[];
+    updateMany?: Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutInvestorInput | Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutInvestorInput[];
+    deleteMany?: Prisma.InvestorTaxExemptionScalarWhereInput | Prisma.InvestorTaxExemptionScalarWhereInput[];
+};
+export type InvestorTaxExemptionUncheckedUpdateManyWithoutInvestorNestedInput = {
+    create?: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput> | Prisma.InvestorTaxExemptionCreateWithoutInvestorInput[] | Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput[];
+    connectOrCreate?: Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput | Prisma.InvestorTaxExemptionCreateOrConnectWithoutInvestorInput[];
+    upsert?: Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutInvestorInput | Prisma.InvestorTaxExemptionUpsertWithWhereUniqueWithoutInvestorInput[];
+    createMany?: Prisma.InvestorTaxExemptionCreateManyInvestorInputEnvelope;
+    set?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    disconnect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    delete?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    connect?: Prisma.InvestorTaxExemptionWhereUniqueInput | Prisma.InvestorTaxExemptionWhereUniqueInput[];
+    update?: Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutInvestorInput | Prisma.InvestorTaxExemptionUpdateWithWhereUniqueWithoutInvestorInput[];
+    updateMany?: Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutInvestorInput | Prisma.InvestorTaxExemptionUpdateManyWithWhereWithoutInvestorInput[];
+    deleteMany?: Prisma.InvestorTaxExemptionScalarWhereInput | Prisma.InvestorTaxExemptionScalarWhereInput[];
+};
+export type InvestorTaxExemptionCreateWithoutGrantedByInput = {
+    id?: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    createdAt?: Date | string;
+    investor: Prisma.InvestorCreateNestedOneWithoutTaxExemptionsInput;
+};
+export type InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput = {
+    id?: string;
+    investorId: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    createdAt?: Date | string;
+};
+export type InvestorTaxExemptionCreateOrConnectWithoutGrantedByInput = {
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    create: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput>;
+};
+export type InvestorTaxExemptionCreateManyGrantedByInputEnvelope = {
+    data: Prisma.InvestorTaxExemptionCreateManyGrantedByInput | Prisma.InvestorTaxExemptionCreateManyGrantedByInput[];
+    skipDuplicates?: boolean;
+};
+export type InvestorTaxExemptionUpsertWithWhereUniqueWithoutGrantedByInput = {
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    update: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedUpdateWithoutGrantedByInput>;
+    create: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutGrantedByInput>;
+};
+export type InvestorTaxExemptionUpdateWithWhereUniqueWithoutGrantedByInput = {
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateWithoutGrantedByInput, Prisma.InvestorTaxExemptionUncheckedUpdateWithoutGrantedByInput>;
+};
+export type InvestorTaxExemptionUpdateManyWithWhereWithoutGrantedByInput = {
+    where: Prisma.InvestorTaxExemptionScalarWhereInput;
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateManyMutationInput, Prisma.InvestorTaxExemptionUncheckedUpdateManyWithoutGrantedByInput>;
+};
+export type InvestorTaxExemptionScalarWhereInput = {
+    AND?: Prisma.InvestorTaxExemptionScalarWhereInput | Prisma.InvestorTaxExemptionScalarWhereInput[];
+    OR?: Prisma.InvestorTaxExemptionScalarWhereInput[];
+    NOT?: Prisma.InvestorTaxExemptionScalarWhereInput | Prisma.InvestorTaxExemptionScalarWhereInput[];
+    id?: Prisma.UuidFilter<"InvestorTaxExemption"> | string;
+    investorId?: Prisma.StringFilter<"InvestorTaxExemption"> | string;
+    taxType?: Prisma.EnumTaxTypeFilter<"InvestorTaxExemption"> | $Enums.TaxType;
+    reason?: Prisma.StringFilter<"InvestorTaxExemption"> | string;
+    grantedByUserId?: Prisma.UuidFilter<"InvestorTaxExemption"> | string;
+    createdAt?: Prisma.DateTimeFilter<"InvestorTaxExemption"> | Date | string;
+};
+export type InvestorTaxExemptionCreateWithoutInvestorInput = {
+    id?: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    createdAt?: Date | string;
+    grantedBy: Prisma.AppUserCreateNestedOneWithoutInvestorTaxExemptionsGrantedInput;
+};
+export type InvestorTaxExemptionUncheckedCreateWithoutInvestorInput = {
+    id?: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    grantedByUserId: string;
+    createdAt?: Date | string;
+};
+export type InvestorTaxExemptionCreateOrConnectWithoutInvestorInput = {
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    create: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput>;
+};
+export type InvestorTaxExemptionCreateManyInvestorInputEnvelope = {
+    data: Prisma.InvestorTaxExemptionCreateManyInvestorInput | Prisma.InvestorTaxExemptionCreateManyInvestorInput[];
+    skipDuplicates?: boolean;
+};
+export type InvestorTaxExemptionUpsertWithWhereUniqueWithoutInvestorInput = {
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    update: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedUpdateWithoutInvestorInput>;
+    create: Prisma.XOR<Prisma.InvestorTaxExemptionCreateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedCreateWithoutInvestorInput>;
+};
+export type InvestorTaxExemptionUpdateWithWhereUniqueWithoutInvestorInput = {
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateWithoutInvestorInput, Prisma.InvestorTaxExemptionUncheckedUpdateWithoutInvestorInput>;
+};
+export type InvestorTaxExemptionUpdateManyWithWhereWithoutInvestorInput = {
+    where: Prisma.InvestorTaxExemptionScalarWhereInput;
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateManyMutationInput, Prisma.InvestorTaxExemptionUncheckedUpdateManyWithoutInvestorInput>;
+};
+export type InvestorTaxExemptionCreateManyGrantedByInput = {
+    id?: string;
+    investorId: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    createdAt?: Date | string;
+};
+export type InvestorTaxExemptionUpdateWithoutGrantedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    investor?: Prisma.InvestorUpdateOneRequiredWithoutTaxExemptionsNestedInput;
+};
+export type InvestorTaxExemptionUncheckedUpdateWithoutGrantedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    investorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type InvestorTaxExemptionUncheckedUpdateManyWithoutGrantedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    investorId?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type InvestorTaxExemptionCreateManyInvestorInput = {
+    id?: string;
+    taxType: $Enums.TaxType;
+    reason: string;
+    grantedByUserId: string;
+    createdAt?: Date | string;
+};
+export type InvestorTaxExemptionUpdateWithoutInvestorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    grantedBy?: Prisma.AppUserUpdateOneRequiredWithoutInvestorTaxExemptionsGrantedNestedInput;
+};
+export type InvestorTaxExemptionUncheckedUpdateWithoutInvestorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    grantedByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type InvestorTaxExemptionUncheckedUpdateManyWithoutInvestorInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    taxType?: Prisma.EnumTaxTypeFieldUpdateOperationsInput | $Enums.TaxType;
+    reason?: Prisma.StringFieldUpdateOperationsInput | string;
+    grantedByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type InvestorTaxExemptionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    investorId?: boolean;
+    taxType?: boolean;
+    reason?: boolean;
+    grantedByUserId?: boolean;
+    createdAt?: boolean;
+    investor?: boolean | Prisma.InvestorDefaultArgs<ExtArgs>;
+    grantedBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["investorTaxExemption"]>;
+export type InvestorTaxExemptionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    investorId?: boolean;
+    taxType?: boolean;
+    reason?: boolean;
+    grantedByUserId?: boolean;
+    createdAt?: boolean;
+    investor?: boolean | Prisma.InvestorDefaultArgs<ExtArgs>;
+    grantedBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["investorTaxExemption"]>;
+export type InvestorTaxExemptionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    investorId?: boolean;
+    taxType?: boolean;
+    reason?: boolean;
+    grantedByUserId?: boolean;
+    createdAt?: boolean;
+    investor?: boolean | Prisma.InvestorDefaultArgs<ExtArgs>;
+    grantedBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["investorTaxExemption"]>;
+export type InvestorTaxExemptionSelectScalar = {
+    id?: boolean;
+    investorId?: boolean;
+    taxType?: boolean;
+    reason?: boolean;
+    grantedByUserId?: boolean;
+    createdAt?: boolean;
+};
+export type InvestorTaxExemptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "investorId" | "taxType" | "reason" | "grantedByUserId" | "createdAt", ExtArgs["result"]["investorTaxExemption"]>;
+export type InvestorTaxExemptionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    investor?: boolean | Prisma.InvestorDefaultArgs<ExtArgs>;
+    grantedBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+};
+export type InvestorTaxExemptionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    investor?: boolean | Prisma.InvestorDefaultArgs<ExtArgs>;
+    grantedBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+};
+export type InvestorTaxExemptionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    investor?: boolean | Prisma.InvestorDefaultArgs<ExtArgs>;
+    grantedBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+};
+export type $InvestorTaxExemptionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "InvestorTaxExemption";
+    objects: {
+        investor: Prisma.$InvestorPayload<ExtArgs>;
+        grantedBy: Prisma.$AppUserPayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        investorId: string;
+        taxType: $Enums.TaxType;
+        reason: string;
+        grantedByUserId: string;
+        createdAt: Date;
+    }, ExtArgs["result"]["investorTaxExemption"]>;
+    composites: {};
+};
+export type InvestorTaxExemptionGetPayload<S extends boolean | null | undefined | InvestorTaxExemptionDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload, S>;
+export type InvestorTaxExemptionCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<InvestorTaxExemptionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: InvestorTaxExemptionCountAggregateInputType | true;
+};
+export interface InvestorTaxExemptionDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['InvestorTaxExemption'];
+        meta: {
+            name: 'InvestorTaxExemption';
+        };
+    };
+    findUnique<T extends InvestorTaxExemptionFindUniqueArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionFindUniqueArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findUniqueOrThrow<T extends InvestorTaxExemptionFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findFirst<T extends InvestorTaxExemptionFindFirstArgs>(args?: Prisma.SelectSubset<T, InvestorTaxExemptionFindFirstArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findFirstOrThrow<T extends InvestorTaxExemptionFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, InvestorTaxExemptionFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findMany<T extends InvestorTaxExemptionFindManyArgs>(args?: Prisma.SelectSubset<T, InvestorTaxExemptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    create<T extends InvestorTaxExemptionCreateArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionCreateArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    createMany<T extends InvestorTaxExemptionCreateManyArgs>(args?: Prisma.SelectSubset<T, InvestorTaxExemptionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    createManyAndReturn<T extends InvestorTaxExemptionCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, InvestorTaxExemptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    delete<T extends InvestorTaxExemptionDeleteArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionDeleteArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    update<T extends InvestorTaxExemptionUpdateArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionUpdateArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    deleteMany<T extends InvestorTaxExemptionDeleteManyArgs>(args?: Prisma.SelectSubset<T, InvestorTaxExemptionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateMany<T extends InvestorTaxExemptionUpdateManyArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateManyAndReturn<T extends InvestorTaxExemptionUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    upsert<T extends InvestorTaxExemptionUpsertArgs>(args: Prisma.SelectSubset<T, InvestorTaxExemptionUpsertArgs<ExtArgs>>): Prisma.Prisma__InvestorTaxExemptionClient<runtime.Types.Result.GetResult<Prisma.$InvestorTaxExemptionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    count<T extends InvestorTaxExemptionCountArgs>(args?: Prisma.Subset<T, InvestorTaxExemptionCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], InvestorTaxExemptionCountAggregateOutputType> : number>;
+    aggregate<T extends InvestorTaxExemptionAggregateArgs>(args: Prisma.Subset<T, InvestorTaxExemptionAggregateArgs>): Prisma.PrismaPromise<GetInvestorTaxExemptionAggregateType<T>>;
+    groupBy<T extends InvestorTaxExemptionGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: InvestorTaxExemptionGroupByArgs['orderBy'];
+    } : {
+        orderBy?: InvestorTaxExemptionGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, InvestorTaxExemptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInvestorTaxExemptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    readonly fields: InvestorTaxExemptionFieldRefs;
+}
+export interface Prisma__InvestorTaxExemptionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    investor<T extends Prisma.InvestorDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.InvestorDefaultArgs<ExtArgs>>): Prisma.Prisma__InvestorClient<runtime.Types.Result.GetResult<Prisma.$InvestorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    grantedBy<T extends Prisma.AppUserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AppUserDefaultArgs<ExtArgs>>): Prisma.Prisma__AppUserClient<runtime.Types.Result.GetResult<Prisma.$AppUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+export interface InvestorTaxExemptionFieldRefs {
+    readonly id: Prisma.FieldRef<"InvestorTaxExemption", 'String'>;
+    readonly investorId: Prisma.FieldRef<"InvestorTaxExemption", 'String'>;
+    readonly taxType: Prisma.FieldRef<"InvestorTaxExemption", 'TaxType'>;
+    readonly reason: Prisma.FieldRef<"InvestorTaxExemption", 'String'>;
+    readonly grantedByUserId: Prisma.FieldRef<"InvestorTaxExemption", 'String'>;
+    readonly createdAt: Prisma.FieldRef<"InvestorTaxExemption", 'DateTime'>;
+}
+export type InvestorTaxExemptionFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+};
+export type InvestorTaxExemptionFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+};
+export type InvestorTaxExemptionFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    orderBy?: Prisma.InvestorTaxExemptionOrderByWithRelationInput | Prisma.InvestorTaxExemptionOrderByWithRelationInput[];
+    cursor?: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.InvestorTaxExemptionScalarFieldEnum | Prisma.InvestorTaxExemptionScalarFieldEnum[];
+};
+export type InvestorTaxExemptionFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    orderBy?: Prisma.InvestorTaxExemptionOrderByWithRelationInput | Prisma.InvestorTaxExemptionOrderByWithRelationInput[];
+    cursor?: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.InvestorTaxExemptionScalarFieldEnum | Prisma.InvestorTaxExemptionScalarFieldEnum[];
+};
+export type InvestorTaxExemptionFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    orderBy?: Prisma.InvestorTaxExemptionOrderByWithRelationInput | Prisma.InvestorTaxExemptionOrderByWithRelationInput[];
+    cursor?: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.InvestorTaxExemptionScalarFieldEnum | Prisma.InvestorTaxExemptionScalarFieldEnum[];
+};
+export type InvestorTaxExemptionCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionCreateInput, Prisma.InvestorTaxExemptionUncheckedCreateInput>;
+};
+export type InvestorTaxExemptionCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.InvestorTaxExemptionCreateManyInput | Prisma.InvestorTaxExemptionCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type InvestorTaxExemptionCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelectCreateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    data: Prisma.InvestorTaxExemptionCreateManyInput | Prisma.InvestorTaxExemptionCreateManyInput[];
+    skipDuplicates?: boolean;
+    include?: Prisma.InvestorTaxExemptionIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+export type InvestorTaxExemptionUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateInput, Prisma.InvestorTaxExemptionUncheckedUpdateInput>;
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+};
+export type InvestorTaxExemptionUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateManyMutationInput, Prisma.InvestorTaxExemptionUncheckedUpdateManyInput>;
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    limit?: number;
+};
+export type InvestorTaxExemptionUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelectUpdateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateManyMutationInput, Prisma.InvestorTaxExemptionUncheckedUpdateManyInput>;
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    limit?: number;
+    include?: Prisma.InvestorTaxExemptionIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+export type InvestorTaxExemptionUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+    create: Prisma.XOR<Prisma.InvestorTaxExemptionCreateInput, Prisma.InvestorTaxExemptionUncheckedCreateInput>;
+    update: Prisma.XOR<Prisma.InvestorTaxExemptionUpdateInput, Prisma.InvestorTaxExemptionUncheckedUpdateInput>;
+};
+export type InvestorTaxExemptionDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+    where: Prisma.InvestorTaxExemptionWhereUniqueInput;
+};
+export type InvestorTaxExemptionDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.InvestorTaxExemptionWhereInput;
+    limit?: number;
+};
+export type InvestorTaxExemptionDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.InvestorTaxExemptionSelect<ExtArgs> | null;
+    omit?: Prisma.InvestorTaxExemptionOmit<ExtArgs> | null;
+    include?: Prisma.InvestorTaxExemptionInclude<ExtArgs> | null;
+};

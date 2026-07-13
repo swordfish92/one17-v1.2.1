@@ -1,0 +1,379 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+export type AuditChainStateModel = runtime.Types.Result.DefaultSelection<Prisma.$AuditChainStatePayload>;
+export type AggregateAuditChainState = {
+    _count: AuditChainStateCountAggregateOutputType | null;
+    _avg: AuditChainStateAvgAggregateOutputType | null;
+    _sum: AuditChainStateSumAggregateOutputType | null;
+    _min: AuditChainStateMinAggregateOutputType | null;
+    _max: AuditChainStateMaxAggregateOutputType | null;
+};
+export type AuditChainStateAvgAggregateOutputType = {
+    id: number | null;
+};
+export type AuditChainStateSumAggregateOutputType = {
+    id: number | null;
+};
+export type AuditChainStateMinAggregateOutputType = {
+    id: number | null;
+    lastHash: string | null;
+    updatedAt: Date | null;
+};
+export type AuditChainStateMaxAggregateOutputType = {
+    id: number | null;
+    lastHash: string | null;
+    updatedAt: Date | null;
+};
+export type AuditChainStateCountAggregateOutputType = {
+    id: number;
+    lastHash: number;
+    updatedAt: number;
+    _all: number;
+};
+export type AuditChainStateAvgAggregateInputType = {
+    id?: true;
+};
+export type AuditChainStateSumAggregateInputType = {
+    id?: true;
+};
+export type AuditChainStateMinAggregateInputType = {
+    id?: true;
+    lastHash?: true;
+    updatedAt?: true;
+};
+export type AuditChainStateMaxAggregateInputType = {
+    id?: true;
+    lastHash?: true;
+    updatedAt?: true;
+};
+export type AuditChainStateCountAggregateInputType = {
+    id?: true;
+    lastHash?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type AuditChainStateAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AuditChainStateWhereInput;
+    orderBy?: Prisma.AuditChainStateOrderByWithRelationInput | Prisma.AuditChainStateOrderByWithRelationInput[];
+    cursor?: Prisma.AuditChainStateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    _count?: true | AuditChainStateCountAggregateInputType;
+    _avg?: AuditChainStateAvgAggregateInputType;
+    _sum?: AuditChainStateSumAggregateInputType;
+    _min?: AuditChainStateMinAggregateInputType;
+    _max?: AuditChainStateMaxAggregateInputType;
+};
+export type GetAuditChainStateAggregateType<T extends AuditChainStateAggregateArgs> = {
+    [P in keyof T & keyof AggregateAuditChainState]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateAuditChainState[P]> : Prisma.GetScalarType<T[P], AggregateAuditChainState[P]>;
+};
+export type AuditChainStateGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AuditChainStateWhereInput;
+    orderBy?: Prisma.AuditChainStateOrderByWithAggregationInput | Prisma.AuditChainStateOrderByWithAggregationInput[];
+    by: Prisma.AuditChainStateScalarFieldEnum[] | Prisma.AuditChainStateScalarFieldEnum;
+    having?: Prisma.AuditChainStateScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: AuditChainStateCountAggregateInputType | true;
+    _avg?: AuditChainStateAvgAggregateInputType;
+    _sum?: AuditChainStateSumAggregateInputType;
+    _min?: AuditChainStateMinAggregateInputType;
+    _max?: AuditChainStateMaxAggregateInputType;
+};
+export type AuditChainStateGroupByOutputType = {
+    id: number;
+    lastHash: string | null;
+    updatedAt: Date;
+    _count: AuditChainStateCountAggregateOutputType | null;
+    _avg: AuditChainStateAvgAggregateOutputType | null;
+    _sum: AuditChainStateSumAggregateOutputType | null;
+    _min: AuditChainStateMinAggregateOutputType | null;
+    _max: AuditChainStateMaxAggregateOutputType | null;
+};
+export type GetAuditChainStateGroupByPayload<T extends AuditChainStateGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<AuditChainStateGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof AuditChainStateGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], AuditChainStateGroupByOutputType[P]> : Prisma.GetScalarType<T[P], AuditChainStateGroupByOutputType[P]>;
+}>>;
+export type AuditChainStateWhereInput = {
+    AND?: Prisma.AuditChainStateWhereInput | Prisma.AuditChainStateWhereInput[];
+    OR?: Prisma.AuditChainStateWhereInput[];
+    NOT?: Prisma.AuditChainStateWhereInput | Prisma.AuditChainStateWhereInput[];
+    id?: Prisma.IntFilter<"AuditChainState"> | number;
+    lastHash?: Prisma.StringNullableFilter<"AuditChainState"> | string | null;
+    updatedAt?: Prisma.DateTimeFilter<"AuditChainState"> | Date | string;
+};
+export type AuditChainStateOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    lastHash?: Prisma.SortOrderInput | Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type AuditChainStateWhereUniqueInput = Prisma.AtLeast<{
+    id?: number;
+    AND?: Prisma.AuditChainStateWhereInput | Prisma.AuditChainStateWhereInput[];
+    OR?: Prisma.AuditChainStateWhereInput[];
+    NOT?: Prisma.AuditChainStateWhereInput | Prisma.AuditChainStateWhereInput[];
+    lastHash?: Prisma.StringNullableFilter<"AuditChainState"> | string | null;
+    updatedAt?: Prisma.DateTimeFilter<"AuditChainState"> | Date | string;
+}, "id">;
+export type AuditChainStateOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    lastHash?: Prisma.SortOrderInput | Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.AuditChainStateCountOrderByAggregateInput;
+    _avg?: Prisma.AuditChainStateAvgOrderByAggregateInput;
+    _max?: Prisma.AuditChainStateMaxOrderByAggregateInput;
+    _min?: Prisma.AuditChainStateMinOrderByAggregateInput;
+    _sum?: Prisma.AuditChainStateSumOrderByAggregateInput;
+};
+export type AuditChainStateScalarWhereWithAggregatesInput = {
+    AND?: Prisma.AuditChainStateScalarWhereWithAggregatesInput | Prisma.AuditChainStateScalarWhereWithAggregatesInput[];
+    OR?: Prisma.AuditChainStateScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.AuditChainStateScalarWhereWithAggregatesInput | Prisma.AuditChainStateScalarWhereWithAggregatesInput[];
+    id?: Prisma.IntWithAggregatesFilter<"AuditChainState"> | number;
+    lastHash?: Prisma.StringNullableWithAggregatesFilter<"AuditChainState"> | string | null;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AuditChainState"> | Date | string;
+};
+export type AuditChainStateCreateInput = {
+    id?: number;
+    lastHash?: string | null;
+    updatedAt?: Date | string;
+};
+export type AuditChainStateUncheckedCreateInput = {
+    id?: number;
+    lastHash?: string | null;
+    updatedAt?: Date | string;
+};
+export type AuditChainStateUpdateInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    lastHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AuditChainStateUncheckedUpdateInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    lastHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AuditChainStateCreateManyInput = {
+    id?: number;
+    lastHash?: string | null;
+    updatedAt?: Date | string;
+};
+export type AuditChainStateUpdateManyMutationInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    lastHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AuditChainStateUncheckedUpdateManyInput = {
+    id?: Prisma.IntFieldUpdateOperationsInput | number;
+    lastHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AuditChainStateCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    lastHash?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type AuditChainStateAvgOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+};
+export type AuditChainStateMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    lastHash?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type AuditChainStateMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    lastHash?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type AuditChainStateSumOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+};
+export type IntFieldUpdateOperationsInput = {
+    set?: number;
+    increment?: number;
+    decrement?: number;
+    multiply?: number;
+    divide?: number;
+};
+export type AuditChainStateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    lastHash?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["auditChainState"]>;
+export type AuditChainStateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    lastHash?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["auditChainState"]>;
+export type AuditChainStateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    lastHash?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["auditChainState"]>;
+export type AuditChainStateSelectScalar = {
+    id?: boolean;
+    lastHash?: boolean;
+    updatedAt?: boolean;
+};
+export type AuditChainStateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lastHash" | "updatedAt", ExtArgs["result"]["auditChainState"]>;
+export type $AuditChainStatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "AuditChainState";
+    objects: {};
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: number;
+        lastHash: string | null;
+        updatedAt: Date;
+    }, ExtArgs["result"]["auditChainState"]>;
+    composites: {};
+};
+export type AuditChainStateGetPayload<S extends boolean | null | undefined | AuditChainStateDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload, S>;
+export type AuditChainStateCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<AuditChainStateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: AuditChainStateCountAggregateInputType | true;
+};
+export interface AuditChainStateDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['AuditChainState'];
+        meta: {
+            name: 'AuditChainState';
+        };
+    };
+    findUnique<T extends AuditChainStateFindUniqueArgs>(args: Prisma.SelectSubset<T, AuditChainStateFindUniqueArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findUniqueOrThrow<T extends AuditChainStateFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, AuditChainStateFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findFirst<T extends AuditChainStateFindFirstArgs>(args?: Prisma.SelectSubset<T, AuditChainStateFindFirstArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findFirstOrThrow<T extends AuditChainStateFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, AuditChainStateFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findMany<T extends AuditChainStateFindManyArgs>(args?: Prisma.SelectSubset<T, AuditChainStateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    create<T extends AuditChainStateCreateArgs>(args: Prisma.SelectSubset<T, AuditChainStateCreateArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    createMany<T extends AuditChainStateCreateManyArgs>(args?: Prisma.SelectSubset<T, AuditChainStateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    createManyAndReturn<T extends AuditChainStateCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, AuditChainStateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    delete<T extends AuditChainStateDeleteArgs>(args: Prisma.SelectSubset<T, AuditChainStateDeleteArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    update<T extends AuditChainStateUpdateArgs>(args: Prisma.SelectSubset<T, AuditChainStateUpdateArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    deleteMany<T extends AuditChainStateDeleteManyArgs>(args?: Prisma.SelectSubset<T, AuditChainStateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateMany<T extends AuditChainStateUpdateManyArgs>(args: Prisma.SelectSubset<T, AuditChainStateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateManyAndReturn<T extends AuditChainStateUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, AuditChainStateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    upsert<T extends AuditChainStateUpsertArgs>(args: Prisma.SelectSubset<T, AuditChainStateUpsertArgs<ExtArgs>>): Prisma.Prisma__AuditChainStateClient<runtime.Types.Result.GetResult<Prisma.$AuditChainStatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    count<T extends AuditChainStateCountArgs>(args?: Prisma.Subset<T, AuditChainStateCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], AuditChainStateCountAggregateOutputType> : number>;
+    aggregate<T extends AuditChainStateAggregateArgs>(args: Prisma.Subset<T, AuditChainStateAggregateArgs>): Prisma.PrismaPromise<GetAuditChainStateAggregateType<T>>;
+    groupBy<T extends AuditChainStateGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: AuditChainStateGroupByArgs['orderBy'];
+    } : {
+        orderBy?: AuditChainStateGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, AuditChainStateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuditChainStateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    readonly fields: AuditChainStateFieldRefs;
+}
+export interface Prisma__AuditChainStateClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+export interface AuditChainStateFieldRefs {
+    readonly id: Prisma.FieldRef<"AuditChainState", 'Int'>;
+    readonly lastHash: Prisma.FieldRef<"AuditChainState", 'String'>;
+    readonly updatedAt: Prisma.FieldRef<"AuditChainState", 'DateTime'>;
+}
+export type AuditChainStateFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    where: Prisma.AuditChainStateWhereUniqueInput;
+};
+export type AuditChainStateFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    where: Prisma.AuditChainStateWhereUniqueInput;
+};
+export type AuditChainStateFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    where?: Prisma.AuditChainStateWhereInput;
+    orderBy?: Prisma.AuditChainStateOrderByWithRelationInput | Prisma.AuditChainStateOrderByWithRelationInput[];
+    cursor?: Prisma.AuditChainStateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.AuditChainStateScalarFieldEnum | Prisma.AuditChainStateScalarFieldEnum[];
+};
+export type AuditChainStateFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    where?: Prisma.AuditChainStateWhereInput;
+    orderBy?: Prisma.AuditChainStateOrderByWithRelationInput | Prisma.AuditChainStateOrderByWithRelationInput[];
+    cursor?: Prisma.AuditChainStateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.AuditChainStateScalarFieldEnum | Prisma.AuditChainStateScalarFieldEnum[];
+};
+export type AuditChainStateFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    where?: Prisma.AuditChainStateWhereInput;
+    orderBy?: Prisma.AuditChainStateOrderByWithRelationInput | Prisma.AuditChainStateOrderByWithRelationInput[];
+    cursor?: Prisma.AuditChainStateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.AuditChainStateScalarFieldEnum | Prisma.AuditChainStateScalarFieldEnum[];
+};
+export type AuditChainStateCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.AuditChainStateCreateInput, Prisma.AuditChainStateUncheckedCreateInput>;
+};
+export type AuditChainStateCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.AuditChainStateCreateManyInput | Prisma.AuditChainStateCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type AuditChainStateCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelectCreateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    data: Prisma.AuditChainStateCreateManyInput | Prisma.AuditChainStateCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type AuditChainStateUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.AuditChainStateUpdateInput, Prisma.AuditChainStateUncheckedUpdateInput>;
+    where: Prisma.AuditChainStateWhereUniqueInput;
+};
+export type AuditChainStateUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.XOR<Prisma.AuditChainStateUpdateManyMutationInput, Prisma.AuditChainStateUncheckedUpdateManyInput>;
+    where?: Prisma.AuditChainStateWhereInput;
+    limit?: number;
+};
+export type AuditChainStateUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelectUpdateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.AuditChainStateUpdateManyMutationInput, Prisma.AuditChainStateUncheckedUpdateManyInput>;
+    where?: Prisma.AuditChainStateWhereInput;
+    limit?: number;
+};
+export type AuditChainStateUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    where: Prisma.AuditChainStateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AuditChainStateCreateInput, Prisma.AuditChainStateUncheckedCreateInput>;
+    update: Prisma.XOR<Prisma.AuditChainStateUpdateInput, Prisma.AuditChainStateUncheckedUpdateInput>;
+};
+export type AuditChainStateDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+    where: Prisma.AuditChainStateWhereUniqueInput;
+};
+export type AuditChainStateDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AuditChainStateWhereInput;
+    limit?: number;
+};
+export type AuditChainStateDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.AuditChainStateSelect<ExtArgs> | null;
+    omit?: Prisma.AuditChainStateOmit<ExtArgs> | null;
+};

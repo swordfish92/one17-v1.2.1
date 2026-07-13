@@ -1,0 +1,53 @@
+-- Production DB provisioning template. install-one17.ps1 substitutes the
+-- __PLACEHOLDER__ tokens (database name, owner/migrator password, runtime
+-- password — all generated at install time, never committed) and runs this
+-- against the `postgres` maintenance database as the cluster superuser.
+--
+-- Two roles, matching RUNBOOK.md's existing dev naming (one17_app /
+-- one17_runtime) so the production and dev postures describe the same
+-- shape, just properly separated in production instead of dev's
+-- single-role convenience:
+--   * one17_app     — owner/migrator. Runs `prisma migrate deploy` and
+--                     `db:seed`/`bootstrap-admin`. Owns every table/
+--                     sequence/trigger it creates. NOT used by the running
+--                     application.
+--   * one17_runtime — least-privilege. DML only (SELECT/INSERT/UPDATE/
+--                     DELETE) via ALTER DEFAULT PRIVILEGES, so tables
+--                     created by FUTURE migrations (always run as
+--                     one17_app) automatically extend the same grant with
+--                     no manual step. No CREATE/ALTER/DROP rights anywhere.
+--                     This is the role the Windows Service actually
+--                     connects as (DATABASE_URL in the persisted
+--                     .env.production).
+--
+-- Idempotent: every statement guards its own re-run (DO blocks with
+-- existence checks, CREATE ... IF NOT EXISTS where Postgres supports it).
+-- Safe to run this script again against an already-provisioned database —
+-- it will not reset an existing role's password (ALTER ROLE ... PASSWORD
+-- lines only fire in the CREATE branch), matching this engagement's
+-- standing rule that credential rotation is never a silent side effect.
+
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'one17_app') THEN
+    CREATE ROLE one17_app LOGIN CREATEDB PASSWORD '__OWNER_PASSWORD__';
+  END IF;
+END
+$$;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'one17_runtime') THEN
+    CREATE ROLE one17_runtime LOGIN PASSWORD '__RUNTIME_PASSWORD__';
+  END IF;
+END
+$$;
+
+SELECT 'CREATE DATABASE __DB_NAME__ OWNER one17_app'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '__DB_NAME__')
+\gexec
+
+-- Everything below runs INSIDE the target database (psql -d __DB_NAME__ for
+-- this half — install-one17.ps1 issues it as a second invocation, since
+-- \connect inside a scripted -f run behaves inconsistently across psql
+-- versions when the target database was just created in the same session).

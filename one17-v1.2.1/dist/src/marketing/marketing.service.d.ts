@@ -1,0 +1,158 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { AuditService } from '../audit/audit.service';
+import { WorkflowEngineService } from '../workflow/workflow.service';
+import { DelegationService } from '../delegation/delegation.service';
+import { UploadResourceInput, SubscribeInput, UnsubscribeInput, InitiateSendInput } from './marketing.types';
+export declare class MarketingService {
+    private readonly prisma;
+    private readonly audit;
+    private readonly workflow;
+    private readonly delegation;
+    constructor(prisma: PrismaService, audit: AuditService, workflow: WorkflowEngineService, delegation: DelegationService);
+    uploadResource(input: UploadResourceInput): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").GovernedItemStatus;
+        createdAt: Date;
+        version: number;
+        proposedByUserId: string;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        fileReference: string;
+        title: string;
+        resourceType: string;
+    }>;
+    approveResource(workflowInstanceId: string, approverUserId: string): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").GovernedItemStatus;
+        createdAt: Date;
+        version: number;
+        proposedByUserId: string;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        fileReference: string;
+        title: string;
+        resourceType: string;
+    } | null>;
+    rejectResource(workflowInstanceId: string, approverUserId: string, notes?: string): Promise<{
+        id: string;
+        entityType: string;
+        entityId: string;
+        updatedAt: Date;
+        status: import("../../generated/prisma/enums").WorkflowStatus;
+        createdAt: Date;
+        workflowTypeCode: string;
+        scenario: string | null;
+        approvalRuleId: string;
+        amountKobo: bigint | null;
+        initiatedByUserId: string;
+    }>;
+    listResources(): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").GovernedItemStatus;
+        createdAt: Date;
+        version: number;
+        proposedByUserId: string;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        fileReference: string;
+        title: string;
+        resourceType: string;
+    }[]>;
+    listActiveResources(): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").GovernedItemStatus;
+        createdAt: Date;
+        version: number;
+        proposedByUserId: string;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        fileReference: string;
+        title: string;
+        resourceType: string;
+    }[]>;
+    subscribe(input: SubscribeInput): Promise<{
+        id: string;
+        email: string;
+        fullName: string | null;
+        segments: string[];
+        subscribed: boolean;
+        unsubscribeToken: string;
+        subscribedAt: Date;
+        unsubscribedAt: Date | null;
+        consentedAt: Date | null;
+        consentNoticeVersion: number | null;
+    }>;
+    unsubscribe(input: UnsubscribeInput): Promise<{
+        id: string;
+        email: string;
+        fullName: string | null;
+        segments: string[];
+        subscribed: boolean;
+        unsubscribeToken: string;
+        subscribedAt: Date;
+        unsubscribedAt: Date | null;
+        consentedAt: Date | null;
+        consentNoticeVersion: number | null;
+    }>;
+    initiateSend(input: InitiateSendInput): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").MarketingSendStatus;
+        createdAt: Date;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        initiatedByUserId: string;
+        body: string;
+        subject: string;
+        resourceId: string | null;
+        targetSegments: string[];
+        sentAt: Date | null;
+        recipientCount: number | null;
+    }>;
+    approveSend(workflowInstanceId: string, approverUserId: string): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").MarketingSendStatus;
+        createdAt: Date;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        initiatedByUserId: string;
+        body: string;
+        subject: string;
+        resourceId: string | null;
+        targetSegments: string[];
+        sentAt: Date | null;
+        recipientCount: number | null;
+    } | null>;
+    rejectSend(workflowInstanceId: string, approverUserId: string, notes?: string): Promise<{
+        id: string;
+        entityType: string;
+        entityId: string;
+        updatedAt: Date;
+        status: import("../../generated/prisma/enums").WorkflowStatus;
+        createdAt: Date;
+        workflowTypeCode: string;
+        scenario: string | null;
+        approvalRuleId: string;
+        amountKobo: bigint | null;
+        initiatedByUserId: string;
+    }>;
+    listSends(): Promise<{
+        id: string;
+        status: import("../../generated/prisma/enums").MarketingSendStatus;
+        createdAt: Date;
+        approvedByUserId: string | null;
+        workflowInstanceId: string | null;
+        initiatedByUserId: string;
+        body: string;
+        subject: string;
+        resourceId: string | null;
+        targetSegments: string[];
+        sentAt: Date | null;
+        recipientCount: number | null;
+    }[]>;
+    getSubscriberStats(): Promise<{
+        total: number;
+        subscribed: number;
+        unsubscribed: number;
+    }>;
+    private assertCapability;
+}

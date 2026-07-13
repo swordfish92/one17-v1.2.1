@@ -1,0 +1,1423 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
+import type * as Prisma from "../internal/prismaNamespace.js";
+export type RegulatorTemplateModel = runtime.Types.Result.DefaultSelection<Prisma.$RegulatorTemplatePayload>;
+export type AggregateRegulatorTemplate = {
+    _count: RegulatorTemplateCountAggregateOutputType | null;
+    _avg: RegulatorTemplateAvgAggregateOutputType | null;
+    _sum: RegulatorTemplateSumAggregateOutputType | null;
+    _min: RegulatorTemplateMinAggregateOutputType | null;
+    _max: RegulatorTemplateMaxAggregateOutputType | null;
+};
+export type RegulatorTemplateAvgAggregateOutputType = {
+    version: number | null;
+};
+export type RegulatorTemplateSumAggregateOutputType = {
+    version: number | null;
+};
+export type RegulatorTemplateMinAggregateOutputType = {
+    id: string | null;
+    regulatorCode: string | null;
+    templateCode: string | null;
+    name: string | null;
+    filingFrequency: string | null;
+    version: number | null;
+    status: $Enums.RegulatorTemplateStatus | null;
+    effectiveFrom: Date | null;
+    effectiveTo: Date | null;
+    createdByUserId: string | null;
+    createdAt: Date | null;
+};
+export type RegulatorTemplateMaxAggregateOutputType = {
+    id: string | null;
+    regulatorCode: string | null;
+    templateCode: string | null;
+    name: string | null;
+    filingFrequency: string | null;
+    version: number | null;
+    status: $Enums.RegulatorTemplateStatus | null;
+    effectiveFrom: Date | null;
+    effectiveTo: Date | null;
+    createdByUserId: string | null;
+    createdAt: Date | null;
+};
+export type RegulatorTemplateCountAggregateOutputType = {
+    id: number;
+    regulatorCode: number;
+    templateCode: number;
+    name: number;
+    filingFrequency: number;
+    version: number;
+    status: number;
+    effectiveFrom: number;
+    effectiveTo: number;
+    createdByUserId: number;
+    createdAt: number;
+    _all: number;
+};
+export type RegulatorTemplateAvgAggregateInputType = {
+    version?: true;
+};
+export type RegulatorTemplateSumAggregateInputType = {
+    version?: true;
+};
+export type RegulatorTemplateMinAggregateInputType = {
+    id?: true;
+    regulatorCode?: true;
+    templateCode?: true;
+    name?: true;
+    filingFrequency?: true;
+    version?: true;
+    status?: true;
+    effectiveFrom?: true;
+    effectiveTo?: true;
+    createdByUserId?: true;
+    createdAt?: true;
+};
+export type RegulatorTemplateMaxAggregateInputType = {
+    id?: true;
+    regulatorCode?: true;
+    templateCode?: true;
+    name?: true;
+    filingFrequency?: true;
+    version?: true;
+    status?: true;
+    effectiveFrom?: true;
+    effectiveTo?: true;
+    createdByUserId?: true;
+    createdAt?: true;
+};
+export type RegulatorTemplateCountAggregateInputType = {
+    id?: true;
+    regulatorCode?: true;
+    templateCode?: true;
+    name?: true;
+    filingFrequency?: true;
+    version?: true;
+    status?: true;
+    effectiveFrom?: true;
+    effectiveTo?: true;
+    createdByUserId?: true;
+    createdAt?: true;
+    _all?: true;
+};
+export type RegulatorTemplateAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    orderBy?: Prisma.RegulatorTemplateOrderByWithRelationInput | Prisma.RegulatorTemplateOrderByWithRelationInput[];
+    cursor?: Prisma.RegulatorTemplateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    _count?: true | RegulatorTemplateCountAggregateInputType;
+    _avg?: RegulatorTemplateAvgAggregateInputType;
+    _sum?: RegulatorTemplateSumAggregateInputType;
+    _min?: RegulatorTemplateMinAggregateInputType;
+    _max?: RegulatorTemplateMaxAggregateInputType;
+};
+export type GetRegulatorTemplateAggregateType<T extends RegulatorTemplateAggregateArgs> = {
+    [P in keyof T & keyof AggregateRegulatorTemplate]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateRegulatorTemplate[P]> : Prisma.GetScalarType<T[P], AggregateRegulatorTemplate[P]>;
+};
+export type RegulatorTemplateGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    orderBy?: Prisma.RegulatorTemplateOrderByWithAggregationInput | Prisma.RegulatorTemplateOrderByWithAggregationInput[];
+    by: Prisma.RegulatorTemplateScalarFieldEnum[] | Prisma.RegulatorTemplateScalarFieldEnum;
+    having?: Prisma.RegulatorTemplateScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: RegulatorTemplateCountAggregateInputType | true;
+    _avg?: RegulatorTemplateAvgAggregateInputType;
+    _sum?: RegulatorTemplateSumAggregateInputType;
+    _min?: RegulatorTemplateMinAggregateInputType;
+    _max?: RegulatorTemplateMaxAggregateInputType;
+};
+export type RegulatorTemplateGroupByOutputType = {
+    id: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency: string | null;
+    version: number;
+    status: $Enums.RegulatorTemplateStatus;
+    effectiveFrom: Date | null;
+    effectiveTo: Date | null;
+    createdByUserId: string;
+    createdAt: Date;
+    _count: RegulatorTemplateCountAggregateOutputType | null;
+    _avg: RegulatorTemplateAvgAggregateOutputType | null;
+    _sum: RegulatorTemplateSumAggregateOutputType | null;
+    _min: RegulatorTemplateMinAggregateOutputType | null;
+    _max: RegulatorTemplateMaxAggregateOutputType | null;
+};
+export type GetRegulatorTemplateGroupByPayload<T extends RegulatorTemplateGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<RegulatorTemplateGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof RegulatorTemplateGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], RegulatorTemplateGroupByOutputType[P]> : Prisma.GetScalarType<T[P], RegulatorTemplateGroupByOutputType[P]>;
+}>>;
+export type RegulatorTemplateWhereInput = {
+    AND?: Prisma.RegulatorTemplateWhereInput | Prisma.RegulatorTemplateWhereInput[];
+    OR?: Prisma.RegulatorTemplateWhereInput[];
+    NOT?: Prisma.RegulatorTemplateWhereInput | Prisma.RegulatorTemplateWhereInput[];
+    id?: Prisma.UuidFilter<"RegulatorTemplate"> | string;
+    regulatorCode?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    templateCode?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    name?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    filingFrequency?: Prisma.StringNullableFilter<"RegulatorTemplate"> | string | null;
+    version?: Prisma.IntFilter<"RegulatorTemplate"> | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFilter<"RegulatorTemplate"> | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.DateTimeNullableFilter<"RegulatorTemplate"> | Date | string | null;
+    effectiveTo?: Prisma.DateTimeNullableFilter<"RegulatorTemplate"> | Date | string | null;
+    createdByUserId?: Prisma.UuidFilter<"RegulatorTemplate"> | string;
+    createdAt?: Prisma.DateTimeFilter<"RegulatorTemplate"> | Date | string;
+    createdBy?: Prisma.XOR<Prisma.AppUserScalarRelationFilter, Prisma.AppUserWhereInput>;
+    lines?: Prisma.RegulatorTemplateLineListRelationFilter;
+    cellMaps?: Prisma.TemplateCellMapListRelationFilter;
+    fieldMaps?: Prisma.TemplateFieldMapListRelationFilter;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarListRelationFilter;
+    filingRuns?: Prisma.RegulatoryFilingRunListRelationFilter;
+};
+export type RegulatorTemplateOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    regulatorCode?: Prisma.SortOrder;
+    templateCode?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    filingFrequency?: Prisma.SortOrderInput | Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrderInput | Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    createdBy?: Prisma.AppUserOrderByWithRelationInput;
+    lines?: Prisma.RegulatorTemplateLineOrderByRelationAggregateInput;
+    cellMaps?: Prisma.TemplateCellMapOrderByRelationAggregateInput;
+    fieldMaps?: Prisma.TemplateFieldMapOrderByRelationAggregateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarOrderByRelationAggregateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunOrderByRelationAggregateInput;
+};
+export type RegulatorTemplateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    regulatorCode_templateCode_version?: Prisma.RegulatorTemplateRegulatorCodeTemplateCodeVersionCompoundUniqueInput;
+    AND?: Prisma.RegulatorTemplateWhereInput | Prisma.RegulatorTemplateWhereInput[];
+    OR?: Prisma.RegulatorTemplateWhereInput[];
+    NOT?: Prisma.RegulatorTemplateWhereInput | Prisma.RegulatorTemplateWhereInput[];
+    regulatorCode?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    templateCode?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    name?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    filingFrequency?: Prisma.StringNullableFilter<"RegulatorTemplate"> | string | null;
+    version?: Prisma.IntFilter<"RegulatorTemplate"> | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFilter<"RegulatorTemplate"> | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.DateTimeNullableFilter<"RegulatorTemplate"> | Date | string | null;
+    effectiveTo?: Prisma.DateTimeNullableFilter<"RegulatorTemplate"> | Date | string | null;
+    createdByUserId?: Prisma.UuidFilter<"RegulatorTemplate"> | string;
+    createdAt?: Prisma.DateTimeFilter<"RegulatorTemplate"> | Date | string;
+    createdBy?: Prisma.XOR<Prisma.AppUserScalarRelationFilter, Prisma.AppUserWhereInput>;
+    lines?: Prisma.RegulatorTemplateLineListRelationFilter;
+    cellMaps?: Prisma.TemplateCellMapListRelationFilter;
+    fieldMaps?: Prisma.TemplateFieldMapListRelationFilter;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarListRelationFilter;
+    filingRuns?: Prisma.RegulatoryFilingRunListRelationFilter;
+}, "id" | "regulatorCode_templateCode_version">;
+export type RegulatorTemplateOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    regulatorCode?: Prisma.SortOrder;
+    templateCode?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    filingFrequency?: Prisma.SortOrderInput | Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrderInput | Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrderInput | Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    _count?: Prisma.RegulatorTemplateCountOrderByAggregateInput;
+    _avg?: Prisma.RegulatorTemplateAvgOrderByAggregateInput;
+    _max?: Prisma.RegulatorTemplateMaxOrderByAggregateInput;
+    _min?: Prisma.RegulatorTemplateMinOrderByAggregateInput;
+    _sum?: Prisma.RegulatorTemplateSumOrderByAggregateInput;
+};
+export type RegulatorTemplateScalarWhereWithAggregatesInput = {
+    AND?: Prisma.RegulatorTemplateScalarWhereWithAggregatesInput | Prisma.RegulatorTemplateScalarWhereWithAggregatesInput[];
+    OR?: Prisma.RegulatorTemplateScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.RegulatorTemplateScalarWhereWithAggregatesInput | Prisma.RegulatorTemplateScalarWhereWithAggregatesInput[];
+    id?: Prisma.UuidWithAggregatesFilter<"RegulatorTemplate"> | string;
+    regulatorCode?: Prisma.StringWithAggregatesFilter<"RegulatorTemplate"> | string;
+    templateCode?: Prisma.StringWithAggregatesFilter<"RegulatorTemplate"> | string;
+    name?: Prisma.StringWithAggregatesFilter<"RegulatorTemplate"> | string;
+    filingFrequency?: Prisma.StringNullableWithAggregatesFilter<"RegulatorTemplate"> | string | null;
+    version?: Prisma.IntWithAggregatesFilter<"RegulatorTemplate"> | number;
+    status?: Prisma.EnumRegulatorTemplateStatusWithAggregatesFilter<"RegulatorTemplate"> | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.DateTimeNullableWithAggregatesFilter<"RegulatorTemplate"> | Date | string | null;
+    effectiveTo?: Prisma.DateTimeNullableWithAggregatesFilter<"RegulatorTemplate"> | Date | string | null;
+    createdByUserId?: Prisma.UuidWithAggregatesFilter<"RegulatorTemplate"> | string;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"RegulatorTemplate"> | Date | string;
+};
+export type RegulatorTemplateCreateInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutRegulatorTemplatesMadeInput;
+    lines?: Prisma.RegulatorTemplateLineCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUncheckedCreateInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    createdAt?: Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutRegulatorTemplatesMadeNestedInput;
+    lines?: Prisma.RegulatorTemplateLineUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateCreateManyInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    createdAt?: Date | string;
+};
+export type RegulatorTemplateUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RegulatorTemplateUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RegulatorTemplateListRelationFilter = {
+    every?: Prisma.RegulatorTemplateWhereInput;
+    some?: Prisma.RegulatorTemplateWhereInput;
+    none?: Prisma.RegulatorTemplateWhereInput;
+};
+export type RegulatorTemplateOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type RegulatorTemplateRegulatorCodeTemplateCodeVersionCompoundUniqueInput = {
+    regulatorCode: string;
+    templateCode: string;
+    version: number;
+};
+export type RegulatorTemplateCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    regulatorCode?: Prisma.SortOrder;
+    templateCode?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    filingFrequency?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type RegulatorTemplateAvgOrderByAggregateInput = {
+    version?: Prisma.SortOrder;
+};
+export type RegulatorTemplateMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    regulatorCode?: Prisma.SortOrder;
+    templateCode?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    filingFrequency?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type RegulatorTemplateMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    regulatorCode?: Prisma.SortOrder;
+    templateCode?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    filingFrequency?: Prisma.SortOrder;
+    version?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    effectiveFrom?: Prisma.SortOrder;
+    effectiveTo?: Prisma.SortOrder;
+    createdByUserId?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+};
+export type RegulatorTemplateSumOrderByAggregateInput = {
+    version?: Prisma.SortOrder;
+};
+export type RegulatorTemplateScalarRelationFilter = {
+    is?: Prisma.RegulatorTemplateWhereInput;
+    isNot?: Prisma.RegulatorTemplateWhereInput;
+};
+export type RegulatorTemplateCreateNestedManyWithoutCreatedByInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput> | Prisma.RegulatorTemplateCreateWithoutCreatedByInput[] | Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput | Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput[];
+    createMany?: Prisma.RegulatorTemplateCreateManyCreatedByInputEnvelope;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+};
+export type RegulatorTemplateUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput> | Prisma.RegulatorTemplateCreateWithoutCreatedByInput[] | Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput | Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput[];
+    createMany?: Prisma.RegulatorTemplateCreateManyCreatedByInputEnvelope;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+};
+export type RegulatorTemplateUpdateManyWithoutCreatedByNestedInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput> | Prisma.RegulatorTemplateCreateWithoutCreatedByInput[] | Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput | Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput[];
+    upsert?: Prisma.RegulatorTemplateUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.RegulatorTemplateUpsertWithWhereUniqueWithoutCreatedByInput[];
+    createMany?: Prisma.RegulatorTemplateCreateManyCreatedByInputEnvelope;
+    set?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    disconnect?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    delete?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    update?: Prisma.RegulatorTemplateUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.RegulatorTemplateUpdateWithWhereUniqueWithoutCreatedByInput[];
+    updateMany?: Prisma.RegulatorTemplateUpdateManyWithWhereWithoutCreatedByInput | Prisma.RegulatorTemplateUpdateManyWithWhereWithoutCreatedByInput[];
+    deleteMany?: Prisma.RegulatorTemplateScalarWhereInput | Prisma.RegulatorTemplateScalarWhereInput[];
+};
+export type RegulatorTemplateUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput> | Prisma.RegulatorTemplateCreateWithoutCreatedByInput[] | Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput[];
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput | Prisma.RegulatorTemplateCreateOrConnectWithoutCreatedByInput[];
+    upsert?: Prisma.RegulatorTemplateUpsertWithWhereUniqueWithoutCreatedByInput | Prisma.RegulatorTemplateUpsertWithWhereUniqueWithoutCreatedByInput[];
+    createMany?: Prisma.RegulatorTemplateCreateManyCreatedByInputEnvelope;
+    set?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    disconnect?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    delete?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput | Prisma.RegulatorTemplateWhereUniqueInput[];
+    update?: Prisma.RegulatorTemplateUpdateWithWhereUniqueWithoutCreatedByInput | Prisma.RegulatorTemplateUpdateWithWhereUniqueWithoutCreatedByInput[];
+    updateMany?: Prisma.RegulatorTemplateUpdateManyWithWhereWithoutCreatedByInput | Prisma.RegulatorTemplateUpdateManyWithWhereWithoutCreatedByInput[];
+    deleteMany?: Prisma.RegulatorTemplateScalarWhereInput | Prisma.RegulatorTemplateScalarWhereInput[];
+};
+export type EnumRegulatorTemplateStatusFieldUpdateOperationsInput = {
+    set?: $Enums.RegulatorTemplateStatus;
+};
+export type RegulatorTemplateCreateNestedOneWithoutLinesInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutLinesInput, Prisma.RegulatorTemplateUncheckedCreateWithoutLinesInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutLinesInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateUpdateOneRequiredWithoutLinesNestedInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutLinesInput, Prisma.RegulatorTemplateUncheckedCreateWithoutLinesInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutLinesInput;
+    upsert?: Prisma.RegulatorTemplateUpsertWithoutLinesInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.RegulatorTemplateUpdateToOneWithWhereWithoutLinesInput, Prisma.RegulatorTemplateUpdateWithoutLinesInput>, Prisma.RegulatorTemplateUncheckedUpdateWithoutLinesInput>;
+};
+export type RegulatorTemplateCreateNestedOneWithoutCellMapsInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCellMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCellMapsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutCellMapsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateUpdateOneRequiredWithoutCellMapsNestedInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCellMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCellMapsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutCellMapsInput;
+    upsert?: Prisma.RegulatorTemplateUpsertWithoutCellMapsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.RegulatorTemplateUpdateToOneWithWhereWithoutCellMapsInput, Prisma.RegulatorTemplateUpdateWithoutCellMapsInput>, Prisma.RegulatorTemplateUncheckedUpdateWithoutCellMapsInput>;
+};
+export type RegulatorTemplateCreateNestedOneWithoutFieldMapsInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFieldMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFieldMapsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutFieldMapsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateUpdateOneRequiredWithoutFieldMapsNestedInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFieldMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFieldMapsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutFieldMapsInput;
+    upsert?: Prisma.RegulatorTemplateUpsertWithoutFieldMapsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.RegulatorTemplateUpdateToOneWithWhereWithoutFieldMapsInput, Prisma.RegulatorTemplateUpdateWithoutFieldMapsInput>, Prisma.RegulatorTemplateUncheckedUpdateWithoutFieldMapsInput>;
+};
+export type RegulatorTemplateCreateNestedOneWithoutFilingCalendarsInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingCalendarsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingCalendarsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutFilingCalendarsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateUpdateOneRequiredWithoutFilingCalendarsNestedInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingCalendarsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingCalendarsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutFilingCalendarsInput;
+    upsert?: Prisma.RegulatorTemplateUpsertWithoutFilingCalendarsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.RegulatorTemplateUpdateToOneWithWhereWithoutFilingCalendarsInput, Prisma.RegulatorTemplateUpdateWithoutFilingCalendarsInput>, Prisma.RegulatorTemplateUncheckedUpdateWithoutFilingCalendarsInput>;
+};
+export type RegulatorTemplateCreateNestedOneWithoutFilingRunsInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingRunsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingRunsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutFilingRunsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateUpdateOneRequiredWithoutFilingRunsNestedInput = {
+    create?: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingRunsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingRunsInput>;
+    connectOrCreate?: Prisma.RegulatorTemplateCreateOrConnectWithoutFilingRunsInput;
+    upsert?: Prisma.RegulatorTemplateUpsertWithoutFilingRunsInput;
+    connect?: Prisma.RegulatorTemplateWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.RegulatorTemplateUpdateToOneWithWhereWithoutFilingRunsInput, Prisma.RegulatorTemplateUpdateWithoutFilingRunsInput>, Prisma.RegulatorTemplateUncheckedUpdateWithoutFilingRunsInput>;
+};
+export type RegulatorTemplateCreateWithoutCreatedByInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    lines?: Prisma.RegulatorTemplateLineCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUncheckedCreateWithoutCreatedByInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateCreateOrConnectWithoutCreatedByInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput>;
+};
+export type RegulatorTemplateCreateManyCreatedByInputEnvelope = {
+    data: Prisma.RegulatorTemplateCreateManyCreatedByInput | Prisma.RegulatorTemplateCreateManyCreatedByInput[];
+    skipDuplicates?: boolean;
+};
+export type RegulatorTemplateUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    update: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutCreatedByInput>;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCreatedByInput>;
+};
+export type RegulatorTemplateUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutCreatedByInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutCreatedByInput>;
+};
+export type RegulatorTemplateUpdateManyWithWhereWithoutCreatedByInput = {
+    where: Prisma.RegulatorTemplateScalarWhereInput;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateManyMutationInput, Prisma.RegulatorTemplateUncheckedUpdateManyWithoutCreatedByInput>;
+};
+export type RegulatorTemplateScalarWhereInput = {
+    AND?: Prisma.RegulatorTemplateScalarWhereInput | Prisma.RegulatorTemplateScalarWhereInput[];
+    OR?: Prisma.RegulatorTemplateScalarWhereInput[];
+    NOT?: Prisma.RegulatorTemplateScalarWhereInput | Prisma.RegulatorTemplateScalarWhereInput[];
+    id?: Prisma.UuidFilter<"RegulatorTemplate"> | string;
+    regulatorCode?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    templateCode?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    name?: Prisma.StringFilter<"RegulatorTemplate"> | string;
+    filingFrequency?: Prisma.StringNullableFilter<"RegulatorTemplate"> | string | null;
+    version?: Prisma.IntFilter<"RegulatorTemplate"> | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFilter<"RegulatorTemplate"> | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.DateTimeNullableFilter<"RegulatorTemplate"> | Date | string | null;
+    effectiveTo?: Prisma.DateTimeNullableFilter<"RegulatorTemplate"> | Date | string | null;
+    createdByUserId?: Prisma.UuidFilter<"RegulatorTemplate"> | string;
+    createdAt?: Prisma.DateTimeFilter<"RegulatorTemplate"> | Date | string;
+};
+export type RegulatorTemplateCreateWithoutLinesInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutRegulatorTemplatesMadeInput;
+    cellMaps?: Prisma.TemplateCellMapCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUncheckedCreateWithoutLinesInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    createdAt?: Date | string;
+    cellMaps?: Prisma.TemplateCellMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateCreateOrConnectWithoutLinesInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutLinesInput, Prisma.RegulatorTemplateUncheckedCreateWithoutLinesInput>;
+};
+export type RegulatorTemplateUpsertWithoutLinesInput = {
+    update: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutLinesInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutLinesInput>;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutLinesInput, Prisma.RegulatorTemplateUncheckedCreateWithoutLinesInput>;
+    where?: Prisma.RegulatorTemplateWhereInput;
+};
+export type RegulatorTemplateUpdateToOneWithWhereWithoutLinesInput = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutLinesInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutLinesInput>;
+};
+export type RegulatorTemplateUpdateWithoutLinesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutRegulatorTemplatesMadeNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateWithoutLinesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    cellMaps?: Prisma.TemplateCellMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateCreateWithoutCellMapsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutRegulatorTemplatesMadeInput;
+    lines?: Prisma.RegulatorTemplateLineCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUncheckedCreateWithoutCellMapsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    createdAt?: Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateCreateOrConnectWithoutCellMapsInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCellMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCellMapsInput>;
+};
+export type RegulatorTemplateUpsertWithoutCellMapsInput = {
+    update: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutCellMapsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutCellMapsInput>;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutCellMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutCellMapsInput>;
+    where?: Prisma.RegulatorTemplateWhereInput;
+};
+export type RegulatorTemplateUpdateToOneWithWhereWithoutCellMapsInput = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutCellMapsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutCellMapsInput>;
+};
+export type RegulatorTemplateUpdateWithoutCellMapsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutRegulatorTemplatesMadeNestedInput;
+    lines?: Prisma.RegulatorTemplateLineUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateWithoutCellMapsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateCreateWithoutFieldMapsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutRegulatorTemplatesMadeInput;
+    lines?: Prisma.RegulatorTemplateLineCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUncheckedCreateWithoutFieldMapsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    createdAt?: Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateCreateOrConnectWithoutFieldMapsInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFieldMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFieldMapsInput>;
+};
+export type RegulatorTemplateUpsertWithoutFieldMapsInput = {
+    update: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutFieldMapsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutFieldMapsInput>;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFieldMapsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFieldMapsInput>;
+    where?: Prisma.RegulatorTemplateWhereInput;
+};
+export type RegulatorTemplateUpdateToOneWithWhereWithoutFieldMapsInput = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutFieldMapsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutFieldMapsInput>;
+};
+export type RegulatorTemplateUpdateWithoutFieldMapsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutRegulatorTemplatesMadeNestedInput;
+    lines?: Prisma.RegulatorTemplateLineUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateWithoutFieldMapsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateCreateWithoutFilingCalendarsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutRegulatorTemplatesMadeInput;
+    lines?: Prisma.RegulatorTemplateLineCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUncheckedCreateWithoutFilingCalendarsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    createdAt?: Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateCreateOrConnectWithoutFilingCalendarsInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingCalendarsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingCalendarsInput>;
+};
+export type RegulatorTemplateUpsertWithoutFilingCalendarsInput = {
+    update: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutFilingCalendarsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutFilingCalendarsInput>;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingCalendarsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingCalendarsInput>;
+    where?: Prisma.RegulatorTemplateWhereInput;
+};
+export type RegulatorTemplateUpdateToOneWithWhereWithoutFilingCalendarsInput = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutFilingCalendarsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutFilingCalendarsInput>;
+};
+export type RegulatorTemplateUpdateWithoutFilingCalendarsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutRegulatorTemplatesMadeNestedInput;
+    lines?: Prisma.RegulatorTemplateLineUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateWithoutFilingCalendarsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateCreateWithoutFilingRunsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+    createdBy: Prisma.AppUserCreateNestedOneWithoutRegulatorTemplatesMadeInput;
+    lines?: Prisma.RegulatorTemplateLineCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateUncheckedCreateWithoutFilingRunsInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdByUserId: string;
+    createdAt?: Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedCreateNestedManyWithoutRegulatorTemplateInput;
+};
+export type RegulatorTemplateCreateOrConnectWithoutFilingRunsInput = {
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingRunsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingRunsInput>;
+};
+export type RegulatorTemplateUpsertWithoutFilingRunsInput = {
+    update: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutFilingRunsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutFilingRunsInput>;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateWithoutFilingRunsInput, Prisma.RegulatorTemplateUncheckedCreateWithoutFilingRunsInput>;
+    where?: Prisma.RegulatorTemplateWhereInput;
+};
+export type RegulatorTemplateUpdateToOneWithWhereWithoutFilingRunsInput = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateWithoutFilingRunsInput, Prisma.RegulatorTemplateUncheckedUpdateWithoutFilingRunsInput>;
+};
+export type RegulatorTemplateUpdateWithoutFilingRunsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdBy?: Prisma.AppUserUpdateOneRequiredWithoutRegulatorTemplatesMadeNestedInput;
+    lines?: Prisma.RegulatorTemplateLineUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateWithoutFilingRunsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdByUserId?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateCreateManyCreatedByInput = {
+    id?: string;
+    regulatorCode: string;
+    templateCode: string;
+    name: string;
+    filingFrequency?: string | null;
+    version?: number;
+    status?: $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Date | string | null;
+    effectiveTo?: Date | string | null;
+    createdAt?: Date | string;
+};
+export type RegulatorTemplateUpdateWithoutCreatedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lines?: Prisma.RegulatorTemplateLineUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateWithoutCreatedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    lines?: Prisma.RegulatorTemplateLineUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    cellMaps?: Prisma.TemplateCellMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    fieldMaps?: Prisma.TemplateFieldMapUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingCalendars?: Prisma.RegulatoryFilingCalendarUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+    filingRuns?: Prisma.RegulatoryFilingRunUncheckedUpdateManyWithoutRegulatorTemplateNestedInput;
+};
+export type RegulatorTemplateUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    regulatorCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    templateCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    filingFrequency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    version?: Prisma.IntFieldUpdateOperationsInput | number;
+    status?: Prisma.EnumRegulatorTemplateStatusFieldUpdateOperationsInput | $Enums.RegulatorTemplateStatus;
+    effectiveFrom?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    effectiveTo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type RegulatorTemplateCountOutputType = {
+    lines: number;
+    cellMaps: number;
+    fieldMaps: number;
+    filingCalendars: number;
+    filingRuns: number;
+};
+export type RegulatorTemplateCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    lines?: boolean | RegulatorTemplateCountOutputTypeCountLinesArgs;
+    cellMaps?: boolean | RegulatorTemplateCountOutputTypeCountCellMapsArgs;
+    fieldMaps?: boolean | RegulatorTemplateCountOutputTypeCountFieldMapsArgs;
+    filingCalendars?: boolean | RegulatorTemplateCountOutputTypeCountFilingCalendarsArgs;
+    filingRuns?: boolean | RegulatorTemplateCountOutputTypeCountFilingRunsArgs;
+};
+export type RegulatorTemplateCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateCountOutputTypeSelect<ExtArgs> | null;
+};
+export type RegulatorTemplateCountOutputTypeCountLinesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RegulatorTemplateLineWhereInput;
+};
+export type RegulatorTemplateCountOutputTypeCountCellMapsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.TemplateCellMapWhereInput;
+};
+export type RegulatorTemplateCountOutputTypeCountFieldMapsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.TemplateFieldMapWhereInput;
+};
+export type RegulatorTemplateCountOutputTypeCountFilingCalendarsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RegulatoryFilingCalendarWhereInput;
+};
+export type RegulatorTemplateCountOutputTypeCountFilingRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RegulatoryFilingRunWhereInput;
+};
+export type RegulatorTemplateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    regulatorCode?: boolean;
+    templateCode?: boolean;
+    name?: boolean;
+    filingFrequency?: boolean;
+    version?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    createdAt?: boolean;
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    lines?: boolean | Prisma.RegulatorTemplate$linesArgs<ExtArgs>;
+    cellMaps?: boolean | Prisma.RegulatorTemplate$cellMapsArgs<ExtArgs>;
+    fieldMaps?: boolean | Prisma.RegulatorTemplate$fieldMapsArgs<ExtArgs>;
+    filingCalendars?: boolean | Prisma.RegulatorTemplate$filingCalendarsArgs<ExtArgs>;
+    filingRuns?: boolean | Prisma.RegulatorTemplate$filingRunsArgs<ExtArgs>;
+    _count?: boolean | Prisma.RegulatorTemplateCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["regulatorTemplate"]>;
+export type RegulatorTemplateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    regulatorCode?: boolean;
+    templateCode?: boolean;
+    name?: boolean;
+    filingFrequency?: boolean;
+    version?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    createdAt?: boolean;
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["regulatorTemplate"]>;
+export type RegulatorTemplateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    regulatorCode?: boolean;
+    templateCode?: boolean;
+    name?: boolean;
+    filingFrequency?: boolean;
+    version?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    createdAt?: boolean;
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["regulatorTemplate"]>;
+export type RegulatorTemplateSelectScalar = {
+    id?: boolean;
+    regulatorCode?: boolean;
+    templateCode?: boolean;
+    name?: boolean;
+    filingFrequency?: boolean;
+    version?: boolean;
+    status?: boolean;
+    effectiveFrom?: boolean;
+    effectiveTo?: boolean;
+    createdByUserId?: boolean;
+    createdAt?: boolean;
+};
+export type RegulatorTemplateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "regulatorCode" | "templateCode" | "name" | "filingFrequency" | "version" | "status" | "effectiveFrom" | "effectiveTo" | "createdByUserId" | "createdAt", ExtArgs["result"]["regulatorTemplate"]>;
+export type RegulatorTemplateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+    lines?: boolean | Prisma.RegulatorTemplate$linesArgs<ExtArgs>;
+    cellMaps?: boolean | Prisma.RegulatorTemplate$cellMapsArgs<ExtArgs>;
+    fieldMaps?: boolean | Prisma.RegulatorTemplate$fieldMapsArgs<ExtArgs>;
+    filingCalendars?: boolean | Prisma.RegulatorTemplate$filingCalendarsArgs<ExtArgs>;
+    filingRuns?: boolean | Prisma.RegulatorTemplate$filingRunsArgs<ExtArgs>;
+    _count?: boolean | Prisma.RegulatorTemplateCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type RegulatorTemplateIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+};
+export type RegulatorTemplateIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    createdBy?: boolean | Prisma.AppUserDefaultArgs<ExtArgs>;
+};
+export type $RegulatorTemplatePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "RegulatorTemplate";
+    objects: {
+        createdBy: Prisma.$AppUserPayload<ExtArgs>;
+        lines: Prisma.$RegulatorTemplateLinePayload<ExtArgs>[];
+        cellMaps: Prisma.$TemplateCellMapPayload<ExtArgs>[];
+        fieldMaps: Prisma.$TemplateFieldMapPayload<ExtArgs>[];
+        filingCalendars: Prisma.$RegulatoryFilingCalendarPayload<ExtArgs>[];
+        filingRuns: Prisma.$RegulatoryFilingRunPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        regulatorCode: string;
+        templateCode: string;
+        name: string;
+        filingFrequency: string | null;
+        version: number;
+        status: $Enums.RegulatorTemplateStatus;
+        effectiveFrom: Date | null;
+        effectiveTo: Date | null;
+        createdByUserId: string;
+        createdAt: Date;
+    }, ExtArgs["result"]["regulatorTemplate"]>;
+    composites: {};
+};
+export type RegulatorTemplateGetPayload<S extends boolean | null | undefined | RegulatorTemplateDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload, S>;
+export type RegulatorTemplateCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<RegulatorTemplateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: RegulatorTemplateCountAggregateInputType | true;
+};
+export interface RegulatorTemplateDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['RegulatorTemplate'];
+        meta: {
+            name: 'RegulatorTemplate';
+        };
+    };
+    findUnique<T extends RegulatorTemplateFindUniqueArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateFindUniqueArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findUniqueOrThrow<T extends RegulatorTemplateFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findFirst<T extends RegulatorTemplateFindFirstArgs>(args?: Prisma.SelectSubset<T, RegulatorTemplateFindFirstArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    findFirstOrThrow<T extends RegulatorTemplateFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, RegulatorTemplateFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    findMany<T extends RegulatorTemplateFindManyArgs>(args?: Prisma.SelectSubset<T, RegulatorTemplateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    create<T extends RegulatorTemplateCreateArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateCreateArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    createMany<T extends RegulatorTemplateCreateManyArgs>(args?: Prisma.SelectSubset<T, RegulatorTemplateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    createManyAndReturn<T extends RegulatorTemplateCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, RegulatorTemplateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    delete<T extends RegulatorTemplateDeleteArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateDeleteArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    update<T extends RegulatorTemplateUpdateArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateUpdateArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    deleteMany<T extends RegulatorTemplateDeleteManyArgs>(args?: Prisma.SelectSubset<T, RegulatorTemplateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateMany<T extends RegulatorTemplateUpdateManyArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    updateManyAndReturn<T extends RegulatorTemplateUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    upsert<T extends RegulatorTemplateUpsertArgs>(args: Prisma.SelectSubset<T, RegulatorTemplateUpsertArgs<ExtArgs>>): Prisma.Prisma__RegulatorTemplateClient<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    count<T extends RegulatorTemplateCountArgs>(args?: Prisma.Subset<T, RegulatorTemplateCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], RegulatorTemplateCountAggregateOutputType> : number>;
+    aggregate<T extends RegulatorTemplateAggregateArgs>(args: Prisma.Subset<T, RegulatorTemplateAggregateArgs>): Prisma.PrismaPromise<GetRegulatorTemplateAggregateType<T>>;
+    groupBy<T extends RegulatorTemplateGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: RegulatorTemplateGroupByArgs['orderBy'];
+    } : {
+        orderBy?: RegulatorTemplateGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, RegulatorTemplateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRegulatorTemplateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    readonly fields: RegulatorTemplateFieldRefs;
+}
+export interface Prisma__RegulatorTemplateClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    createdBy<T extends Prisma.AppUserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AppUserDefaultArgs<ExtArgs>>): Prisma.Prisma__AppUserClient<runtime.Types.Result.GetResult<Prisma.$AppUserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    lines<T extends Prisma.RegulatorTemplate$linesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RegulatorTemplate$linesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RegulatorTemplateLinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    cellMaps<T extends Prisma.RegulatorTemplate$cellMapsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RegulatorTemplate$cellMapsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TemplateCellMapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    fieldMaps<T extends Prisma.RegulatorTemplate$fieldMapsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RegulatorTemplate$fieldMapsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TemplateFieldMapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    filingCalendars<T extends Prisma.RegulatorTemplate$filingCalendarsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RegulatorTemplate$filingCalendarsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RegulatoryFilingCalendarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    filingRuns<T extends Prisma.RegulatorTemplate$filingRunsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RegulatorTemplate$filingRunsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RegulatoryFilingRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+export interface RegulatorTemplateFieldRefs {
+    readonly id: Prisma.FieldRef<"RegulatorTemplate", 'String'>;
+    readonly regulatorCode: Prisma.FieldRef<"RegulatorTemplate", 'String'>;
+    readonly templateCode: Prisma.FieldRef<"RegulatorTemplate", 'String'>;
+    readonly name: Prisma.FieldRef<"RegulatorTemplate", 'String'>;
+    readonly filingFrequency: Prisma.FieldRef<"RegulatorTemplate", 'String'>;
+    readonly version: Prisma.FieldRef<"RegulatorTemplate", 'Int'>;
+    readonly status: Prisma.FieldRef<"RegulatorTemplate", 'RegulatorTemplateStatus'>;
+    readonly effectiveFrom: Prisma.FieldRef<"RegulatorTemplate", 'DateTime'>;
+    readonly effectiveTo: Prisma.FieldRef<"RegulatorTemplate", 'DateTime'>;
+    readonly createdByUserId: Prisma.FieldRef<"RegulatorTemplate", 'String'>;
+    readonly createdAt: Prisma.FieldRef<"RegulatorTemplate", 'DateTime'>;
+}
+export type RegulatorTemplateFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    where?: Prisma.RegulatorTemplateWhereInput;
+    orderBy?: Prisma.RegulatorTemplateOrderByWithRelationInput | Prisma.RegulatorTemplateOrderByWithRelationInput[];
+    cursor?: Prisma.RegulatorTemplateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RegulatorTemplateScalarFieldEnum | Prisma.RegulatorTemplateScalarFieldEnum[];
+};
+export type RegulatorTemplateFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    where?: Prisma.RegulatorTemplateWhereInput;
+    orderBy?: Prisma.RegulatorTemplateOrderByWithRelationInput | Prisma.RegulatorTemplateOrderByWithRelationInput[];
+    cursor?: Prisma.RegulatorTemplateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RegulatorTemplateScalarFieldEnum | Prisma.RegulatorTemplateScalarFieldEnum[];
+};
+export type RegulatorTemplateFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    where?: Prisma.RegulatorTemplateWhereInput;
+    orderBy?: Prisma.RegulatorTemplateOrderByWithRelationInput | Prisma.RegulatorTemplateOrderByWithRelationInput[];
+    cursor?: Prisma.RegulatorTemplateWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RegulatorTemplateScalarFieldEnum | Prisma.RegulatorTemplateScalarFieldEnum[];
+};
+export type RegulatorTemplateCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.RegulatorTemplateCreateInput, Prisma.RegulatorTemplateUncheckedCreateInput>;
+};
+export type RegulatorTemplateCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.RegulatorTemplateCreateManyInput | Prisma.RegulatorTemplateCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+export type RegulatorTemplateCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelectCreateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    data: Prisma.RegulatorTemplateCreateManyInput | Prisma.RegulatorTemplateCreateManyInput[];
+    skipDuplicates?: boolean;
+    include?: Prisma.RegulatorTemplateIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+export type RegulatorTemplateUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateInput, Prisma.RegulatorTemplateUncheckedUpdateInput>;
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateManyMutationInput, Prisma.RegulatorTemplateUncheckedUpdateManyInput>;
+    where?: Prisma.RegulatorTemplateWhereInput;
+    limit?: number;
+};
+export type RegulatorTemplateUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelectUpdateManyAndReturn<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    data: Prisma.XOR<Prisma.RegulatorTemplateUpdateManyMutationInput, Prisma.RegulatorTemplateUncheckedUpdateManyInput>;
+    where?: Prisma.RegulatorTemplateWhereInput;
+    limit?: number;
+    include?: Prisma.RegulatorTemplateIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+export type RegulatorTemplateUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+    create: Prisma.XOR<Prisma.RegulatorTemplateCreateInput, Prisma.RegulatorTemplateUncheckedCreateInput>;
+    update: Prisma.XOR<Prisma.RegulatorTemplateUpdateInput, Prisma.RegulatorTemplateUncheckedUpdateInput>;
+};
+export type RegulatorTemplateDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+    where: Prisma.RegulatorTemplateWhereUniqueInput;
+};
+export type RegulatorTemplateDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RegulatorTemplateWhereInput;
+    limit?: number;
+};
+export type RegulatorTemplate$linesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateLineSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateLineOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateLineInclude<ExtArgs> | null;
+    where?: Prisma.RegulatorTemplateLineWhereInput;
+    orderBy?: Prisma.RegulatorTemplateLineOrderByWithRelationInput | Prisma.RegulatorTemplateLineOrderByWithRelationInput[];
+    cursor?: Prisma.RegulatorTemplateLineWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RegulatorTemplateLineScalarFieldEnum | Prisma.RegulatorTemplateLineScalarFieldEnum[];
+};
+export type RegulatorTemplate$cellMapsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.TemplateCellMapSelect<ExtArgs> | null;
+    omit?: Prisma.TemplateCellMapOmit<ExtArgs> | null;
+    include?: Prisma.TemplateCellMapInclude<ExtArgs> | null;
+    where?: Prisma.TemplateCellMapWhereInput;
+    orderBy?: Prisma.TemplateCellMapOrderByWithRelationInput | Prisma.TemplateCellMapOrderByWithRelationInput[];
+    cursor?: Prisma.TemplateCellMapWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.TemplateCellMapScalarFieldEnum | Prisma.TemplateCellMapScalarFieldEnum[];
+};
+export type RegulatorTemplate$fieldMapsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.TemplateFieldMapSelect<ExtArgs> | null;
+    omit?: Prisma.TemplateFieldMapOmit<ExtArgs> | null;
+    include?: Prisma.TemplateFieldMapInclude<ExtArgs> | null;
+    where?: Prisma.TemplateFieldMapWhereInput;
+    orderBy?: Prisma.TemplateFieldMapOrderByWithRelationInput | Prisma.TemplateFieldMapOrderByWithRelationInput[];
+    cursor?: Prisma.TemplateFieldMapWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.TemplateFieldMapScalarFieldEnum | Prisma.TemplateFieldMapScalarFieldEnum[];
+};
+export type RegulatorTemplate$filingCalendarsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatoryFilingCalendarSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatoryFilingCalendarOmit<ExtArgs> | null;
+    include?: Prisma.RegulatoryFilingCalendarInclude<ExtArgs> | null;
+    where?: Prisma.RegulatoryFilingCalendarWhereInput;
+    orderBy?: Prisma.RegulatoryFilingCalendarOrderByWithRelationInput | Prisma.RegulatoryFilingCalendarOrderByWithRelationInput[];
+    cursor?: Prisma.RegulatoryFilingCalendarWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RegulatoryFilingCalendarScalarFieldEnum | Prisma.RegulatoryFilingCalendarScalarFieldEnum[];
+};
+export type RegulatorTemplate$filingRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatoryFilingRunSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatoryFilingRunOmit<ExtArgs> | null;
+    include?: Prisma.RegulatoryFilingRunInclude<ExtArgs> | null;
+    where?: Prisma.RegulatoryFilingRunWhereInput;
+    orderBy?: Prisma.RegulatoryFilingRunOrderByWithRelationInput | Prisma.RegulatoryFilingRunOrderByWithRelationInput[];
+    cursor?: Prisma.RegulatoryFilingRunWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RegulatoryFilingRunScalarFieldEnum | Prisma.RegulatoryFilingRunScalarFieldEnum[];
+};
+export type RegulatorTemplateDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.RegulatorTemplateSelect<ExtArgs> | null;
+    omit?: Prisma.RegulatorTemplateOmit<ExtArgs> | null;
+    include?: Prisma.RegulatorTemplateInclude<ExtArgs> | null;
+};

@@ -1,0 +1,35 @@
+-- Second half of DB provisioning — run by install-one17.ps1 with
+-- `psql -d __DB_NAME__` (i.e. already connected to the target database,
+-- not `postgres`). Grants one17_runtime least-privilege DML access,
+-- including on tables/sequences that don't exist yet at provisioning time
+-- (migrations haven't run yet on a fresh install) via ALTER DEFAULT
+-- PRIVILEGES keyed to one17_app as the creating role — every table/
+-- sequence `prisma migrate deploy` creates afterward is automatically
+-- covered, no manual re-grant step for future migrations.
+--
+-- Idempotent: GRANT/ALTER DEFAULT PRIVILEGES are naturally re-runnable in
+-- Postgres (no error on repetition, no destructive effect).
+
+GRANT CONNECT ON DATABASE __DB_NAME__ TO one17_runtime;
+GRANT USAGE ON SCHEMA public TO one17_runtime;
+
+-- Covers tables/sequences that already exist (a re-run against an
+-- already-migrated database, e.g. after a manual role recreation).
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO one17_runtime;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO one17_runtime;
+
+-- Covers tables/sequences created by every migration from this point
+-- forward, as long as one17_app remains the role running
+-- `prisma migrate deploy` (the update procedure in DEPLOYMENT_WINDOWS.md
+-- preserves this — never run migrations as one17_runtime or as the cluster
+-- superuser).
+ALTER DEFAULT PRIVILEGES FOR ROLE one17_app IN SCHEMA public
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO one17_runtime;
+ALTER DEFAULT PRIVILEGES FOR ROLE one17_app IN SCHEMA public
+  GRANT USAGE, SELECT ON SEQUENCES TO one17_runtime;
+
+-- Intentionally NOT granted to one17_runtime: CREATE/ALTER/DROP anything,
+-- and no override of the audit_trail/report_run insert-only triggers
+-- (RUNBOOK.md §1) — those triggers reject UPDATE/DELETE regardless of role
+-- grants, including for one17_app itself; this is defense in depth, not
+-- the only enforcement layer.
