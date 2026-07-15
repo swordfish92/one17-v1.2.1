@@ -114,14 +114,13 @@ export class SchedulerService implements OnModuleInit, OnModuleDestroy {
     private readonly screeningGateway: ScreeningGatewayService,
   ) {}
 
-  async onModuleInit() {
-    this.jobs = await this.buildJobs();
-    // Catch-up pass runs once, immediately, before the recurring tick
-    // starts — this is what makes "the process was down at 23:00" recover
-    // on next startup rather than silently waiting for tomorrow's slot.
-    await this.tick(new Date());
-    this.tickHandle = setInterval(() => void this.tick(new Date()), TICK_INTERVAL_MS);
-  }
+ async onModuleInit() {
+  this.jobs = await this.buildJobs();
+
+  // await this.tick(new Date());
+
+  this.tickHandle = setInterval(() => void this.tick(new Date()), TICK_INTERVAL_MS);
+}
 
   onModuleDestroy() {
     if (this.tickHandle) clearInterval(this.tickHandle);
