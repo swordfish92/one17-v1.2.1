@@ -145,7 +145,16 @@ export class SchedulerService implements OnModuleInit, OnModuleDestroy {
     this.ticking = true;
     try {
       for (const job of this.jobs) {
-  await this.maybeRunJob(job, now);
+  this.logger.log(`Running job: ${job.code}`);
+
+  try {
+    await this.maybeRunJob(job, now);
+    this.logger.log(`Finished job: ${job.code}`);
+  } catch (error) {
+    this.logger.error(`Job failed: ${job.code}`);
+    this.logger.error(error instanceof Error ? error.stack : String(error));
+    throw error;
+  }
 }
     } finally {
       this.ticking = false;
