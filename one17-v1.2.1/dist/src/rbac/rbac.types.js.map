@@ -1,1 +1,0 @@
-{"version":3,"file":"rbac.types.js","sourceRoot":"","sources":["../../../src/rbac/rbac.types.ts"],"names":[],"mappings":";;;AAGA,MAAa,gBAAiB,SAAQ,KAAK;IAGvB;IACA;IAHlB,YACE,OAAe,EACC,MAAc,EACd,iBAAyB;QAEzC,KAAK,CAAC,OAAO,CAAC,CAAC;QAHC,WAAM,GAAN,MAAM,CAAQ;QACd,sBAAiB,GAAjB,iBAAiB,CAAQ;QAGzC,IAAI,CAAC,IAAI,GAAG,kBAAkB,CAAC;IACjC,CAAC;CACF;AATD,4CASC"}
