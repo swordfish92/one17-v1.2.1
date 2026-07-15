@@ -145,8 +145,8 @@ export class SchedulerService implements OnModuleInit, OnModuleDestroy {
     this.ticking = true;
     try {
       for (const job of this.jobs) {
-        await this.maybeRunJob(job, now);
-      }
+  await this.maybeRunJob(job, now);
+}
     } finally {
       this.ticking = false;
     }
