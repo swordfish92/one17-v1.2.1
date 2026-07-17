@@ -5,13 +5,24 @@
 import 'dotenv/config';
 import * as fs from 'fs';
 import * as path from 'path';
+import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient, PermissionLevel } from '../generated/prisma/client';
 import { KRI_ROSTER } from '../src/kri-engine/kri-roster';
 import { STRESS_SCENARIO_ROSTER } from '../src/stress-engine/stress-scenario-roster';
 import { ASSET_CLASSES, TIER_BANDS, STRESS_SCENARIOS } from '../src/wm/wm.types';
 import { INCENTIVE_BANDS, GATE_SEVERITY_CONFIG, TAX_RULE_CONFIG_V1 } from '../src/pms/pms.types';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  adapter: new PrismaPg({
+    connectionString: process.env.DATABASE_URL!,
+  }),
+});
+
+// kobo = 1/100 Naira (CLAUDE.md invariant #2: BIGINT kobo everywhere).
+const NAIRA = 100n;
+const kobo = (naira: number) => BigInt(naira) * NAIRA;
+
+
 // SRS §3.1. isExclusive: "Super Admin cannot approve financial transactions
 // ... separated at database level" (§3.3) — modeled as data, not a string
 // check, so a future exclusive role (e.g. a Board/Committee role) needs no
